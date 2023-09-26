@@ -1,0 +1,251 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+
+<og-image>{{imageUrlBase}}/VBuy_Image.png</og-image>
+
+<div class="container containerbgcolor">
+    <div data-ng-controller="HomeSliderController">
+        <div class="col-lg-12">
+
+            <ul class="slideList" slick-slider-banner="{
+        auto: true,
+        controls:false,
+        mode: 'fade'
+    }">
+                <li>
+                    <a href="{{homeBannerSettings[0].Value}}">
+                        <img src="{{imageUrlBase}}{{homeFolder}}HomeBanner1.jpg" alt="HomeBanner1">
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{homeBannerSettings[1].Value}}" target="_blank">
+                        <img src="{{imageUrlBase}}{{homeFolder}}HomeBanner2.jpg" alt=" HomeBanner2 ">
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{homeBannerSettings[2].Value}}">
+                        <img src="{{imageUrlBase}}{{homeFolder}}HomeBanner3.jpg" alt=" HomeBanner3 ">
+                    </a>
+                </li>
+
+                <li>
+
+                    <a href="{{homeBannerSettings[3].Value}}">
+                        <img src="{{imageUrlBase}}{{homeFolder}}HomeBanner4.jpg" alt=" HomeBanner4 ">
+                    </a>
+
+                </li>
+            </ul>
+
+        </div>
+
+        <br style="clear:both" />
+        <br />
+        <div class="col-lg-12">
+            <header class="homeHeaders">
+                <strong> TODAY'S TOP OFFERS </strong><a href="offers"> <b>Click here, to view all >></b></a>
+            </header>
+            <div class="container">
+                <span ng-bind="messageOffers"></span>
+                <div class="col-lg-11">
+                    <div data="offerProducts.data"
+                         slick-slider="{dots: false,
+                   draggable: false,
+                   slidesToShow:5,
+                   slidesToScroll: 5,
+                   autoplay: true,
+                   autoplaySpeed :3000,
+                   infinite:false,
+                   responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        dots: false,
+        draggable: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        autoplay: true,
+        autoplaySpeed :3000,
+        infinite: false
+      }
+    },
+    {
+      breakpoint: 750,
+      settings: {
+        dots: false,
+        draggable: false,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        autoplay: true,
+        autoplaySpeed :4000,
+        infinite: false
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+         dots: false,
+        draggable: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed :4000,
+        infinite: false
+      }
+    }]}">
+                        <div class="col-lg-2" data-ng-repeat="product in offerProducts.data | orderBy:'Price'">
+                            <a href="product/{{product.Name | formaturl}}/{{product.ProductId}}" f title="{{product.Name}}" class="productlink cardBody btn-link">
+                                <div class="cardHeader">
+                                    <span ng-bind="product.Name | limitTo:45"></span>
+                                </div>
+                                <div class="cardBody">
+                                    <img class="imgproductsmall" src="{{imageUrlBaseSmall}}{{product.PictureName}}" alt="{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                                </div>
+                                <div class="cardFooter">
+                                    <div>
+                                        <b>  <span class="greenText" ng-bind="product.SpecialPrice | currency:' &#8377;'"></span></b>
+                                        <span class='strikePrice'>
+                                            <span>{{product.Price | currency:"&#8377;"}}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br style="clear:both" />
+    <div class="col-lg-12">
+        <header class="homeHeaders">
+            <strong> TOP CATEGORIES </strong>
+        </header>
+
+        <div class="col-md-4" data-ng-repeat="category in topCategoryList.data |limitTo:6">
+            <a href="category/{{category.Name | formaturl}}/{{category.CategoryId}}">
+                <div>
+                    <img class="categoryBanner1" alt="{{category.Name}}" src="{{imageUrlBase}}{{homeCategoryFolder}}{{category.Name | formaturl}}.jpg">
+                </div>
+            </a>
+        </div>
+    </div>
+    <br style="clear:both" />
+    <br />
+    {{$scope.app.error}}
+    <div class="col-lg-12">
+        <header class="homeHeaders">
+            <strong> FEATURED PRODUCTS </strong>
+        </header>
+        <div class="featuredproducts" data-ng-controller="LandingController">
+            <div class="card col-xs-2" data-ng-repeat="product in featuredProducts.data | orderBy:'Name'">
+                <a href="product/{{product.Name | formaturl}}/{{product.ProductId}}" title="{{product.Name}}" class="productlink cardBody btn-link">
+                    <div class="cardHeader">
+                        {{ product.Name | limitTo:45}}
+                    </div>
+                    <div class="cardBody">
+                        <img id="img_{{product.ProductId}}" class="imgproductsmall" src="{{imageUrlBaseSmall}}{{product.PictureName}}" alt="{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <div class="cardFooter">
+                        <div>from <b>  <span class="greenText">{{product.Price | currency:"&#8377;"}}</span></b></div>
+                        <div> <b>{{product.StoresCount}} </b> stores</div>
+                    </div>
+                </a>
+                <div data-ng-if=!product.FlagWishlist class="shortlistProduct" ng-click="addProductWishlist(product);">
+                    <i class="icon-wishlist-empty-heart">Add to Wishlist</i>
+
+                </div>
+                <div class="shortlistProduct" data-ng-if=product.FlagWishlist>
+                    <i class="icon-wishlist-filled-heart"><span>Added to Wishlist</span></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br style="clear:both" />
+    <br />
+    <div class="col-lg-12">
+        <header class="homeHeaders" ng-if="topSellingProductList1.data.length>0">
+            <strong> TOP SELLING {{topSellingProductList1.data[0].SubCategoryName}} </strong><a href="category/{{topSellingProductList1.data[0].SubCategoryName | formaturl}}/{{topSellingProductList1.data[0].SubCategoryId}}"> <b> <b>Click here, to view all >></b></a>
+        </header>
+        <div class="featuredproducts" data-ng-controller="LandingController" ng-if="topSellingProductList1.data.length>0">
+
+            <div class="col-md-3" data-ng-repeat="product in topSellingProductList1.data | orderBy:'Name'">
+                <a href="product/{{product.Name | formaturl}}/{{product.ProductId}}" title="{{product.Name}}" class="productlink cardBody btn-link">
+                    <div>
+                        {{ product.Name | limitTo:45}}
+                    </div>
+                    <div>
+                        <img id="img_{{product.ProductId}}" class="imgproductmedium" src="{{imageUrlBaseSmall}}{{product.PictureName}}" alt="{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <!--<div class="cardFooter">
+                        <div>from <b>  <span class="greenText">{{product.Price | currency:"&#8377;"}}</span></b></div>
+                        <div> <b>{{product.StoresCount}} </b> stores</div>
+                    </div>-->
+                </a>
+                <!--<div data-ng-if=!product.FlagWishlist class="shortlistProduct" ng-click="addProductWishlist(product);">
+                    <i class="icon-wishlist-empty-heart"><span>Add to Wishlist</span></i>
+
+                </div>
+                <div class="shortlistProduct" data-ng-if=product.FlagWishlist>
+                    <i class="icon-wishlist-filled-heart"><span>Added to Wishlist</span></i>
+                </div>-->
+            </div>
+        </div>
+        <br clear="all" />
+        <br />
+        <div ng-show="recentlyViewedlist.length>0">
+            <header class="homeHeaders">
+                <strong> RECENTLY VIEWED </strong>
+            </header>
+            <div class="container">
+                <div class="col-lg-12">
+                    <div data="recentlyViewedlist"
+                         slick-slider-recentview="{ minSlides: 2,
+                        maxSlides: 5,
+                          moveSlides: 1,
+                         slideWidth: 200,
+                         hideControlOnEnd: true,
+                         infiniteLoop: false,
+                         pager:true,
+                         controls:true,
+                          pager: false,
+                          speed: 1000
+                        }">
+                        <div data-ng-repeat="product in recentlyViewedlist">
+                            <a href="product/{{product.Name | formaturl}}/{{product.ProductId}}" title="{{product.Name}}" class="productlink cardBody btn-link">
+                                <div class="cardHeader">
+                                    <span ng-bind="product.Name | limitTo:45"></span>
+                                </div>
+                                <div class="cardBody">
+                                    <img class="imgproductsmall" src="{{imageUrlBaseSmall}}{{product.PictureName}}" alt="{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                                </div>
+                                <div class="cardFooter">
+                                    <div>
+                                        <b>  <span class="greenText" ng-bind="product.SpecialPrice | currency:' &#8377;'"></span></b>
+                                        <span class='strikePrice'>
+                                            <span>{{product.Price | currency:"&#8377;"}}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

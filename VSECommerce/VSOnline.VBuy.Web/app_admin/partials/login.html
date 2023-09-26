@@ -1,0 +1,77 @@
+﻿
+
+    <div data-ng-show="message" class="alert alert-success float-message">
+        <a href="" class="close" ng-click="message = ''">&times;</a>
+        {{message}}
+    </div>
+
+    <div class="container">
+
+
+        <div class="col-lg-6 col-md-1 col-xs-1">
+        </div>
+        <div class=" col-lg-6 col-md-10 col-xs-10">
+            <div>
+
+                <h1 class="wrapper" style="color: white;text-transform: uppercase;font-size: 3.2em;"> <a href="#" class="navbar-brand" style="background-image :url('./AdminAppResource/images/VBuyLogo.png'); background-repeat:no-repeat;background-color:transparent; width: 345%;"></a></h1>
+                <h3 class="wrapper" style="color: white;text-transform: uppercase;font-size: 3.2em;">Admin Login</h3>
+
+                <form class="form-horizontal admin-login-form">
+                    <br />
+                    <div class="form-group">
+                        <label for="email" class="col-md-3 control-label">Email</label>
+                        <div class="col-md-7">
+                            <input type="email" size=25 maxlength=100 data-ng-model="loginData.userName" placeholder="Email" id="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-3  control-label">Password</label>
+                        <div class="col-md-7">
+                            <input type="password" size=25 maxlength=100 data-ng-model="loginData.password" placeholder="Password" id="password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-3  control-label">Code</label>
+                        <div class="col-md-7">
+                            <input type="password" size=25 maxlength=100 data-ng-model="loginData.code" placeholder="Code" id="code" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-5">
+                            <button class="btn btn-info" type="submit" data-ng-click="Login()">Login</button>
+                            <button class="btn btn-info" type="reset">Reset</button>
+                        </div>
+                    </div>
+
+                    <br />
+                </form>
+
+            </div>
+        </div>
+        <div>
+            <br class="clear"/>
+            <br class="clear" />
+            <br class="clear" />
+            <br class="clear" />
+        </div>
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>

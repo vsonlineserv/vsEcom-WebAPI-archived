@@ -1,0 +1,59 @@
+﻿<div class="panel-heading formHeader">
+    <div>
+        <span>Product SEO</span>
+        <a>
+            <span class="glyphicon glyphicon-question-sign btnalignRight"
+                  data-title="Search Keyword and product description" data-bs-tooltip></span>
+        </a>
+    </div>
+</div>   
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">
+            Product Name
+        </label>
+        <div class="col-xs-7">
+            <input type="text" disabled class="form-control" size=25 maxlength=50 data-ng-model="product.Name" placeholder="Product Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">
+            Color
+        </label>
+        <div class="col-md-7">
+            <input type="text" disabled class="input-sm form-control" maxlength=5 data-ng-model="product.Color">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3"> <label class="control-label">Meta Title</label></div>
+        <div class="col-md-7"> <textarea class="form-control" data-ng-model="product.MetaTitle" id="txtEditTitle" placeholder="Meta Title"></textarea></div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3"> <label class="control-label">Meta Description</label></div>
+        <div class="col-md-7"> <textarea class="form-control" data-ng-model="product.MetaDescription" id="txtEditDescription" placeholder="Meta Description"></textarea></div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-3"> <label class="control-label">Meta Keywords</label></div>
+        <div class="col-md-7"> <textarea class="form-control" data-ng-model="product.MetaKeywords" id="txtEditKeywords" placeholder="Meta Keywords"></textarea></div>
+    </div>
+    <div>
+        <div class="col-md-3"> </div>
+        <div class="col-md-7 btnalignRight">
+            <button class="btn btn-sm btn-info" type="submit"
+                    data-ng-click="UpdateProductSeo(product)">
+                Update SEO Details
+            </button>
+            <a class="btn btn-sm btn-info" href="Retailer.html#/UpdateFeatures/{{product.ProductId}}">Proceed to Update Features >> </a>
+        </div>
+    </div>
+
+</form>

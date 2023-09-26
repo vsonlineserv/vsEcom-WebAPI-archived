@@ -1,0 +1,178 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+                Register New Store
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+        <div class=" row">
+            <span id="required" style="color:red"></span>
+        </div>
+
+        <form class="form-horizontal">
+            <div class="form-group">
+ 
+                <label class=" col-md-2 control-label">First Name <label style="color:red">*</label></label>
+                <div class="col-md-3">
+                        <input type="text" class="form-control" id="txtName" ng-blur="CheckReNameLength()"
+                               placeholder="First Name" />
+                </div>
+                    <label class=" col-md-2 control-label">Last Name</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtLaName" ng-blur="CheckReNameLength()"
+                           placeholder="Last Name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Email <label style="color:red">*</label></label>
+                <div class="col-md-3">
+                    <input type="text"
+                           class="form-control" id="txtReEmail" ng-blur="ValidateEmail()"
+                           placeholder="Email ID" />
+                </div>
+                <label class="col-md-2 control-label">BusinessName <label style="color:red">*</label></label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="txtBussName" ng-blur="CheckBussName()"
+                           placeholder="Business Name" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">PhoneNumber <label style="color:red">*</label></label>
+                <div class="col-md-3">
+                        <input type="text" maxlength="12"
+                               class="form-control" id="txtRePhnNum" ng-blur="ValidatePhNum()"
+                               placeholder="PhoneNumber" />
+                </div>
+                 <label class="col-md-2 control-label">Address1<label style="color:red">*</label></label>
+                    <div class="col-md-3">
+                        <textarea ng-blur="ChkAddress()" ;
+                                  class="form-control" id="txtRegAdd1"
+                                  placeholder="Address1"></textarea>
+                    </div>
+
+ 
+                </div>
+
+            <div class="form-group">
+
+                <label for="message-text" class="col-md-2 control-label">Address2</label>
+               
+                <div class="col-md-3">
+                    
+                        <textarea class="form-control" id="txtRegAdd2"
+                                  placeholder="Address2"></textarea>
+ 
+                </div>
+ 
+            
+                <label class="col-md-2 control-label">City <label style="color:red">*</label></label>
+ 
+                <div class="col-md-3">
+                    <input type="text"
+                           class="form-control" id="txtCity" ng-blur="ChkCity()" ; onkeyup="this.value=this.value.replace(/[^a-z\s]/gi,'');"
+                           placeholder="City" />
+                </div>
+           </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label"> Pincode <label style="color:red">*</label> </label>
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <input type="text" maxlength="6"
+                               class="form-control" id="txtPincode" ng-blur="ChkPincode()"
+                               placeholder=" Pincode" />
+                    </div>
+                </div>
+                <label class="col-md-2 control-label">Select State</label>
+
+            <div class="col-md-3">
+                <select id="ddlstate"
+                        class="form-control">
+                    <option selected="selected" value="TamilNadu">TamilNadu</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Andhra">Andhra Pradesh</option>
+                    <option value="Telengana">Telengana</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="WestBengal">West Bengal</option>
+
+                </select>
+            </div>
+            </div>
+
+
+
+            <div class="form-group"> 
+            <label  class="col-md-2 control-label">Select Country</label>
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <select id="ddlcountry" class="form-control">
+                            <option selected="selected" value="42">India</option>
+                        </select>
+                    </div>
+                    <a href="" ng-click="GetLocationLatLong()">Get Location Details</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Latitude</label>
+                <div class="col-md-3">
+                    <input type="text" maxlength="50"
+                           class="form-control" id="txtLati" placeholder="Latitude" />
+                </div>
+
+                <label for="message-text" class="col-md-2 control-label">Longitude </label>
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <input type="text" maxlength="50"
+                               class="form-control" id="txtlong"
+                               placeholder="Longitude" />
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" ng-click="RetailerRegister();">Register</button>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" ng-click="RetailerClear();">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+   
+</div>
+
+<div class="modal fade bs-example-modal-sm" id="StatusRegis" role="dialog"
+     aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title" id="EditKeyModel">Processing......</h5>
+            </div>
+        </div>
+
+    </div>
+</div>

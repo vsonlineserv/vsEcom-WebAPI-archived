@@ -1,0 +1,155 @@
+﻿<div class="panel-heading formHeader">
+    <div>
+        <span class="">New Product </span>
+        <a href="" type="button" class="glyphicon glyphicon-question-sign btnalignRight" data-placement="left"
+                data-title="Before creating new product check if the product already exist in 'product lookup' section. for bulk update, please contact support@vbuy.in" data-bs-tooltip></a>
+    </div>
+</div>
+    <div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<br class="clear"/>
+    <form class="form-horizontal">
+            <div class="form-group">             
+                    <label class="control-label col-md-3">Product Name</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control" maxlength=50 data-ng-model="product.Name" required autofocus placeholder="Product Name">
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-md-3">Short Description</label>
+                <div class="col-md-7">
+                    <textarea class="form-control" cols="100" rows="5" maxlength=200 data-ng-model="product.ShortDescription" placeholder="Short Description"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label class="control-label col-md-3">Full Description</label>
+                <div class="col-md-7">
+                    <textarea cols="100" class="form-control" rows="10" maxlength=2000 data-ng-model="product.FullDescription" required placeholder="Full Description"></textarea>
+                </div>
+            </div>
+         
+        <div class="form-group">
+            <label class="control-label col-md-3">Category</label>
+            <div class="col-md-2">
+                <select class="form-control selectpicker" required ng-model="newproduct.selectedCategoryObj" id="categoryFilter"
+                        data-html="1" ng-options="category as category.Name for category in filterList.CategoryFilter"
+                        placeholder="Select Category" ng-change="changeProductCategory()" style="height: 30px">
+                    Select Category
+                    <span class="caret"></span>
+                    <option value=""></option>
+                </select>
+            </div>
+
+            <label class="control-label col-md-2">Sub Category</label>
+            <div class="col-md-3">
+                <select class=" form-control selectpicker" required ng-model="newproduct.selectedSubCategoryObj" id="subcategoryFilter"
+                        data-html="1" ng-options="category as category.Name for category in filterList.SubCategoryFilter  | filter: {ParentCategoryId:newproduct.selectedCategory}"
+                        placeholder="Select Sub.Cat" ng-change="changeProductSubCategory()" style="height: 30px">
+                    Sub Category
+                    <span class="caret"></span>
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+                <label class="control-label col-md-3">Brand / Manufacturer</label>
+            <div class="col-md-2">
+                <select class="selectpicker form-control" ng-model="product.Manufacturer" name="brandFilter"
+                        placeholder="Select Brand" required
+                        data-html="1" ng-options="brand.Key as brand.Value for brand  in filterList.Brands" style="height: 30px">
+                    <option value=""></option>
+                </select>
+            </div>         
+                    <label class="control-label col-md-2">Manufacturer Part Number</label>   
+                <div class="col-md-3">
+                    <input type="text" class="form-control" maxlength=20 data-ng-model="product.ManufacturerPartNumber" placeholder="Part Number (Optional)">
+                </div>
+            </div>
+        <div class="panel panel-default">
+            <span class="panel-heading">Optional Parameters</span>
+            <div class="form-group">
+                <label class="control-label col-md-3">Weight</label>
+                <div class="col-md-7 noPadding">
+                    <div class="col-md-4">
+                        <input type="text" class="input-sm form-control" maxlength=20 data-ng-model="product.WeightProperty" placeholder="Weight">
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control selectpicker" ng-model="product.selectWeight" ng-options="weight as weight.name for weight in weightList" style="width:80px;height: 30px"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">L * W * H</label>
+                <div class="col-md-7 noPadding">
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.LengthProperty" placeholder="Length">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.WidthProperty" placeholder="Width">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model=" product.HeightProperty" placeholder="Height">
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control selectpicker" ng-model="product.selectLWh" ng-options="LWH as LWH.name for LWH in LWHList" style="width:80px;height: 30px"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3">Color</label>
+                <div class="col-md-7 noPadding">
+                    <div class="col-md-4">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.Color" placeholder="Color">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">Size (if any)</label>
+                <div class="col-md-7 noPadding">
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.Size1" placeholder="Size 1">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.Size2" placeholder="Size 2">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.Size3" placeholder="Size 3">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.Size4" placeholder="Size 4">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.Size5" placeholder="Size 5">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="input-sm form-control" maxlength=5 data-ng-model="product.Size6" placeholder="Size 6">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-7">
+
+                <div class="btnalignRight">
+                    <button class="btn btn-sm btn-info" type="submit" data-ng-click="AddNewProduct(product)">Save and Proceed</button>
+                    <button class="btn btn-sm btn-info" type="Reset">Reset</button>
+                 </div>
+                    <br class="clearfix" />
+                </div>
+            <div class="col-md-2">
+
+            </div>
+
+        
+</form>   
+<br class="clear" />Note:It may take a day for your new product to be displayed for users.

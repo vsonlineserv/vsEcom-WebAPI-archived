@@ -1,0 +1,258 @@
+/*
+
+     ////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+ 
+
+*/
+.bg-bubbles {
+     background-color:#3D65AD;
+    background-color:-webkit-linear-gradient(top left, #3D65AD 0%, #3D65AD 20%);
+     color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.bg-bubbles li {
+  position: absolute;
+  list-style: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.15);
+ /*background-color: rgba(255, 106, 0,0.30);*/
+  bottom: -160px;
+  bottom:0px;
+  -webkit-animation: square 10s infinite;
+  animation: square 10s infinite;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+.bg-bubbles li:nth-child(1) {
+  left: 10%;
+}
+.bg-bubbles li:nth-child(2) {
+  left: 20%;
+  width: 80px;
+  height: 70px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 12s;
+          animation-duration: 12s;
+}
+.bg-bubbles li:nth-child(3) {
+  left: 25%;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+.bg-bubbles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 50px;
+  -webkit-animation-duration: 14s;
+          animation-duration: 14s;
+  background-color: rgba(255, 255, 255, 0.50);
+}
+.bg-bubbles li:nth-child(5) {
+  left: 70%;
+}
+.bg-bubbles li:nth-child(6) {
+  left: 80%;
+  width: 120px;
+  height: 100px;
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.bg-bubbles li:nth-child(7) {
+  left: 32%;
+  width: 160px;
+  height: 140px;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+.bg-bubbles li:nth-child(8) {
+  left: 55%;
+  width: 20px;
+  height: 20px;
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+  -webkit-animation-duration: 16s;
+          animation-duration: 16s;
+}
+.bg-bubbles li:nth-child(9) {
+  left: 25%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 18s;
+          animation-duration: 18s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(10) {
+  left: 90%;
+  width: 160px;
+  height: 160px;
+  -webkit-animation-delay: 8s;
+          animation-delay: 8s;
+}
+.bg-bubbles li:nth-child(11) {
+  left: 25%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 16s;
+          animation-duration: 16s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(12) {
+  left: 35%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+  -webkit-animation-duration: 14s;
+          animation-duration: 14s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(13) {
+  left: 55%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+  -webkit-animation-duration: 12s;
+          animation-duration: 12s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(14) {
+  left: 65%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 15s;
+          animation-duration: 15s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(15) {
+  left: 75%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+  -webkit-animation-duration: 19s;
+          animation-duration: 19s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.bg-bubbles li:nth-child(16) {
+  left: 85%;
+  width: 10px;
+  height: 10px;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+  -webkit-animation-duration: 17s;
+          animation-duration: 17s;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+@-webkit-keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+            transform: translateY(-700px) rotate(600deg);
+  }
+}
+@keyframes square {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+            transform: translateY(-700px) rotate(600deg);
+  }
+}
+
+.admin-login-form input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    border: 1px solid rgb(176, 201, 242);
+    background-color: rgb(176, 201, 242);
+    width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    font-weight: 300;
+}
+
+.admin-login-form button{
+      -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  padding: 10px 15px;
+  color: #3B3FB6;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+}
+.admin-login-form button:hover {
+  background-color: #B0C9F2;
+}
+
+.admin-login-form input:hover {
+    background-color: rgb(176, 201, 242);
+}
+.admin-login-form :-ms-input-placeholder {
+    font-family: "Source Sans Pro", sans-serif;
+    color: white;
+    font-weight: 300;
+}
+
+.admin-login-form label {
+    color: white;
+    text-transform: uppercase;
+}
+
+.admin-login-form input:focus {
+    background-color: white;
+    width: 300px;
+    color: #3b3fb6;
+}
+
+.form-success{
+  -webkit-transform: translateY(125px);
+      -ms-transform: translateY(125px);
+          transform: translateY(125px);
+          -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+           -webkit-transition-timing-function: ease-in-put;
+          transition-timing-function: ease-in-put;
+}
+

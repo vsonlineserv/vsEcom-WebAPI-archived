@@ -1,0 +1,71 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+
+<view-title>Online Shopping Mall of your Trusted Local Retailers - Top Offers | VBuy </view-title>
+<og-description>VBuy Offers from your nearby local businesses</og-description>
+<og-image>{{imageUrlBase}}VBuy_Image.png</og-image>
+
+<div class="container view containerbgcolor">
+    <!--<h1 class="storeHeader">TOP OFFERS</h1>-->
+    <hr />
+
+    <div class="col-xs-12 alignCenter">
+        <div>
+            <img class="img-responsive" src="{{imageUrlBase}}{{homeFolder}}/TopOffers.jpg" alt="TOP OFFERS" />
+        </div>
+    </div>
+
+    <hr />
+
+    <br class="clear" />
+    {{$scope.app.error}}
+    <span ng-bind="messageOffers"></span>
+    <div data-ng-repeat="category in products.data | unique: 'SubCategoryName' ">
+        <div class="sectionHome">
+            <header class="homeHeaders">
+                <strong>  {{category.SubCategoryName}}</strong>
+            </header>
+            <div class="featuredproducts">
+                <div class="col-xs-2 card" data-ng-repeat="product in products.data | orderBy:'-StoresCount' | filter:{SubCategoryName: category.SubCategoryName}">
+                    <a href="product/{{product.Name | formaturl}}/{{product.ProductId}}" title="{{product.Name}}" class="productlink cardBody btn-link">
+                        <div class="cardHeader">
+                            {{ product.Name | limitTo:45}}
+                        </div>
+                        <div class="cardBody">
+                            <div class="cardBodydivfixed">
+                                <img id="img_{{product.ProductId}}" class="imgproductsmall" src="{{imageUrlBaseSmall}}{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" alt="{{product.PictureName}}" />
+                            </div>
+                            <div class="cardBodydivfixed">
+                                <div class="round-button-offer" title="Offer %"> {{((1-(product.SpecialPrice / product.Price ))*100) | number :0}}%</div>
+                            </div>
+                        </div>
+                        <div class="cardFooter">
+                            <div>
+                                from <b>  <span class="greenText">{{product.SpecialPrice | currency:"&#8377;"}}</span></b>
+                                <span class='strikePrice'>
+                                    <span>{{product.Price | currency:"&#8377;"}}</span>
+                                </span>
+                            </div>
+                            <div> <b>{{product.StoresCount}} </b> stores</div>
+                        </div>
+                    </a>
+                    <div data-ng-if=!product.FlagWishlist class="shortlistProduct" ng-click="addProductWishlist(product);">
+                        <i class="icon-wishlist-empty-heart"><span>Add to Wishlist</span></i>
+
+                    </div>
+                    <div class="shortlistProduct" data-ng-if=product.FlagWishlist>
+                        <i class="icon-wishlist-filled-heart"><span>Added to Wishlist</span></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br clear="all" />
+    </div>
+</div>

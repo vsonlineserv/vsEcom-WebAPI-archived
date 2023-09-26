@@ -1,0 +1,130 @@
+ERROR 2015-05-22 11:12:51,991 29524ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 11:12:52,007 29539ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 11:12:52,007 29539ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 11:23:17,712 655245ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 11:23:17,712 655245ms HomeController         mportDataFromExcel - The Microsoft Jet database engine cannot open the file ''.  It is already opened exclusively by another user, or you need permission to view its data.
+ERROR 2015-05-22 11:23:17,712 655245ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 11:47:34,310  4894ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 11:47:34,334  4918ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 11:47:34,335  4919ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 11:56:00,312 194718ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 11:56:00,327 194734ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 11:56:00,327 194734ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 11:57:25,394 11891ms HomeController         xcelToPricingTable - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 11:57:25,409 11907ms HomeController         xcelToPricingTable - No value given for one or more required parameters.
+ERROR 2015-05-22 11:57:25,409 11907ms HomeController         xcelToPricingTable - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 12:09:26,228 242392ms HomeController         xcelToPricingTable - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 12:09:26,244 242407ms HomeController         xcelToPricingTable - No value given for one or more required parameters.
+ERROR 2015-05-22 12:09:26,244 242407ms HomeController         xcelToPricingTable - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 12:21:20,349  3375ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 12:21:20,365  3390ms HomeController         ResizeImages       - SourceFolder does not exist
+ERROR 2015-05-22 12:21:20,365  3390ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 12:21:52,799  2234ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 12:21:52,814  2250ms HomeController         ResizeImages       - SourceFolder does not exist
+ERROR 2015-05-22 12:21:52,814  2250ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 12:22:42,930 52365ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 12:22:42,930 52365ms HomeController         ResizeImages       - SourceFolder does not exist
+ERROR 2015-05-22 12:22:42,945 52381ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 12:31:19,583  6819ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 12:31:19,615  6850ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 12:31:19,615  6850ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 12:32:35,166 82402ms HomeController         ificationFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 12:32:35,166 82402ms HomeController         ificationFromExcel - The Microsoft Jet database engine cannot open the file 'D:\VBuy_Products\Product_Update_21_05_FromAru_16th\to upload\INDUCTION COOK TOPS\INDUCTION COOK TOPS'.  It is already opened exclusively by another user, or you need permission to view its data.
+ERROR 2015-05-22 12:32:35,166 82402ms HomeController         ificationFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 12:39:09,121  4363ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 12:39:09,146  4389ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 12:39:09,147  4390ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 12:40:18,481  3381ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 12:40:18,512  3412ms HomeController         mportDataFromExcel - The Microsoft Jet database engine cannot open the file ''.  It is already opened exclusively by another user, or you need permission to view its data.
+ERROR 2015-05-22 12:40:18,528  3428ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:00:29,551 15909ms HomeController         xcelToPricingTable - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:00:29,551 15909ms HomeController         xcelToPricingTable - Column 'BranchName' does not allow DBNull.Value.
+ERROR 2015-05-22 13:00:29,551 15909ms HomeController         xcelToPricingTable - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:31:39,304  9359ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:31:39,336  9390ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 13:31:39,336  9390ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:32:21,673 51727ms HomeController         yFeaturesFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:32:21,673 51727ms HomeController         yFeaturesFromExcel - The Microsoft Jet database engine cannot open the file 'D:\VBuy_Products\Product_Update_21_05_FromAru_16th\to upload\REFRIGERATOR 2\REFRIGERATOR 2\'.  It is already opened exclusively by another user, or you need permission to view its data.
+ERROR 2015-05-22 13:32:21,673 51727ms HomeController         yFeaturesFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:40:37,864 51050ms HomeController         xcelToPricingTable - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:40:37,895 51082ms HomeController         xcelToPricingTable - No value given for one or more required parameters.
+ERROR 2015-05-22 13:40:37,895 51082ms HomeController         xcelToPricingTable - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:41:18,180 19718ms HomeController         ificationFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:41:18,196 19734ms HomeController         ificationFromExcel - Column 'SpecificationDetails' does not allow DBNull.Value.
+ERROR 2015-05-22 13:41:18,196 19734ms HomeController         ificationFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:44:21,975 128025ms HomeController         ificationFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:44:21,990 128041ms HomeController         ificationFromExcel - The given value of type String from the data source cannot be converted to type nvarchar of the specified target column.System.InvalidOperationException: String or binary data would be truncated.
+   at System.Data.SqlClient.SqlBulkCopy.ConvertValue(Object value, _SqlMetaData metadata, Boolean isNull, Boolean& isSqlType, Boolean& coercedToDataFeed)
+ERROR 2015-05-22 13:44:21,990 128041ms HomeController         ificationFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:44:54,213  6606ms HomeController         ificationFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:44:54,229  6622ms HomeController         ificationFromExcel - The given value of type String from the data source cannot be converted to type nvarchar of the specified target column.System.InvalidOperationException: String or binary data would be truncated.
+   at System.Data.SqlClient.SqlBulkCopy.ConvertValue(Object value, _SqlMetaData metadata, Boolean isNull, Boolean& isSqlType, Boolean& coercedToDataFeed)
+ERROR 2015-05-22 13:44:54,229  6622ms HomeController         ificationFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:47:27,070  5893ms HomeController         ificationFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:47:27,086  5909ms HomeController         ificationFromExcel - The given value of type String from the data source cannot be converted to type nvarchar of the specified target column.System.InvalidOperationException: String or binary data would be truncated.
+   at System.Data.SqlClient.SqlBulkCopy.ConvertValue(Object value, _SqlMetaData metadata, Boolean isNull, Boolean& isSqlType, Boolean& coercedToDataFeed)
+ERROR 2015-05-22 13:47:27,086  5909ms HomeController         ificationFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:52:50,963 286166ms HomeController         ificationFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:52:50,979 286181ms HomeController         ificationFromExcel - The given value of type String from the data source cannot be converted to type nvarchar of the specified target column.System.InvalidOperationException: String or binary data would be truncated.
+   at System.Data.SqlClient.SqlBulkCopy.ConvertValue(Object value, _SqlMetaData metadata, Boolean isNull, Boolean& isSqlType, Boolean& coercedToDataFeed)
+ERROR 2015-05-22 13:52:50,979 286181ms HomeController         ificationFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:56:29,800 19969ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:56:29,815 19985ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 13:56:29,815 19985ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 13:57:19,322 69491ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 13:57:19,322 69491ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 13:57:19,322 69491ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:02:37,014  6267ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:02:37,030  6282ms HomeController         mportDataFromExcel - Failure creating file.
+ERROR 2015-05-22 14:02:37,030  6282ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:03:49,826 79079ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:03:49,827 79080ms HomeController         mportDataFromExcel - Failure creating file.
+ERROR 2015-05-22 14:03:49,827 79080ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:04:12,242 101495ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:04:12,242 101495ms HomeController         mportDataFromExcel - Failure creating file.
+ERROR 2015-05-22 14:04:12,242 101495ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:07:01,803 271056ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:07:01,803 271056ms HomeController         mportDataFromExcel - Failure creating file.
+ERROR 2015-05-22 14:07:01,803 271056ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:08:01,512 330765ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:08:01,512 330765ms HomeController         mportDataFromExcel - Failure creating file.
+ERROR 2015-05-22 14:08:01,512 330765ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:08:52,814 382067ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:08:52,814 382067ms HomeController         mportDataFromExcel - Failure creating file.
+ERROR 2015-05-22 14:08:52,814 382067ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:10:17,590 466842ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:10:17,590 466842ms HomeController         mportDataFromExcel - Failure creating file.
+ERROR 2015-05-22 14:10:17,590 466842ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:17:58,291 927544ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:17:58,291 927544ms HomeController         mportDataFromExcel - Failure creating file.
+ERROR 2015-05-22 14:17:58,291 927544ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:20:23,325  3939ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:20:23,340  3955ms HomeController         mportDataFromExcel - No value given for one or more required parameters.
+ERROR 2015-05-22 14:20:23,340  3955ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:21:58,121 98736ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:21:58,121 98736ms HomeController         mportDataFromExcel - No value given for one or more required parameters.
+ERROR 2015-05-22 14:21:58,121 98736ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-05-22 14:30:54,381  5062ms HomeController         mportDataFromExcel - -------------------ERROR LOG -----------------
+ERROR 2015-05-22 14:30:54,413  5093ms HomeController         mportDataFromExcel - Column 'Name' does not allow DBNull.Value.
+ERROR 2015-05-22 14:30:54,413  5093ms HomeController         mportDataFromExcel - -----------------END OF ERROR LOG-----------------
+ERROR 2015-06-04 01:06:12,797 20804ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-06-04 01:06:12,847 20854ms HomeController         ResizeImages       - SourceFolder does not exist
+ERROR 2015-06-04 01:06:12,848 20855ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------
+ERROR 2015-06-04 01:11:34,153  2775ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-06-04 01:11:34,166  2788ms HomeController         ResizeImages       - SourceFolder does not exist
+ERROR 2015-06-04 01:11:34,166  2788ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------
+ERROR 2015-06-04 01:12:00,306 28928ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-06-04 01:12:00,307 28929ms HomeController         ResizeImages       - Value cannot be null.
+Parameter name: encoder
+ERROR 2015-06-04 01:12:00,307 28929ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------
+ERROR 2015-06-04 01:12:32,528 61149ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-06-04 01:12:32,529 61150ms HomeController         ResizeImages       - Value cannot be null.
+Parameter name: encoder
+ERROR 2015-06-04 01:12:32,529 61150ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------
+ERROR 2015-06-04 01:14:25,928 174550ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-06-04 01:14:25,929 174551ms HomeController         ResizeImages       - Value cannot be null.
+Parameter name: encoder
+ERROR 2015-06-04 01:14:25,929 174551ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------
+ERROR 2015-07-22 18:12:50,590 47053ms HomeController         ResizeImages       - -------------------ERROR LOG -----------------
+ERROR 2015-07-22 18:12:50,668 47131ms HomeController         ResizeImages       - The specified path, file name, or both are too long. The fully qualified file name must be less than 260 characters, and the directory name must be less than 248 characters.
+ERROR 2015-07-22 18:12:50,668 47131ms HomeController         ResizeImages       - -----------------END OF ERROR LOG-----------------

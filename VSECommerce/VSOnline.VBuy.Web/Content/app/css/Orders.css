@@ -1,0 +1,88 @@
+﻿/* ////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright >
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright >
+// <description > VSECommerce: A VBuy.in platform<description >
+// <author > Sivakumar Anirudhan</author >
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+*/
+#ordersTrackingTable td {
+    border: 1px solid #DDD;
+}
+.tblheader td{
+    text-align:center;
+}
+.tdOrderNumber
+{
+    width:150px;
+    padding-top: 10px;
+padding-left: 10px;
+padding-bottom: 10px;
+text-align:center;
+}
+
+.tdProduct{
+    width: 400px;
+padding-top: 10px;
+padding-left: 10px;
+padding-bottom: 10px;
+}
+
+.tdBranch{
+    width:200px;
+    padding-top: 10px;
+padding-left: 10px;
+padding-bottom: 10px;
+
+
+}
+.tdQuantity
+{
+   
+    width:200px;
+padding-top: 10px;
+padding-left: 10px;
+padding-bottom: 10px;
+}
+.tdPrice
+{
+     width:200px;
+    padding-top: 10px;
+padding-left: 10px;
+padding-bottom: 10px;
+
+}
+.tdStatus
+{ width:200px;
+    padding-top: 10px;
+padding-left: 10px;
+padding-bottom: 10px;
+}
+.searchRow
+{
+    margin-top:50px;
+}
+.btnSearch
+{
+    border-radius:15px;
+}
+.alert-boxs {
+	padding: 15px;
+    margin-top: 200px;
+    border: 1px solid transparent;
+    border-radius: 4px;  
+}
+ .pagination-div pagination li{
+    display: inline-block;
+    
+}
+.pagination-div pagination li button{
+    width: 63px;
+    font-size: 12px;
+    margin-left: 13px;
+    cursor:pointer;
+}
+.pagination-div{
+    margin-left:20px;
+}

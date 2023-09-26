@@ -1,0 +1,125 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            Registered User List
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+        <div class="panel-body">
+                <div class="col-md-3">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="txtUserName" placeholder="User Name" />
+                        </div>
+                        <div class="col-md-2">
+                            OR
+                        </div>
+                    </div>
+                <div class="col-md-3">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="txtEmail" placeholder="Email" />
+                        </div>
+                    <div class="col-md-2">
+                       OR
+                        </div>
+                    </div>
+                <div class="col-md-2">
+                    
+                        <select id="ddlRegisterDetails" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">All</option>
+                            <option value="2" selected>Consumer</option>
+                            <option value="3">Retailer</option>
+
+                        </select>
+ 
+                </div>
+            <div class="col-md-2">
+                <input type="text" id="txtFrUserrDetails" placeholder="From Date" class="form-control" />
+            </div>
+
+            <div class="col-md-2">
+                <input type="text" id="txtToUserDetails" placeholder="To Date" class="form-control" />
+            </div>
+            <div>
+                <div class="col-md-9">
+                    <span id="Required" style="color:red"></span>
+                </div>
+                <div class="col-md-3">
+                    <br />
+                    <button type="button" class="btn btn-primary" ng-click="searchUserDetails();">Search</button>
+                    <button type="button" class="btn btn-primary" ng-click="userClear();">Clear</button>
+                </div>
+            </div>
+                
+
+                <br class="clear" />
+                <br />
+
+                <table id="userlistGrid"></table>
+                <div id="userPager"></div>
+
+
+            </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editUSer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="UserModel">User Details</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">User Id</label></div>
+                    <div class="col-md-8"> <input type="text" class="form-control" id="txtUserid" disabled="disabled" placeholder="User Id" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">User Name</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtEditUserName" placeholder="User Name" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">First Name</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtEditFirstName" placeholder="First Name" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">Last Name</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtEditLastName" placeholder="Last Name" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">Email</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txteditEmail" placeholder="Email" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"> <label for="message-text" class="control-label">Phone Number1</label></div>
+                    <div class="col-md-8">    <input type="text" class="form-control" id="txtEditPhone1" placeholder="Phone Number1" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">  <label for="message-text" class="control-label">Phone Number 2</label></div>
+                    <div class="col-md-8"><input type="text" class="form-control" id="txtEditPhone2" placeholder="Phone Number 2" /></div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="ModifyUserDetails();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,254 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Order Details </span>
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+        <div class="col-md-3">
+            <label for="message-text" class="control-label">From Date</label>
+            <input type="text" id="txtFrOderDate" class="form-control" onchange="ClearLastWeekStatus()" />
+        </div>
+
+        <div class="col-md-3">
+            <label for="message-text" class="control-label">To Date</label>
+            <input type="text" class="form-control" id="txtToOderDate" />
+        </div>
+
+        <div class="col-md-2">
+            <label for="message-text" class="control-label">Days</label>
+            <select id="ddlorder" class="form-control" onchange="ClearFromTodate()">
+                <option value="0">Select</option>
+                <option value="1">Today</option>
+                <option value="2" selected="selected">Last 3 days</option>
+                <option value="3">Last 5 days</option>
+                <option value="4">Last 7 days</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="message-text" class="control-label">Order Number</label>
+            <input type="text" id="txtOrderNum" class="form-control" onchange="ClearOtherDetails()" />
+        </div>
+        <div class="col-md-2">
+            <label for="message-text" class="control-label">        </label>
+            <button type="button" class="btn btn-primary" ng-click="SearchOderDetails();">Search</button>
+            <button type="button" class="btn btn-primary" ng-click="SearchOderClear();">Clear</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"> <label for="message-text" class="control-label"></label></div>
+        </div>
+        <br class="clear"/>
+
+        <div style="margin-left: 2px;">
+            <table id="OrderGrid"></table>
+            <div id="OrderPager"></div>
+        </div>
+
+        <div class="modal fade" id="OrderDetailsList" role="dialog" aria-labelledby="exampleModalLabel">
+
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="seller">Order Details List</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-2"><label for="message-text" class="control-label" style="margin-left: 10px;">OrderTotalAmount</label> </div>
+                            <div class="col-md-2"> <input type="text" id="txtTotalAmt" class="form-control" readonly="true" /> </div>
+
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-primary" ng-click="ShowColmnTochoose();">
+                                    Export To Excel
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row" style="margin-left: 2px;">
+                            <div><input type="text" value="" id="OderChoosenId" /></div>
+                            <table id="OrderGridList"></table>
+                            <div id="OrderPagerList"></div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="ExcelOrderData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="ExcelList">Choose Column For Excel Data</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row" style=" margin-bottom:10px;">
+                            <div class="col-md-3"> <label for="recipient-name" class="control-label">Choose Data </label></div>
+                            <div class="col-md-4">
+                                <select id="ColumnValue" onchange="SelectColumnDataOrders()" ; multiple="multiple" style="width:118%"></select>
+                            </div>
+                            <div class="col-md-4" style="margin-left:10px">
+                                <select id="AppendValue" onchange="AppendDataOrders()" ; multiple="multiple" style="width:118%"></select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" ng-click="OrderDetailsExcelData();">ExportAllData</button>
+                            <button type="button" class="btn btn-primary" ng-click="GenerateDataForSeleColumn();">GenerateExcel</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+        <div class="modal fade" id="orderDetailsedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="OrderDetailsStatus">Order Details Status</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="margin-bottom:5px;">
+                            <div class="col-md-4">  <label class="control-label">Order Id</label> </div>
+                            <div class="col-md-3"> <input type="text" class="form-control" id="txtOrderId" disabled="disabled" /> </div>
+                        </div>
+                        <div class="row" style="margin-bottom:5px;">
+                            <div class="col-md-4">  <label class="control-label">Order Total Amount</label> </div>
+                            <div class="col-md-3"> <input type="text" class="form-control" id="txtOrderAmt" disabled="disabled" /> </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-md-4">
+
+                                <label class="control-label">Order Status</label>
+                                <div><input type="text" value="" id="OrderDetailsId" /></div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control" id="OrderStatus"></select>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-md-4">  <label class="control-label">Delivery Option</label> </div>
+                            <div class="col-md-3">
+                                <select class="form-control" id="DeliveryOption" disabled="disabled"></select>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-md-4">  <label class="control-label">Payment Option</label> </div>
+                            <div class="col-md-3">
+                                <select class="form-control" id="PaymentOption" disabled="disabled"></select>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" ng-click="ModifyOrderDetailsStatus();">Update</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </div>
+
+
+                        <div class="row" style="margin-left:2px;">
+
+                            <table id="OrderDetailsProductList"></table>
+                            <div id="OrderDetailsProductPagerList"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="modal fade" id="suborderDetailsedit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style=" height: 30%;
+    left: -3%;
+    top: 31%;
+    width: 80%;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="subOrderDetailsStatus">Order Product Item Status</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="margin-bottom:5px;">
+                            <div class="col-md-4">  <label class="control-label">Product Id</label> </div>
+                            <div class="col-md-3"> <input type="text" class="form-control" id="txtsubOrderId" disabled="disabled" /> </div>
+                        </div>
+
+
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-md-4">
+
+                                <label class="control-label">Order Status</label>
+                                <div><input type="text" value="" id="subOrderDetailsId" /></div>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control" id="ProductOrderStatus"></select>
+                            </div>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" ng-click="ModifyProductOrderDetailsStatus();">Update</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

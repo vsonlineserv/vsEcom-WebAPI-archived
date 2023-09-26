@@ -1,0 +1,101 @@
+﻿<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+    <div class="panel panel-default" style="margin-top: 5px; margin-bottom: 5px;">
+
+        <div class="panel-heading">
+            <div class="panel-title"> <label for="recipient-name" class="control-label" style="margin-left:35%"> Top Categories</label>  </div>
+
+        </div>
+        <div class="panel-body panel-min-height">
+            <div class="col-md-6">
+                <div>
+                    <div class="grid-header"> Top Categories - Based on Sales</div>
+                    <table ng-table="topCategoryGridParams" show-filter="true" class="admintable">
+                        <tr ng-repeat="category in $data">
+                            <td data-title="'Name'" filter="{ 'Name' : 'text' }" sortable="'Name'">
+                                <span>{{category.Name}}</span>
+                            </td>
+                            <td data-title="'Category Group'" filter="{ 'CategoryGroupTag' : 'text' }" sortable="'CategoryGroupTag'">
+                                <span>{{category.CategoryGroupTag}}</span>
+                            </td>
+                            <td data-title="'Actions'">
+                                <button class="btn-info" data-ng-click="AddToHomePageCategory(category.CategoryId)">Select</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel-info">
+                    <div class="grid-header">Home Page Categories</div>
+                    <table ng-table="topShowCategoryGridParams" show-filter="true" class="admintable">
+
+                        <tr ng-repeat="category in showOnHomeCategorylist">
+                            <td data-title="'Name'" filter="{ 'Name' : 'text' }">
+                                <span>{{category.Name}}</span>
+                            </td>
+                            <td data-title="'Category Group'" filter="{ 'CategoryGroupTag' : 'text' }" sortable="'CategoryGroupTag'" nowrap>
+                                <span>{{category.CategoryGroupTag}}</span>
+                                <img class="imgsmallthumbnail" id="{{category.Name | formaturl}}.jpg" src="{{imageUrlBase}}{{homeCategoryFolder}}{{category.Name | formaturl}}.jpg" data-ng-click="ShowLargeImage(category.Name)">
+                            </td>
+
+                            <td data-title="'Actions'">
+                                <button class="btn-info" data-ng-click="AddImage(category.Name)">Add Image</button>
+                                <button class="btn-info" data-ng-click="RemoveFromHomePageCategory(category.CategoryId)">Remove</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+<div data-ng-show="flagShowlargeImage" class="float-message alert-success divBorder">
+    <a href="" class="close" ng-click="flagShowlargeImage = false">&times;</a>
+    <img class="categoryBanner1" src="{{imageUrlBase}}{{homeCategoryFolder}}{{currentFileName | formaturl}}.jpg" ng-click="flagShowlargeImage=true">
+</div>
+
+    <div data-ng-show="flagCategoryImage" class="float-message alert-success divBorder">
+        <a href="" class="close" ng-click="flagCategoryImage = false">&times;</a>
+        <div>
+            <span class="h6">{{currentFileName}}</span>
+            <input type="file" accept="image/*" class="upload-file form-control" data-max-size="256" nv-file-select="" uploader="uploaderCategoryImage" />
+            <div class="progress" style="">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploaderCategoryImage.progress + '%' }" style="width: 0%;"></div>
+            </div>
+            <table class="table">
+                <tr ng-repeat="item in uploaderCategoryImage.queue">
+                    <td><strong>{{ item.file.name = (currentFileName|formaturl) + '.jpg' }}</strong></td>
+                    <td ng-show="uploaderCategoryImage.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB </td>
+
+                    <td class="text-center" nowrap>
+                        <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i>Success</span>
+                        <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i>Cancel</span>
+                        <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i>Error</span>
+
+                        <br />
+                        <button type="button" class="btn btn-success btn-xs" data-ng-click="item.upload()"
+                                ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span>
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs" data-ng-click="item.cancel()"
+                                ng-disabled="!item.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" data-ng-click="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>

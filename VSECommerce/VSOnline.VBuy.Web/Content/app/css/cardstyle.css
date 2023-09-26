@@ -1,0 +1,149 @@
+﻿/* 
+///////////////////////////////////////////////////////////////////////////////////////////
+// <copyright >
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright >
+// <description > VSECommerce: A VBuy.in platform<description >
+// <author > Sivakumar Anirudhan</author >
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+
+*/
+.card {
+    background-color: #ffffff;
+    border: 1px solid #138808;
+    height: 290px;
+    min-width: 175px;
+    margin-bottom: 20px;
+    /*margin-right:5px;
+    padding-left:0px;*/
+    padding-right: 0px;
+}
+
+.card-nowidth{
+    background-color:#ffffff;
+    height:290px;
+    margin-bottom: 20px;
+    /* margin-left:5px;*/
+    padding-left:0px;
+    padding-right:0px;
+}
+
+.cardMedium {
+    background-color:#ffffff;
+    border: 1px solid #138808;
+    height:330px;
+    min-width: 190px;
+    margin-bottom: 20px;
+  /*  margin-left:5px;*/
+    padding-left:3px;
+}
+
+.cardHeader {
+    background-color: #ffffff;
+    font-size:10pt;
+    height:50px;
+    color:#138808;
+    margin:5px;
+    text-align:left;
+}
+
+.cardFooter {
+     
+    font-size:10pt;
+    height:30px;
+    padding:5px;
+    text-align:left;
+    margin-bottom:10px;
+}
+
+.cardFooterMedium
+{
+    background-color: #ffffff;
+    font-size:10pt;
+    height:60px;
+    padding:5px;
+    text-align:left;
+    font-size:12px;
+    margin-bottom:10px;
+}
+
+.cardBody {
+    height:150px;
+    text-align:center;
+}
+
+.lastRow {
+    background-color: #04dcfa;
+}
+
+.indent {
+    margin-left:20px;
+}
+
+.ordersTable {
+    width:800px;
+    margin-left:20px;
+}
+
+.orders th, .customerOrders th {
+    width:25%;
+    cursor: pointer;
+}
+
+.ordersTable tr:first-child th {
+    background-color: #006dcc;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+#submitCustomer {
+    margin-left:50px;
+    margin-top: -8px;
+}
+
+footer {
+    margin-top:10px;
+    font-weight: bold;
+}
+
+
+/* Bootstrap overrides */
+.navbar-inner {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.navbar .nav {
+    margin-left:50px;
+    margin-top:15px;
+}
+
+.close {
+    opacity: 1.0;
+}
+
+div.card a:hover { color: #FF9933; font-size:13px; text-decoration:none;}
+
+    div.card:hover{
+        border: 1px solid #FF9933;
+    }
+
+
+div.card a:hover div.cardHeader{ color: #FF9933; font-size:13px; font-weight:bold;}
+div.card a:hover span.greenText{ color: #FF9933; font-size:13px; font-weight:bold;}
+
+div.cardMedium a:hover { color: #FF9933; font-size:13px; text-decoration:none;}
+
+    div.cardMedium:hover{
+        border: 1px solid #FF9933;
+    }
+div.cardMedium a:hover div.cardHeader{ color: #FF9933; font-size:13px; font-weight:bold;}
+div.cardMedium a:hover span.greenText{ color: #FF9933; font-size:13px; font-weight:bold;}
+
+.cardBodydivfixed
+{
+    min-height:150px;
+    max-height:150px;
+}

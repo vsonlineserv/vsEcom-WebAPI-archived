@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="/VBuyLoader/Scripts/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        // Document.ready -> link up  event handler
+        $(".LoadProducts").click(function () {
+                // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadProducts", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data === true) {
+                            $('#LoaderResult').text('Successfully loaded Products');
+                        } else {
+                            $('#LoaderResult').text('Error loading Products');
+                        }       
+                    });
+        })
+
+        $(".LoadManufacturer").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadManufacturer", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data != -1) {
+                            $('#LoaderResult').text('Successfully loaded ' + data +  ' number of manufacturers');
+                        } else {
+                            $('#LoaderResult').text('Error loading LoadManufacturer');
+                        }
+                    });
+        })
+
+        $(".LoadCategory").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadCategory", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data != -1) {
+                            $('#LoaderResult').text('Successfully loaded ' + data + ' number of category');
+                        } else {
+                            $('#LoaderResult').text('Error loading LoadCategory');
+                        }
+                    });
+        })
+
+        $(".LoadProductsAndMapping").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadProductsAndMapping", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data != null) {
+                            $('#LoaderResult').text('Successfully loaded ' + data.ProductCount + ' number of products');
+                        } else {
+                            $('#LoaderResult').text('Error loading Products And Mapping');
+                        }
+                    });
+        })
+
+        $(".LoadTempPricing").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadTempPricing", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data === true) {
+                            $('#LoaderResult').text('Successfully loaded temp pricing');
+                        } else {
+                            $('#LoaderResult').text('Error loading temp pricing');
+                        }
+                    });
+        })
+
+        $(".LoadPricing").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadPricing", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data != null) {
+                            $('#LoaderResult').text('Successfully loaded ' + data.Count + ' number of products');
+                        } else {
+                            $('#LoaderResult').text('Error loading LoadPricing');
+                        }
+                    });
+        })
+
+        $(".LoadTempKeyFeatures").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadTempKeyFeatures", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data === true) {
+                            $('#LoaderResult').text('Successfully loaded temp key features');
+                        } else {
+                            $('#LoaderResult').text('Error loading LoadKeyFeatures');
+                        }
+                    });
+        })
+
+        $(".LoadTempDetailedSpecification").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadTempDetailedSpecification", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data === true) {
+                            $('#LoaderResult').text('Successfully loaded temp DetailedSpecification');
+                        } else {
+                            $('#LoaderResult').text('Error loading LoadDetailedSpecification');
+                        }
+                    });
+        })
+
+        $(".LoadKeyFeatures").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadKeyFeatures", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data) {
+                            $('#LoaderResult').text('Successfully loaded' + data + ' temp key features');
+                        } else {
+                            $('#LoaderResult').text('Error loading LoadKeyFeatures');
+                        }
+                    });
+        })
+
+        $(".LoadDetailedSpecification").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/LoadDetailedSpecification", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data) {
+                            $('#LoaderResult').text('Successfully loaded' + data + ' DetailedSpecification');
+                        } else {
+                            $('#LoaderResult').text('Error loading LoadDetailedSpecification');
+                        }
+                    });
+        })
+
+
+        /*Resize Images */
+        $(".ResizeImages").click(function () {
+            // Perform the ajax post
+            $.get("/VBuyLoader/Home/ResizeImages", null,
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data) {
+                            $('#LoaderResult').text('Images Resized' + data );
+                        } else {
+                            $('#LoaderResult').text('Error in Images Resized');
+                        }
+                    });
+        })
+
+
+    });
+</script>
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Loader</h2>
+
+    <div id="LoaderResult"></div>
+    <a href="#" class="LoadProducts">Load Products (Temp)</a>
+    <br/>
+    <a href="#" class="LoadManufacturer">Load Manufacturer </a>
+    <br />
+    <a href="#" class="LoadCategory">Load Category </a>
+    <br />
+    <a href="#" class="LoadProductsAndMapping">Load Products And Mapping </a>
+    <br />
+    <br />
+    <br />
+    <br />
+    <a href="#" class="LoadTempPricing">Load Pricing (Temp)</a>
+    <br />
+    <a href="#" class="LoadPricing">Load Pricing</a>
+
+    <br />
+    <br />
+    <a href="#" class="LoadTempKeyFeatures">Load Temp Key Features</a>
+    <br />
+    <a href="#" class="LoadTempDetailedSpecification" >Load Temp Detailed Specification</a>
+
+    <br />
+    <a href="#" class="LoadKeyFeatures">Load Key Features</a>
+    <br />
+    <a href="#" class="LoadDetailedSpecification">Load Detailed Specification</a>
+
+
+    Display newly added products and publish them from UI
+
+
+    <h2>RESIZE IMAGES</h2>
+
+
+    <a href="#" class="ResizeImages">Resize Images</a>
+
+</body>
+</html>

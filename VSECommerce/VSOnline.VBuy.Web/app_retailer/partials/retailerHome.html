@@ -1,0 +1,40 @@
+﻿<div class="view">  
+        <div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+            <a href="" class="close" ng-click="message = ''">&times;</a>
+            {{message}}
+        </div>
+        <div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+            <a href="" class="close" ng-click="message = ''">&times;</a>
+            {{message}}
+        </div>
+    <section>
+        <!--<ul class="ultab" ng-init="tab = 'pricingTab'">
+            <li class="tab" id="pricingTab" ng-class="{active:tab==='pricingTab'}" data-ng-click="pricingTabClick();tab = 'pricingTab'">
+                <a data-ng-click="pricingTabClick();tab = 'pricingTab'">Pricing</a>
+            </li>
+            <li class="tab" id="productTab" ng-class="{active:tab==='productTab'}" data-ng-click="productTabClick();tab = 'productTab'">
+                <a data-ng-click="productTabClick();tab = 'productTab'">Product Lookup</a>
+            </li>
+            <li class="tab" id="newProductTab" ng-class="{active:tab==='newProductTab'}" data-ng-click="tab = 'newProductTab'">
+                <a data-ng-click="tab = 'newProductTab'">New Product</a>
+            </li>           
+            <li class="tab" id="myInboxTab" ng-class="{active:tab==='myInboxTab'}" data-ng-click="tab = 'myInboxTab'">
+                <a data-ng-click="inboxTabClick();tab = 'myInboxTab'">Inbox</a>
+            </li>
+          
+        </ul>-->
+
+        <section class="newSection">
+            <p data-ng-show="tab === 'pricingTab'" data-ng-include="'app_retailer/partials/managePricing.html'"></p>
+            <p data-ng-show="tab === 'productTab'" data-ng-include="'app_retailer/partials/manageProducts.html'"></p>
+            <p data-ng-show="tab === 'newProductTab'" data-ng-include="'app_retailer/partials/newProduct.html'"></p>
+            <!--<p data-ng-show="tab === 'defaultSettingsTab'" data-ng-include="'app_retailer/partials/defaultSettings.html'"></p>-->
+            <p data-ng-show="tab === 'myInboxTab'" data-ng-include="'app_retailer/partials/myInbox.html'"></p>
+            <p data-ng-show="tab === 'ordersTab'" data-ng-include="'app_retailer/partials/myOrders.html'"></p>
+        </section>
+    </section>     
+
+    <br /> * please contact
+         <a href="mailto:info@vbuy.in">info@VBuy.in</a> for any queries.
+    <br />
+</div>

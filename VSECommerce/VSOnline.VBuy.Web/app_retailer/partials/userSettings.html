@@ -1,0 +1,15 @@
+﻿<div>
+    <section>
+        <ul ng-init="tab = 'branchTab'">
+            <li ng-class="{active:tab==='mySettingsTab'}">
+                <a href ng-click="tab = 'mySettingsTab'">My Settings</a>
+            </li>
+            <li ng-class="{active:tab==='branchTab'}">
+                <a href ng-click="tab = 'branchTab'">Manage Branches</a>
+            </li>
+            <br>
+            <p ng-show="tab === 'mySettingsTab'" ng-include="'app_retailer/partials/mySettings.html'"></p>
+            <p ng-show="tab === 'branchTab'" ng-include="'app_retailer/partials/manageBranches.html'"></p>       
+        </ul>
+    </section>     
+</div>

@@ -1,0 +1,490 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+
+<div class="container containerbgcolor">
+    <ul class="ultab" ng-init="tab = 'loginTab'">
+
+        <li class="tab" id="loginTab" ng-class="{active:tab==='loginTab'}" ng-disabled="$root.flagLoggedIn" data-ng-click="tab = 'loginTab'">
+            <a data-ng-click="tab = 'loginTab'"><span class="round-button-small">1</span>LOGIN <span class="glyphicon glyphicon-arrow-right"></span></a>
+        </li>
+        <li class="tab" id="addressTab" ng-class="{active:tab==='addressTab'}" ng-disabled="!$root.flagLoggedIn" data-ng-click="!$root.flagLoggedIn && tab = 'addressTab'">
+            <span class="round-button-small">2</span>
+            <a data-ng-click="tab = 'addressTab'" ng-disabled="!$root.flagLoggedIn">ADDRESS <span class="glyphicon glyphicon-arrow-right"></span></a>
+        </li>
+        <li class="tab" id="paymentTab" ng-class="{active:tab==='paymentTab'}" ng-disabled="!$root.flagLoggedIn && !checkoutAddress"
+            data-ng-click=" !$root.flagLoggedIn && !checkoutAddress && tab = 'paymentTab'">
+            <span class="round-button-small">3</span>
+            <a data-ng-click="tab = 'paymentTab'" ng-disabled="!$root.flagLoggedIn && !checkoutAddress">PLACE ORDER - Make it your's</a>
+        </li>
+
+    </ul>
+
+    <section class="col-sm-6">
+        <div data-ng-show="tab === 'loginTab' && !$root.flagLoggedIn">
+            <div ng-controller="LoginController">
+                <div class="col-sm-6">
+                    <div class="col-sm-10">
+                        <button type="button" id="registerusingFacebook" class="btn btn-block btn-social btn-sm btn-facebook"
+                                data-ng-show="!$root.flagLoggedIn "
+                                data-ng-disabled="!facebookIsReady"
+                                data-ng-click="connectUsingFacebook()">
+                            <i class="fa fa-facebook"></i>
+                            Sign in with Facebook
+                        </button>
+                        <br />
+                        <button type="button" id="registerusingGoogle" class="btn btn-block btn-social btn-sm btn-google-plus"
+                                data-ng-click="connectUsingGoogle()">
+                            <i class="fa fa-google-plus"></i>
+                            Sign in with Google
+                        </button>
+                    </div>
+                    <br class="clear" />
+                    <span class="minorinfofont">we do not store your social login password</span>
+                </div>
+                <div class="col-sm-1">
+                    <span class="caption"> OR </span>
+                </div>
+                <div class="col-sm-5">
+                    <span><strong>Existing User- Login</strong></span>
+                    <form>
+                        <p><input type="text" name="username" class="form-control" data-ng-model="loginData.userName" required autofocus placeholder="Email"></p>
+                        <p><input type="password" name="password" class="form-control" required data-ng-model="loginData.password" placeholder="Password"></p>
+                        <button class="btn btn-info" type="submit" data-ng-click="Login();tab = 'addressTab'">Login</button>
+                        <div data-ng-hide="message == ''" class="alert alert-danger">
+                            {{message}}
+                        </div>
+                    </form>
+                </div>
+                <br class="clear" />
+            </div>
+            <span><strong>Register as New User</strong></span>
+            <br class="clear" />
+            <hr />
+            <div ng-controller="LoginController" data-ng-show="tab === 'loginTab' && !$root.flagLoggedIn">
+                <form class="form-horizontal" ng-submit="RegisterUser()">
+
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">Email :</label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" size=25 maxlength=100 data-ng-model="user.Email" placeholder="Email" id="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">Password:</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" size=25 maxlength=25 data-ng-model="user.Password" placeholder="Password" required id="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpassword" class="col-sm-3 control-label">Confirm Password:</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" size=25 maxlength=25 data-ng-model="user.ConfirmPassword" placeholder="Confirm Password" required id="confirmpassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber" class="col-sm-3 control-label">Phone no:</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" data-ng-model="user.PhoneNumber1" placeholder="Phone Number" pattern="[0-9]{10}" title="Enter Valid Phone Number" id="phoneNumber">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="button" class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9">
+                            <input class="btn btn-sm btn-info" type="submit" value="Register">
+                            <button class="btn btn-sm btn-info" type="Reset">Reset</button>
+                        </div>
+                    </div>
+                    <br style="clear:both">
+                </form>
+            </div>
+        </div>
+        <div data-ng-show="tab === 'loginTab' && $root.flagLoggedIn">
+            Logged in as  : {{$root.curUserDisplayName}}
+            <br class="clear" />
+            <div class="col-sm-11 alignRight">
+                <a class="abutton form-control" type="button" href="#" data-ng-click="tab='addressTab'">Continue</a>
+            </div>
+        </div>
+        <div data-ng-show=" tab==='addressTab' ">
+            <form class=" form-horizontal" ng-submit="addBuyerAddress()">
+                <div class="compareDropDownHeader">
+                    <div class="existing-address-text">Shipping Address</div>
+                </div>
+                <br class="clear" />
+                <br class="clear" />
+                <div class="clear"></div>
+                <div class="shipping-address">
+                    <!--<div class="form-group">
+                        <label class="col-sm-3">Full Name: <span class="require">*</span> </label>
+                        <div class="col-sm-7">
+                            <input type="text" value="" class="form-control" name="name"  id="address-name">
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+
+                        <label class="col-sm-3">
+                            Shipping Address: <span class="requiredlabel">*</span>
+                        </label>
+
+                        <div class="col-sm-7">
+                            <textarea name="address" class="form-control" required rows="4" ng-model="buyerAddress.Address1" id="address-line1"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-sm-3">
+                            <label>Nearest Landmark: </label>
+                        </label>
+
+                        <div class="col-sm-7">
+                            <input type="text" value="" class="form-control" required ng-model="buyerAddress.Address2" id="address-line2">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">
+                            <label>City: <span class="requiredlabel">*</span> </label>
+                        </label>
+                        <div class="col-sm-7">
+                            <input type="text" value="" class="form-control" name="city" required ng-model="buyerAddress.City" id="address-city">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Pin Code: <span class="requiredlabel">*</span> </label>
+                        <div class="col-sm-7">
+                            <input id="pincode" type="text" required class="form-control" title="Postal Code should be 6 digits" maxlength="6" pattern="[0-9]{6}" ng-model="buyerAddress.PostalCode" name="zip">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">
+                            State: <span class="requiredlabel">*</span>
+                        </label>
+                        <div class="col-sm-7">
+                            <span ng-if="!buyerAddress.State">
+                                {{buyerAddress.State= "Tamil Nadu"}}
+                            </span>
+                            <select name="state" class="form-control" required ng-model="buyerAddress.State" id="address-state">
+                                <option value=""></option>
+                                <option value="Tamil Nadu" ng-selected>Tamil Nadu</option>
+                                <!--<option value="Andaman and Nicobar Islands">
+                                    Andaman
+                                    and Nicobar Islands
+                                </option> -->
+                                <!--<option value="Andhra Pradesh">Andhra Pradesh</option>-->
+                                <!-- <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Dadra and Nagar Haveli">
+                                    Dadra and
+                                    Nagar Haveli
+                                </option>
+                                <option value="Daman and Diu">Daman and Diu</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                <option value="Jharkhand">Jharkhand</option>-->
+                                <!--<option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>-->
+                                <!-- <option value="Lakshadweep">Lakshadweep</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Orissa">Orissa</option>
+                                <option value="Pondicherry">Pondicherry</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>-->
+                                <!--<option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttrakhand">Uttrakhand</option>
+                                <option value="West Bengal">West Bengal</option>-->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3">Mobile: <span class="requiredlabel">*</span> </label>
+                        <div class="col-sm-7">
+                            <input type="text" value="" class="form-control" required name="mobile" title="Phone number should be 10 digits" ng-model="buyerAddress.PhoneNumber" pattern="[0-9]{10}" id="address-mobile">
+                        </div>
+                    </div>
+                    <div>
+                        <br class="clear" />
+                        <!--<input type="checkbox" value="checked" />--><span class="greenText">*Billing will be same as Shipping Address</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-11 alignRight">
+                    <button class="abutton form-control" type="submit" href="#">Continue</button>
+                </div>
+
+            </form>
+            <br class="clear" />
+        </div>
+        <div data-ng-show="tab === 'paymentTab'">
+            <form class="form-horizontal" ng-submit="confirmOrder()">
+                <span>Delivery Preference : </span>
+                <label>
+                    <input type="radio"
+                           ng-model="deliveryOption"
+                           value="StorePickup" name="deliveryOption" required title="Select Delivery Option">
+                    Pickup at Store
+                </label>
+                <span class="padding-5"></span><span class="padding-5"></span>
+
+                <label>
+                    <input type="radio"
+                           ng-model="deliveryOption"
+                           value="HomeDelivery" name="deliveryOption" required>
+                    Door Delivery
+                </label>
+                <br class="clear" />
+                <span class="minorinfofont">Note: Certain products have, delivery only available with in the store located city.</span>
+                <br class="clear" />
+                <hr />
+                <br class="clear" />
+                <div>
+                    <span>Payment Options : </span> <!--<span> Select a payment method</span>-->
+                    <label>
+                        <input type="radio"
+                               ng-model="paymentOption"
+                               value="CashOnDelivery" name="paymentOption" required title="Select Payment Option">
+                        Cash On Delivery
+                    </label>
+                    <span class="padding-5"></span><span class="padding-5"></span>
+
+                    <label>
+                        <input type="radio"
+                               ng-model="paymentOption"
+                               value="CardOnDelivery" name="paymentOption" required>
+                        Card On Delivery
+                    </label>
+                    <label>
+                        <input type="radio"
+                               ng-model="paymentOption"
+                               value="PaymentGateway1" name="paymentOption" required>
+                        PayUMoney (NetBanking/Credit Card/Debit Card)
+                    </label>
+                    <br class="clear" />
+
+                    <ul>
+                        <li>
+                            <span class="text-info">
+                                <b>SpecialZone Products (Crackers):</b>We will e-mail/SMS you link for payment.
+                            </span>
+                        </li>
+                        <li>
+                            <span class="text-info">
+                                Crackers minimum Order Rs.2000/-
+                            </span>
+                        </li>
+                        <li>
+                            <span class="text-info">Cash On Delivery/ Card Swipe only available in Chennai.</span>
+                        </li>
+                    </ul>
+                    <div class="col-sm-11 alignRight">
+                        <button class="abutton" type="submit" value="Submit">Confirm Order</button>
+                    </div>
+
+                    <br class="clear" />
+                    <br />
+                    <br class="clear" />
+                    <div>
+                        <img class="img-responsive" src="{{imageUrlBase}}{{homeFolder}}/PayUSecured.jpg" alt=" PayU Secured ">
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+
+    </section>
+    <section class="col-sm-5">
+        <table class="table-bordered" width="100%">
+            <tr>
+                <td width="45%" align="center">
+                    Product
+                </td>
+                <td width="20%" align="center">
+                    <strong> QTY </strong>
+                </td>
+                <td width="25%" align="center">
+                    <strong>PRICE</strong>
+                </td>
+                <td width="10%"></td>
+            </tr>
+            <tr data-ng-repeat="product in $root.cartlist">
+
+                <td>
+                    <span class="greenText " ng-bind="product.Name"></span>
+                </td>
+                <td>
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class=" input-group-btn">
+                                <button type="button" class="qtyButton" data-type="minus" ng-click="decrementProductQuantity(product)">
+                                    <strong>-</strong>
+                                </button>
+                            </span>
+                            <input type="text" class="input-number qtyTextButton" value="{{product.Quantity}}" ng-disabled="true">
+                            <span class=" input-group-btn">
+                                <button type="button" class="qtyButton" data-type="plus" ng-click="incrementProductQuantity(product)">
+                                    <strong>+</strong>
+                                </button>
+                            </span>
+
+                        </div>
+                    </div>
+                </td>
+                <td align="right">
+                    <strong><span class="padding-5 greenText" ng-bind="product.SubTotal | currency:' &#8377;'"></span></strong>
+                    <br />
+                    <span class="minorinfofont" ng-if="product.AdditionalShippingCharge>0"> (+ shipping): {{product.TotalAdditionalShippingCharge | currency:"&#8377;"}}  </span>
+                </td>
+                <td>
+                    <span class="glyphicon glyphicon-remove-circle removeicon padding-5" ng-click="removeProductFromCart(product);"></span>
+                </td>
+            </tr>
+
+        </table>
+        <div>
+            <table width="100%">
+                <tr>
+                    <td width="20%"></td>
+                    <td width="20%">
+                        <h4><strong>Cart Total</strong></h4>
+                    </td>
+                    <td width="20%" align="right">
+                        <h4> <strong><span ng-bind="$root.cartTotal | currency:' &#8377;'"></span></strong></h4>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="20%"></td>
+                    <td width="20%">
+                        <h6><strong>Shipping</strong></h6>
+                    </td>
+                    <td width="20%" align="right">
+                        <h5> <strong><span ng-if="totalShipping>0" ng-bind="totalShipping | currency:' &#8377;'"></span></strong></h5>
+                        <h5> <strong><span ng-if="totalShipping==0">Free</span></strong></h5>
+                    </td>
+
+                </tr>
+                <!--<tr>
+                    <td width="20%">
+                    </td>
+                    <td width="20%">
+                        <h6><strong>Promotion Discount:</strong></h6>
+                    </td>
+                    <td width="20%" align="right">
+                        <h6> <strong><span ng-bind="orderDiscount | currency:' &#8377;'"></span></strong></h6>
+                    </td>
+
+                </tr>-->
+
+                <tr ng-show="$root.flagLoggedIn">
+                    <td colspan="2">
+                        <div class="noPadding col-sm-7">
+                            <input type="text" ng-model="couponCode" placeholder="Discount Coupon" class="form-control" />
+                        </div>
+                        <div class="noPadding col-sm-5">
+                            <button class="form-control btn-info" data-ng-click="applyCoupon()">Apply Coupon</button>
+                        </div>
+                    <td width="20%" align="right">
+                        <h6> <strong><span ng-bind="orderDiscount | currency:' &#8377;'"></span></strong></h6>
+                    </td>
+                </tr>
+
+                <tr><td>&nbsp;</td></tr>
+                
+                <tr ng-show="$root.flagLoggedIn">
+                    <td colspan="2">
+                        <div class="noPadding col-sm-7">
+                            <h4><strong>Available Reward</strong></h4>
+                            <!--<input type="text" ng-model="couponCode" placeholder="Discount Coupon" class="form-control" />-->
+                        </div>
+                        <div class="noPadding col-sm-5">
+                            <h4><strong>{{availableReward}} PTS</strong></h4>
+                            <!--<button class="form-control btn-info" data-ng-click="applyCoupon()">Apply Coupon</button>-->
+                        </div>
+                    <td width="20%" align="right">
+                        <!--<h6> <strong><span ng-bind="orderDiscount | currency:' &#8377;'"></span></strong></h6>-->
+                    </td>
+                </tr>
+
+                <tr ng-show="$root.flagLoggedIn">
+                    <td colspan="2">
+                        <div class="noPadding col-sm-7">
+                            <input type="number" ng-model="useRewardPoint" placeholder="Enter Reward Point" class="form-control" />
+
+                            <h6 ng-if="rewardErrorFlag" class="alert alert-danger">
+                                <strong><span ng-bind="rewardError"></span></strong>
+                            </h6>
+                            <!--<input type="text" ng-model="couponCode" placeholder="Discount Coupon" class="form-control" />-->
+                        </div>
+                        <div class="noPadding col-sm-5">
+                            <button class="form-control btn-info" data-ng-click="applyReward()">Apply Reward</button>
+                        </div>
+                    <td width="20%" align="right">
+                        <h6> <strong><span ng-bind="rewardDiscount | currency:' &#8377;'"></span></strong></h6>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="20%"></td>
+                    <td width="20%">
+                        <h4><strong>Net Payable</strong></h4>
+                    </td>
+                    <td width="20%" align="right">
+                        <h3> <strong><span ng-bind="netPayable = (($root.cartTotal - orderDiscount - rewardDiscount) + (totalShipping))| currency:' &#8377;'"></span></strong></h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <br class="clear" />
+        <br class="clear" />
+        <div>
+            <div class="compareDropDownHeader">SHIPPING Address</div>
+            <div class="user-adress">
+
+                <br><span ng-bind="buyerAddress.Address1">
+                </span><br><span ng-bind="buyerAddress.Address2"></span>
+                <br><span ng-bind="buyerAddress.City"></span>
+                <br />
+                <span ng-bind="buyerAddress.State"></span>
+
+                <br>
+                <span>
+                    Pincode: <span ng-bind="buyerAddress.PostalCode"></span>
+                </span><br>
+                <span>Mobile: <span ng-bind="buyerAddress.PhoneNumber"></span></span><br>
+                <a href="#" data-ng-click="tab = 'addressTab'">
+                    Change Address
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <br class="clear" />
+    <span class="minorinfofont"><strong>Availability</strong> Our Service is available only in Chennai, and certain cities of Tamilnadu</span>
+</div>

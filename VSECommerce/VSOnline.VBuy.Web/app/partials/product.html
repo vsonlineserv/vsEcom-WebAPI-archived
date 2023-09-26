@@ -1,0 +1,534 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+<view-title>Online Shopping of {{product.data.Name}} at best prices from your nearby store in Chennai, Tamilnadu, India </view-title>
+<og-description>VBuy {{ product.data.Name}}- </og-description>
+<og-image>{{imageUrlBaseStandard}}{{imgSrc}}</og-image>
+
+<div class="container view containerbgcolor">
+    <div>
+        {{$scope.app.error}}
+
+        <div class="container">
+            <div>
+                <div data-ng-hide="$root.cartMessage == ''" class="alert alert-success float-message" id="cart-success-alert">
+                    <a href="#" class="close" ng-click="$root.cartMessage = ''">&times;</a>
+                    <strong>Success! </strong>
+                    {{ product.data.Name | limitTo:25}} added to your cart.
+                </div>
+                <div data-ng-hide="$root.cartFailureMessage == ''" class="alert alert-warning float-message" id="cart-failure-alert">
+                    <a href="#" class="close" ng-click="$root.cartFailureMessage = ''">&times;</a>
+                    <strong>Failure! </strong>
+                    {{ product.data.Name | limitTo:25}} is not having any stores in your area.
+                </div>
+                <br class="clear" />
+                <div class="text-center">
+                    <ul>
+                        <li class="inline-block">
+
+                            <a href="/Home">Home</a> &nbsp; > &nbsp;
+                        </li>
+                        <li class="inline-block">
+                            <strong class="saffronText">  {{product.data.ParentCategoryName}}</strong> &nbsp; > &nbsp;
+                        </li>
+                        <li class="inline-block">
+                            <strong class="saffronText">  {{product.data.CategoryGroupTag}}</strong> &nbsp; > &nbsp;
+                        </li>
+                        <li class="inline-block">
+                            <a href="category/{{product.data.CategoryName | formaturl}}/{{product.data.Category}}">{{product.data.CategoryName}}</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <br class="clear" />
+                <div class="col-sm-2 col-lg-1">
+                    <div data="productImage">
+                        <img class="imgthumbnail" ng-mouseover="ChangeProductDisplayImage(product.data.PictureName);" src="{{imageUrlBaseSmall}}{{product.data.PictureName}}" alt="{{product.data.Name}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <div data="productImage" data-ng-show="product.data.PictureName1">
+                        <img class="imgthumbnail" ng-mouseover="ChangeProductDisplayImage(product.data.PictureName1);" src="{{imageUrlBaseSmall}}{{product.data.PictureName1}}" alt="{{product.data.Name}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <div data="productImage" data-ng-show="product.data.PictureName2">
+                        <img class="imgthumbnail" ng-mouseover="ChangeProductDisplayImage(product.data.PictureName2);" src="{{imageUrlBaseSmall}}{{product.data.PictureName2}}" alt="{{product.data.Name}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <div data="productImage" data-ng-show="product.data.PictureName3">
+                        <img class="imgthumbnail" ng-mouseover="ChangeProductDisplayImage(product.data.PictureName3);" src="{{imageUrlBaseSmall}}{{product.data.PictureName3}}" alt="{{product.data.Name}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <div data="productImage" data-ng-show="product.data.PictureName4">
+                        <img class="imgthumbnail" ng-mouseover="ChangeProductDisplayImage(product.data.PictureName4);" src="{{imageUrlBaseSmall}}{{product.data.PictureName4}}" alt="{{product.data.Name}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <div data="productImage" data-ng-show="product.data.PictureName5">
+                        <img class="imgthumbnail" ng-mouseover="ChangeProductDisplayImage(product.data.PictureName5);" src="{{imageUrlBaseSmall}}{{product.data.PictureName5}}" alt="{{product.data.Name}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <div data="productImage" data-ng-show="product.data.PictureName6">
+                        <img class="imgthumbnail" ng-mouseover="ChangeProductDisplayImage(product.data.PictureName6);" src="{{imageUrlBaseSmall}}{{product.data.PictureName6}}" alt="{{product.data.Name}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-5">
+                    <div id="img_{{product.data.ProductId}}" class="productImageDiv">
+                        <img id="productImage" class="imgproductmedium" data-ng-elevate-zoom ng-src="{{imageUrlBaseStandard}}{{imgSrc}}"
+                             zoom-image="{{imageUrlBaseLarge}}{{imgSrc}}" alt="{{product.data.PictureName}}" err-src='Content/images/noimage.jpg' />
+                    </div>
+
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="col-xs-12 noPadding">
+
+                        <h3> <strong>{{ product.data.Name}}</strong> </h3>
+                        <div class="col-md-5 col-sm-12 noPadding">
+                            by {{product.data.BrandName}}
+                            <span ng-vbuy-rating data-rating-value="productRating" data-max="5" on-rating-selected="onProductRatingChanged(rating)"></span>
+                            <span class="label label-info" ng-if="productRating>0">{{productRating}} / 5</span>
+                            <br class="clear" />
+                            <span style="color:grey" ng-show="product.data.StorePricingModel[0].Price > product.data.StorePricingModel[0].SpecialPrice">
+                                Price: <del>{{product.data.StorePricingModel[0].Price | currency:"&#8377;"}} </del>
+                                [ <span>{{((1-(product.data.StorePricingModel[0].SpecialPrice/product.data.StorePricingModel[0].Price ))*100) | number:0 }}</span> % Off ]
+                            </span>
+                            <span ng-show=""></span>
+                            <br class="clear" />
+                            <span ng-if="product.data.StorePricingModel.length>0">Sale Price</span>
+                            <span class="product-price">
+                                <strong>
+                                    <span class="greenText" ng-bind="product.data.StorePricingModel[0].SpecialPrice | currency:'&#8377;'"></span>
+                                </strong>
+                            </span>
+                            <br class="clear" />
+                            <div class="col-md-12">
+                                <span ng-if="product.data.StorePricingModel.length>0">
+                                    <a href="stores/{{product.data.StorePricingModel[0].BranchName | formaturl}}/{{product.data.StorePricingModel[0].StoreId}}?productId={{product.data.ProductId}}&branchId={{product.data.StorePricingModel[0].BranchId}}"
+                                       title="{{product.data.StorePricingModel[0].BranchName}}" class="productlink btn-link">({{product.data.StorePricingModel[0].BranchName | limitTo:25}})</a>
+                                </span>
+                            </div>
+                            <span class="fontSize10" ng-if="product.data.StorePricingModel[0].DeliveryTime>0"><br /> Delivered within {{product.data.StorePricingModel[0].DeliveryTime}} business day. </span>
+                            <span class="fontSize10" ng-if="product.data.StorePricingModel[0].AdditionalShippingCharge>0"> Shipping Charges : {{product.data.StorePricingModel[0].AdditionalShippingCharge | currency:"&#8377;"}}  </span>
+                            <span class="fontSize10 greenText" ng-if="productPricing.AdditionalShippingCharge==0 && productPricing.DeliveryTime>0"> Free Shipping</span>
+                        </div>
+                        <div class="col-md-7 col-sm-12">
+                            <div data-ng-if=!product.data.FlagWishlist class="col-xs-5 shortlistProductDetails" ng-click="addProductWishlist(product.data);">
+                                <i class="icon-wishlist-empty-heart"><span>Wishlist</span></i>
+
+                            </div>
+                            <div class="shortlistProductDetails col-xs-5" data-ng-if=product.data.FlagWishlist>
+                                <i class="icon-wishlist-filled-heart"><span>Wishlisted</span></i>
+                            </div>
+                            <div class="shortlistProductDetails col-xs-5" data-ng-if="$root.comparisonlistProductId.indexOf(product.data.ProductId) == -1"
+                                 ng-click="addToProductComparison(product.data);">
+                                <span class="glyphicon glyphicon-th-list compareicon"></span>
+                                <i class="compareiconspan">Compare</i>
+                            </div>
+                            <div class="shortlistProductDetails col-xs-5" data-ng-if="$root.comparisonlistProductId.indexOf(product.data.ProductId) > -1"
+                                 ng-click="removeFromProductComparison(product.data);">
+                                <span class="glyphicon glyphicon-remove-circle removeicon"></span>
+                                <i class="compareiconspan">Compare</i>
+                            </div>
+                            <br class="clear" />
+                            <div class=" col-md-12 sizeoptionOuter">
+                                <div data-ng-if="product.data.Size1.length>0" class="sizeoption {{(selectedVariant==product.data.Size1) ? 'selected' : ''}}" ng-click="updateSelectedVariant(product.data.Size1);">
+                                    {{product.data.Size1}}
+                                </div>
+                                <div data-ng-if="product.data.Size2.length>0" class="sizeoption {{(selectedVariant==product.data.Size2) ? 'selected' : ''}}" ng-click="updateSelectedVariant(product.data.Size2);">
+                                    {{product.data.Size2}}
+                                </div>
+                                <div data-ng-if="product.data.Size3.length>0" class="sizeoption {{(selectedVariant==product.data.Size3) ? 'selected' : ''}}" ng-click="updateSelectedVariant(product.data.Size3);">
+                                    {{product.data.Size3}}
+                                </div>
+                                <div data-ng-if="product.data.Size4.length>0" class="sizeoption {{(selectedVariant==product.data.Size4) ? 'selected' : ''}}" ng-click="updateSelectedVariant(product.data.Size4);">
+                                    {{product.data.Size4}}
+                                </div>
+                                <div data-ng-if="product.data.Size5.length>0" class="sizeoption {{(selectedVariant==product.data.Size5) ? 'selected' : ''}}" ng-click="updateSelectedVariant(product.data.Size5);">
+                                    {{product.data.Size5}}
+                                </div>
+                                <div data-ng-if="product.data.Size6.length>0" class="sizeoption {{(selectedVariant==product.data.Size6) ? 'selected' : ''}}" ng-click="updateSelectedVariant(product.data.Size6);">
+                                    {{product.data.Size6}}
+                                </div>
+                            </div>
+                            <br class="clear" />
+                            <div class="col-md-12 noPadding">
+                                <span class="colorred fontverysmall" ng-show="(product.data.Size1.length>0 && selectedVariant == '' )">Select Size before adding to Cart</span>
+                                <button class="btn btn-block btn-success product-buy-btn" ng-click="addProductToCart(product.data, product.data.StorePricingModel[0].BranchId,
+                                             product.data.StorePricingModel[0].BranchName,product.data.StorePricingModel[0].Price, product.data.StorePricingModel[0].SpecialPrice
+                                            , product.data.StorePricingModel[0].AdditionalShippingCharge, product.data.StorePricingModel[0].DeliveryTime, selectedVariant)
+                                            "
+                                        ng-hide="!product.data.StorePricingModel[0].EnableBuy" ng-disabled="(product.data.Size1.length>0 && selectedVariant == '' )">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    <span>     </span>
+                                    BUY
+                                </button>
+
+                                <button class="btn btn-block btn-success product-buy-btn" ng-show="!product.data.StorePricingModel[0].EnableBuy"
+                                        data-target="#modal-container-contact-{{product.data.StorePricingModel[0].BranchId}}-{{product.data.ProductId}}"
+                                        data-toggle="modal">
+                                    Check Availability
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br class="clear" />
+
+                    <span class="minorinfofont"><strong>Availability</strong> Our Service is available only in Chennai, and certain cities of Tamilnadu</span>
+                    <span class="minorinfofont" ng-show="product.data.ParentCategoryId==1115"><br /></span>
+                    <span class="minorinfofont" ng-show="product.data.ParentCategoryId==1115"><strong> Note : Crackers Minimum Order Rs.2500</strong><br /></span>
+                    <span class="minorinfofont" ng-show="product.data.ParentCategoryId==1115"><strong> Rs 250 delivery charges for orders less than Rs.2500 for Crackers</strong></span>
+
+                    <br class="clear" />
+                    <u><strong><span style="color:grey;font-size:10px">Key Features</span></strong></u>
+                    <div class="keyFeatureList" data-ng-repeat="keyFeatuers in productKeyFeatures.data">
+                        <ul>
+                            <li> {{keyFeatuers.Parameter}} : {{keyFeatuers.KeyFeature}}</li>
+                        </ul>
+                    </div>
+
+                    <br class="clear" />
+                    <div class="minorinfofont">
+                        <span class="minorinfofont">* If stock is not available in the preferred store, VBuy will get you the same product from another store with same price.</span>
+                        <span class="minorinfofont">* Some registered sellers choose not to avail our map service and will also be shown outside the selected map area.</span>
+                    </div>
+                </div>
+
+                <br class="clear" />
+                <div class="col-md-6">
+                    <div class="row product-stores-list-header">
+                        <div class="col-xs-4">
+                            <span>
+                                <a href="" ng-click="storeSortBy='BranchName';reverse=false" ng-hide="storeSortBy=='BranchName'"> <strong> Store Name </strong> </a>
+                                <a href="" ng-click="storeSortBy='-BranchName';reverse=false" ng-show="storeSortBy=='BranchName'"> <strong> Store Name </strong> </a>
+                                <span class="glyphicon glyphicon-arrow-up" ng-show="storeSortBy=='BranchName'"></span>
+                                <span class="glyphicon glyphicon-arrow-down" ng-show="storeSortBy=='-BranchName'"></span>
+                            </span>
+
+                        </div>
+                        <div class="col-xs-3">
+                            <a href="" ng-click="storeSortBy='SpecialPrice';reverse=!reverse">  <strong>  Selling Price</strong></a>
+                            <span class="glyphicon glyphicon-arrow-up" ng-show="storeSortBy=='SpecialPrice' && reverse == false"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-show="storeSortBy=='SpecialPrice' && reverse == true"></span>
+                        </div>
+                        <div class="col-xs-5">
+                            <a href="" ng-click="storeSortBy='Distance';reverse=!reverse">  <strong> Buy /Contact / Direction </strong></a>
+                            <span class="glyphicon glyphicon-arrow-up" ng-show="storeSortBy=='Distance' && reverse == false"></span>
+                            <span class="glyphicon glyphicon-arrow-down" ng-show="storeSortBy=='Distance' && reverse == true"></span>
+                        </div>
+                    </div>
+                    <span class="alert-info" ng-bind="messageProductPricing"></span>
+                    <div class="row product-stores-list" data-ng-repeat="productPricing in product.data.StorePricingModel | orderBy:storeSortBy:reverse">
+                        <div class="col-xs-4 noPadding">
+                            <strong>
+                                <a href="stores/{{productPricing.BranchName | formaturl}}/{{productPricing.StoreId}}?productId={{product.data.ProductId}}&branchId={{productPricing.BranchId}}" title="{{productPricing.BranchName}}" class="productlink btn-link">{{productPricing.BranchName | limitTo:25}} </a>
+                            </strong>
+                            <div class="col-xs-12 noPadding upperCase">
+                                {{productPricing.BranchAddress1}}, {{productPricing.BranchAddress2}}
+                            </div>
+                            <div class="col-xs-12">
+                                <span class="label label-info" ng-if="productPricing.BranchRating>0"> Rating : {{productPricing.BranchRating}} / 5</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="col-xs-3">
+                                <span class="greenText"><strong> {{productPricing.SpecialPrice | currency:"&#8377;"}} </strong></span>
+                            </div>
+                            <div class="col-xs-9">
+                                <div class="col-xs-7">
+                                    <button class="btn btn-xs btn-success padding-5" ng-click="addProductToCart(product.data, productPricing.BranchId, productPricing.BranchName
+                                                    ,productPricing.Price, productPricing.SpecialPrice, productPricing.AdditionalShippingCharge, productPricing.DeliveryTime)"
+                                            ng-show="productPricing.EnableBuy" ng-disabled="(product.data.Size1.length>0 && selectedVariant == '' )">
+                                        Buy
+                                    </button><span class="glyphicon glyphicon-question-sign" ng-if="(product.data.Size1.length>0 && selectedVariant == '' )"
+                                                   title="Select Size before adding to Cart"></span>
+                                    <button class="btn btn-xs btn-success padding-5" data-target="#modal-container-contact-{{productPricing.BranchId}}-{{product.data.ProductId}}"
+                                            data-toggle="modal">
+                                        Contact
+                                    </button>
+                                </div>
+                                <div class="col-xs-5 noPadding">
+                                    <input type="image" src="Content/images/Directions.png" alt="Directions" data-title="Click to get Direction to '{{productPricing.BranchName}}'"
+                                           ng-click="GetDirection(productPricing, product.data.ProductId)" data-bs-tooltip>
+                                    <span class="fontSize10"> {{productPricing.Distance |limitTo:4 }} KM</span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 keyFeatureList">
+                                <ul>
+                                    <li ng-if="productPricing.DeliveryTime>0">Delivered within {{productPricing.DeliveryTime}} business day</li>
+                                    <li ng-if="!productPricing.DeliveryTime">Contact store to know delivery details</li>
+                                    <li ng-if="productPricing.AdditionalShippingCharge>0">Shipping Charges : {{productPricing.AdditionalShippingCharge | currency:"&#8377;"}}</li>
+                                    <li ng-if="productPricing.AdditionalShippingCharge==0 && productPricing.DeliveryTime>0">Free Shipping</li>
+                                    <li ng-if="productPricing.AdditionalTax>0">Tax : {{productPricing.AdditionalTax | currency:"&#8377;"}} </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div id="modal-container-contact-{{productPricing.BranchId}}-{{product.data.ProductId}}"
+                             class="modal fade" tabindex="-1" role="main" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <div id="myModalLabel">
+                                            <h4>Contact {{productPricing.BranchName}} - Get Quotes</h4>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal">
+
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label">Name</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="username" data-ng-model="contactData.Name" required autofocus placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="mobilenumber" class="col-sm-2 control-label">Mobile</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" class="form-control" maxlength="10" pattern="(.){10,10}" id="mobilenumber" data-ng-model="contactData.Mobile" required autofocus placeholder="Mobile Number">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email" class="col-sm-2 control-label">Email</label>
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" id="email" data-ng-model="contactData.Email" required autofocus placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subject" class="col-sm-2 control-label">Subject</label>
+                                                <div class="col-sm-10">
+                                                    <textarea rows="5" class="form-control" maxlength="140" id="subject" data-ng-model="contactData.Subject" autofocus placeholder="Contact Store and Get assured response on lower price and also stock availability."></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div data-ng-hide="contactData.message  == ''" data-ng-class="(contactData.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                                                {{contactData.message}}
+                                            </div>
+                                            <span>Contact :{{productPricing.BranchName}} </span>
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                    ng-click="ContactSeller(contactData, productPricing.BranchId, product.data.ProductId)">
+                                                Submit
+                                            </button>
+                                            <br />
+                                            <span class="keyFeatureList">
+                                                Share your mobile, email info to get lowest quote and stock availability.
+                                            </span>
+                                            <ul class="keyFeatureList">
+                                                <li>
+                                                    You will shortly receive an SMS/Email from VBuy.in. about the in-store availability and lowest price of the product
+                                                </li>
+                                                <li>
+                                                    Your contact information will not be shared to any other store.
+                                                </li>
+                                                <li>
+                                                    We do not sell or share your contact information to any third party.
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <span style="margin-left:12px;">Search within <strong><span ng-bind="searchRadius"> </span></strong><span> kms : </span></span>
+                    <input style="width:170px;display:none" type="text" id="mapSlider" radius-slider class="col-xs-2" data-slider-min="1" data-model="searchRadius" data-slider-max="25"
+                           data-slider-step="1" data-slider-handle="triangle" data-slider-orientation="Horizontal"
+                           data-slider-selection="after" data-slider-tooltip="hide">
+
+                    <div id="map_area">
+                        <div id="map_canvas" class="map_canvas">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br class="clear" />
+            <br class="clear" />
+            <div ng-show="product.data.RelatedProductList.length>0">
+                <header class="homeHeaders">
+                    <strong> YOU MAY BE INTERESTED IN </strong>
+                </header>
+                <div class="container">
+                    <div class="col-lg-12">
+                        <div data="product.data.RelatedProductList"
+                             slick-slider-recentview="{ minSlides: 2,
+                        maxSlides: 5,
+                          moveSlides: 2,
+                         slideWidth: 200,
+                         hideControlOnEnd: true,
+                         infiniteLoop: false,
+                         pager:true,
+                         controls:true,
+                          pager: false,
+                          speed: 1000
+                        }">
+                            <div data-ng-repeat="product in product.data.RelatedProductList">
+                                <a href="product/{{product.Name | formaturl}}/{{product.ProductId}}" title="{{product.Name}}" class="productlink cardBody btn-link">
+                                    <div class="cardHeader">
+                                        <span ng-bind="product.Name | limitTo:45"></span>
+                                    </div>
+                                    <div class="cardBody">
+                                        <img class="imgproductsmall" src="{{imageUrlBaseSmall}}{{product.PictureName}}" alt="{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                                    </div>
+                                    <div class="cardFooter">
+                                        <div>
+                                            <b>  <span class="greenText" ng-bind="product.SpecialPrice | currency:' &#8377;'"></span></b>
+                                            <span class='strikePrice'>
+                                                <span>{{product.Price | currency:"&#8377;"}}</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br class="clear" />
+            <div class="col-xs-10">
+                <h4> <span>Product Description</span></h4>
+                {{ product.data.FullDescription}}
+            </div>
+            <div class="col-xs-10">
+                <h4> <span>Product Specification</span></h4>
+            </div>
+
+            <div class="col-xs-10">
+                <div class="panel-group">
+                    <div class="panel panel-default" id="accordion-spec">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse"
+                               href="" data-target="#accordion-element-basicSpec">
+                                <h4><span>Basic Specification</span></h4>
+                            </a>
+                        </div>
+                        <div id="accordion-element-basicSpec" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div>
+                                    <strong>Title : </strong><span ng-bind="product.data.Name"></span>
+                                </div>
+                                <div ng-if="product.data.BrandName.length>0">
+                                    <strong>Brand : </strong><span ng-bind="product.data.BrandName"></span>
+                                </div>
+                                <div ng-if="product.data.ManufacturerPartNumber.length>0">
+                                    <strong>Model Number: </strong><span ng-bind="product.data.ManufacturerPartNumber"></span>
+                                </div>
+
+                                <div ng-if="product.data.Color.length>0">
+                                    <strong>  Color :  </strong><span ng-bind="product.data.Color"></span>
+                                </div>
+                                <div ng-if="product.data.Weight>0">
+                                    <strong>   Weight (gms) : </strong> <span ng-bind="product.data.Weight"></span>
+                                </div>
+                                <div ng-if="product.data.Length>0">
+                                    <strong>  Length :  </strong><span ng-bind="product.data.Length"></span>
+                                </div>
+                                <div ng-if="product.data.Width>0">
+                                    <strong>  Width :  </strong><span ng-bind="product.data.Width"></span>
+                                </div>
+                                <div ng-if="product.data.Height>0">
+                                    <strong>  Height :   </strong> <span ng-bind="product.data.Height"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="accordion-spec-detail" ng-show="productSpecification.data.length>0">
+                        <div class="panel-heading">
+                            <a data-toggle="collapse" data-target="#accordion-element-detailedSpec" href="">
+                                <h4><span> Detailed Specification</span></h4>
+                            </a>
+                        </div>
+                        <div id="accordion-element-detailedSpec" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div data-ng-repeat="specification in productSpecification.data | unique: 'SpecificationGroup'">
+                                    <header class="specificationHeaders">
+                                        <strong>  {{specification.SpecificationGroup}}</strong>
+                                    </header>
+                                    <div data-ng-repeat="specification in productSpecification.data | filter:{SpecificationGroup: specification.SpecificationGroup}">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td style="width:30%">
+                                                    <strong><span ng-bind="specification.SpecificationAttribute"></span></strong>
+                                                </td>
+                                                <td style="width:70%">
+                                                    <span ng-bind="specification.SpecificationDetails"></span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-xs-10">
+                <h4> <span>Product Reviews and Comments</span></h4>
+                <div ng-vbuy-rating data-rating-value="productRating" data-max="5" on-rating-selected="onProductRatingChanged(rating)"></div>
+                <span class="label label-info" ng-if="productRating>0">{{productRating}} / 5</span>
+                <span class="label label-info" ng-if="productRating<=0">Rate this product</span>
+                <div id="fb-comment-box" ng-vbuy-fb-comments
+                     page-href="http://www.vbuy.in/product/{{ product.data.Name | formaturl}}/{{product.data.ProductId}}"
+                     numposts="5"
+                     colorsheme="light">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="recentlyViewedlist.length>0">
+        <header class="homeHeaders">
+            <strong> RECENTLY VIEWED </strong>
+        </header>
+        <div class="container">
+            <div class="col-lg-12">
+                <div data="recentlyViewedlist"
+                     slick-slider-recentview="{ minSlides: 2,
+                        maxSlides: 5,
+                          moveSlides: 2,
+                         slideWidth: 200,
+                         hideControlOnEnd: true,
+                         infiniteLoop: false,
+                         pager:true,
+                         controls:true,
+                          pager: false,
+                          speed: 1000
+                        }">
+                    <div data-ng-repeat="product in recentlyViewedlist">
+                        <a href="product/{{product.Name | formaturl}}/{{product.ProductId}}" title="{{product.Name}}" class="productlink cardBody btn-link">
+                            <div class="cardHeader">
+                                <span ng-bind="product.Name | limitTo:45"></span>
+                            </div>
+                            <div class="cardBody">
+                                <img class="imgproductsmall" src="{{imageUrlBaseSmall}}{{product.PictureName}}" alt="{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                            </div>
+                            <div class="cardFooter">
+                                <div>
+                                    <b>  <span class="greenText" ng-bind="product.SpecialPrice | currency:' &#8377;'"></span></b>
+                                    <span class='strikePrice'>
+                                        <span>{{product.Price | currency:"&#8377;"}}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wrapperImage">
+
+</div>
+
+

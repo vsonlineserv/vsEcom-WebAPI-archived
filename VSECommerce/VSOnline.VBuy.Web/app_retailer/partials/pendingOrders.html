@@ -1,0 +1,113 @@
+﻿<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<table data-ng-table="pendingOrdersGridParams" show-filter="false" class="table">
+    <tr data-ng-repeat="orders in $data ">
+        <td data-title="'Order Number'" sortable="'Id'">
+            {{orders.Id}} / {{orders.OrderId}}
+        </td>
+        <td data-title="'OrderDate'" sortable="'OrderDateUtc'">
+            {{getLocalDate(orders.OrderDateUtc) | date:'medium'}}
+
+        </td>
+      
+        <td data-title="'Name'" filter="{ 'Name' : 'text' }" sortable="'Name'">
+           
+            <a target="_blank" href="{{$root.ApplicationHosting}}product/{{orders.Name | formaturl}}/{{orders.ProductId}}">{{orders.Name}}</a>
+            <span ng-show="product.SelectedSize.length>0">
+                / Size : ( {{product.SelectedSize}} )
+            </span>
+            <!--<br />-->
+            <!--<img class="imgsmallthumbnail" id="img_{{orders.ProductId}}" src="{{imageUrlBaseSmall}}{{orders.PictureName}}"
+                 alt="{{orders.PictureName}}" />-->
+        </td>
+        <td data-title="'Quantity'" sortable="'Quantity'">
+            {{orders.Quantity}}
+
+        </td>
+       
+        <td data-title="'Customer Details'" >
+         
+            {{orders.FirstName}}
+            <br/>
+            {{orders.Address1}}
+            {{orders.Address2}}
+            <br/>
+            {{orders.PhoneNumber}}
+
+        </td>
+        <td data-title="'UnitPrice'" >
+            {{orders.UnitPriceInclTax}}
+
+        </td>
+
+        <td data-title="'PriceIncl'" >
+            {{orders.PriceInclTax}}
+            <br />
+            <span ng-show="product.ShippingCharges>0"> shipping : ( {{product.ShippingCharges}} )</span>
+
+</td>
+        <td data-title="'OrderStatus'" sortable="'OrderItemStatus'">
+            {{orders.OrderItemStatus }}
+            <br />
+            <b><a href="#/PrintOrder/{{orders.OrderId}}">Print Order</a></b>
+            <br />
+            <select class="selectpicker" ng-options="orderStatus.id as orderStatus.name for orderStatus in OrderStatusList"
+                    ng-model="orders.OrderItemStatusId" ng-change="changeOrderStatus(orders)"></select>
+
+        </td>
+        <td data-title="'PaymentMethod '" sortable="'PaymentMethodString'" filter="{ 'PaymentMethodString' : 'text' }">
+            {{orders.PaymentMethodString}}
+
+        </td>
+        </tr>
+</table>
+
+<!--<div class="col-md-3"></div>
+<div class="col-md-6">
+    <ul class="pagination">
+        <li ng-repeat="pages in pageButtonList ">
+            <button id="{{pages}}" class="btn btn-primary" data="{{pages}}" data- ng-click="GetOrdersPage($event);">{{pages}}</button>
+        </li>
+
+    </ul>
+
+</div>
+<div class="col-md-3"></div>-->
+   
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 pagination-div" ng-show="showOrders">
+        <ul class=" pagination" ng-if="pagenumbers==0">
+        <li>
+
+        </li>
+        </ul>
+        <ul class="pagination" ng-if="pagenumbers>=1 && pagenumbers<=4">
+            <li ng-repeat="n in pageButtonList" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a >{{n+1}}</a>
+            </li>
+        </ul>
+
+        <ul class="pagination" ng-if="pagenumbers>=5">
+            <li ng-class="DisablePrevPage()">
+                <a  ng-click="prevPage()">« Prev</a>
+            </li>
+            <li ng-repeat="n in pageButtonList" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a>{{n+1}}</a>
+            </li>
+            <li ng-class="DisableNextPage()">
+                <a  ng-click="nextPage()">Next »</a>
+
+            </li>
+        </ul>
+
+
+    </div>
+    <div class="col-md-2"></div>
+</div>

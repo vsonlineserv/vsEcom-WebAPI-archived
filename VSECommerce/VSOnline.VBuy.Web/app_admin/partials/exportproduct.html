@@ -1,0 +1,204 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+
+<script>
+           $(function () {
+               var date = new Date();
+               var currentMonth = date.getMonth();
+               var currentDate = date.getDate();
+               var currentYear = date.getFullYear();
+	    $("#txtFrDate").datepicker(
+
+	                 { dateFormat: ' yy-mm-dd',
+	                   showAnim: 'slide',
+	                   changeMonth: true,
+	                   changeYear: true,
+	                   yearRange: '1990:2020',
+	                   maxDate: new Date(currentYear, currentMonth, currentDate)
+
+	                }
+	                );
+
+	});
+
+           $(function () {
+               var date = new Date();
+               var currentMonth = date.getMonth();
+               var currentDate = date.getDate();
+               var currentYear = date.getFullYear();
+
+	    $("#txtToDate").datepicker(
+	                 {
+	                     dateFormat: 'yy-mm-dd',
+	                     showAnim: 'slide',
+	                     changeMonth: true,
+	                     changeYear: true,
+	                     yearRange: '1990:2020',
+	                     maxDate: new Date(currentYear, currentMonth, currentDate)
+
+	                 }
+	                );
+           });
+
+
+
+
+</script>
+    <div class="panel panel-default" style="margin-top: 5px; margin-bottom: 5px;">
+        <div class="panel-heading">
+            <div class="panel-title"> <label for="recipient-name" class="control-label" style="margin-left:35%">Export Product</label>  </div>
+
+        </div>
+        <div class="panel-body panel-min-height">
+
+
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-1"> <label for="message-text" class="control-label" style="margin-right: 10px;">Category</label></div>
+                <div class="col-md-3">
+                    <select id="ddlcateId" class="select2-search--dropdown" style="width:100%" data-placeholder="Choose....."></select>
+                </div>
+                <div class="col-md-2"><label for="message-text" class="control-label" style="margin-right: 10px;">SubCategory</label> </div>
+                <div class="col-md-3">
+                    <select id="ddlSubId" class="select2-search--dropdown" style="width:100%" data-placeholder="Choose....."></select>
+                </div>
+                <div class="col-md-2"> <label for="message-text" class="control-label" style="margin-right: 10px;">Published</label><input type="checkbox" id="publishproduct" /> </div>
+
+
+                <div class="col-md-0"><button type="button" class="btn btn-primary" ng-click="SearchCategorySubcat()">Search</button></div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+            </div>
+
+
+            <div class="row" style="margin-bottom: 4px;">
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" ng-click="ShowColmnTochoose();" id="ExcelData">
+                        Export To Excel
+                    </button>
+                </div>
+            </div>
+
+            <div class="row" style="margin-left: 1px;" id="CateGridData">
+                <table id="CateGrid"></table>
+                <div id="CatePager"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="modal fade" id="SuCateProductList" role="dialog" aria-labelledby="exampleModalLabel">
+
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="seller">Sub Category Product Details List</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3" style="margin-bottom: 2px;">
+                        <button type="button" class="btn btn-primary" ng-click="SubCateShowColmnTochoose();">
+                            Export To Excel
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="row" id="ExcelDataGrid">
+                    <div><input type="text" value="" id="catid" /><input type="text" value="" id="parid" /></div>
+                    <table id="SubCategoryProductList"></table>
+
+                    <div id="SubCategoryProductPager"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="modal fade" id="ExcelOrderData" role="dialog" aria-labelledby="exampleModalLabel">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ExcelList">Choose Column For Excel Data</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">Choose Data </label></div>
+                    <div class="col-md-4">
+                        <select id="ColumnValue" onchange="SelectColumnData()" multiple="multiple" style="width:118%"></select>
+                    </div>
+                    <div class="col-md-4" style="margin-left:10px">
+                        <select id="AppendValue" onchange="AppendData()" multiple="multiple" style="width:118%"></select>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="CateDetailsExcelData();">ExportAllData</button>
+                    <button type="button" class="btn btn-primary" ng-click="GenerateDataForSeleColumn();">GenerateExcel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="ProductExcelOrderData" role="dialog" aria-labelledby="exampleModalLabel">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ProductExcelList">Choose Column For Excel Data</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">Choose Data </label></div>
+                    <div class="col-md-4">
+                        <select id="ProductColumnValue" onchange="SelectProductColumnData()" multiple="multiple" style="width:118%"></select>
+                    </div>
+                    <div class="col-md-4" style="margin-left:10px">
+                        <select id="ProductAppendValue" onchange="AppendProductData()" multiple="multiple" style="width:118%"></select>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="ProductDetailsExcelData();">ExportAllData</button>
+                    <button type="button" class="btn btn-primary" ng-click="GenerateProductForSeleColumn();">GenerateExcel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

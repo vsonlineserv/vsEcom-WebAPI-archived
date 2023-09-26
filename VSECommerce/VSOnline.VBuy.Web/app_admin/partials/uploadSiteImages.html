@@ -1,0 +1,128 @@
+﻿    <div class="panel panel-default" style="margin-top: 5px; margin-bottom: 5px;">
+
+        <div class="panel-heading">
+            <div class="panel-title"> <label for="recipient-name" class="control-label" style="margin-left:35%"> Upload Images</label>  </div>
+
+        </div>
+        <div class="panel-body panel-min-height">
+            <div class="col-md-3">
+                <label class="control-label">Home Banner and Top Offers</label>
+            </div>
+            <div class="col-md-7">
+
+                <input type="file" accept="image/*" class="upload-file form-control" data-max-size="256" nv-file-select="" uploader="uploaderHomeBanner" multiple />
+                <div>
+                    <span class="fontverysmall">Upload HomeBanners, TopOffer Images (HomeBanner1.Jpg...up to HomeBanner4.jpg. Or TopOffers.jpg)</span>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-success btn-s" ng-click="uploaderHomeBanner.uploadAll()" ng-disabled="!uploaderHomeBanner.getNotUploadedItems().length" disabled>
+                        <span class="glyphicon glyphicon-upload"></span> Upload all
+                    </button>
+                    <button type="button" class="btn btn-warning btn-s" ng-click="uploaderHomeBanner.cancelAll()" ng-disabled="!uploaderHomeBanner.isUploading" disabled>
+                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                    </button>
+                    <button type="button" class="btn btn-danger btn-s" ng-click="uploaderHomeBanner.clearQueue()" ng-disabled="!uploaderHomeBanner.queue.length" disabled>
+                        <span class="glyphicon glyphicon-trash"></span> Remove all
+                    </button>
+                </div>
+                <div>Upload Progress</div>
+                <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploaderHomeBanner.progress + '%' }" style="width: 0%;"></div>
+                </div>
+                <div class="col-md-5" style="margin-bottom: 40px">
+                    <table class="table">
+                        <tr>
+                            <td width="25%">Name</td>
+                            <td ng-show="uploaderHomeBanner.isHTML5">Size</td>
+                            <td ng-show="uploaderHomeBanner.isHTML5">Progress</td>
+                            <td>Status</td>
+                            <td>Actions</td>
+                        </tr>
+                        <tr ng-repeat="item in uploaderHomeBanner.queue">
+                            <td><strong>{{ item.file.name }}</strong></td>
+                            <td ng-show="uploaderHomeBanner.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB
+                            <td ng-show="uploaderHomeBanner.isHTML5">
+                                <div class="progress" style="margin-bottom: 0;">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                </div>
+
+                            <td class="text-center">
+                                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i>Success</span>
+                                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i>Cancel</span>
+                                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i>Error</span>
+
+                            <td nowrap>
+                                <button type="button" class="btn btn-success btn-xs" data-ng-click="item.upload('')"
+                                        ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                                <button type="button" class="btn btn-warning btn-xs" data-ng-click="item.cancel()"
+                                        ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs" data-ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br class="clear" />
+            </div>
+
+            <br class="clear" />
+            <hr />
+            <br class="clear" />
+            <div class="col-md-3">
+                <label class="control-label">Menu Category Images</label>
+            </div>
+            <div class="col-md-7">
+
+                <input type="file" accept="image/*" class="upload-file form-control" data-max-size="256" nv-file-select="" uploader="uploaderCategoryImage" />
+                <div>Upload Progress</div>
+                <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploaderCategoryImage.progress + '%' }" style="width: 0%;"></div>
+                </div>
+                <div class="col-md-5" style="margin-bottom: 40px">
+                    <table class="table">
+                        <tr>
+                            <td width="25%">Name</td>
+                            <td ng-show="uploaderCategoryImage.isHTML5">Size</td>
+                            <td ng-show="uploaderCategoryImage.isHTML5">Progress</td>
+                            <td>Status</td>
+                            <td>Actions</td>
+                        </tr>
+                        <tr ng-repeat="item in uploaderCategoryImage.queue">
+                            <td><strong>{{ item.file.name }}</strong></td>
+                            <td ng-show="uploaderCategoryImage.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB
+                            <td ng-show="uploaderCategoryImage.isHTML5">
+                                <div class="progress" style="margin-bottom: 0;">
+                                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                </div>
+
+                            <td class="text-center">
+                                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i>Success</span>
+                                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i>Cancel</span>
+                                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i>Error</span>
+
+                            <td nowrap>
+                                <button type="button" class="btn btn-success btn-xs" data-ng-click="item.upload()"
+                                        ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload
+                                </button>
+                                <button type="button" class="btn btn-warning btn-xs" data-ng-click="item.cancel()"
+                                        ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs" data-ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br class="clear" />
+            </div>
+        </div>
+
+    </div>

@@ -1,0 +1,283 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+-->
+
+<!DOCTYPE html>
+
+<html data-ng-app="VBuyRetailerApp">
+<head>
+    <title>
+        VBuy.in for Retailers. Add your local stores pricing of Mobiles, Laptops,
+        AC, TV, Jewels, Fashion, Clothing, Sweets and anything in Chennai, Tamilnadu, or anywhere in India | VBuy.in
+    </title>
+
+    <meta charset="utf-8">
+
+    <meta name="Keywords" content="Local Shopping, VBuy.in, Online Shopping, Chennai Shopping , VS Online Services Pvt Ltd, We Serve Online" />
+    <meta name="Description" content="Research Online Buy Offline using VBuy.in. Compare product price near your area
+          using VBuy.in map search anywhere within India." />
+
+    <meta property="og:url" content="http://www.vbuy.in/Retailer.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="VBuy.in for Retailers | Powered By VSECommerce. Add your local stores pricing of Mobiles, Laptops,
+        AC, TV, Jewels, Fashion, Clothing, Sweets and anything in Chennai, Tamilnadu, or anywhere in India | VBuy.in" />
+    <meta property="og:description" content="Research Online Buy Offline using VBuy.in. Find local stores pricing of products near your area using VBuy.in map, search anywhere within India." />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Image.png" />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Image2.png" />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Image3.png" />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Retailer1.png" />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Retailer2.png" />
+
+    <link rel="icon"
+          type="image/icon"
+          href="Content/images/VBuyIco_32.png">
+
+
+    <link href="Content/app/css/bootstrap.css" rel="stylesheet" />
+    <link href="Content/app/css/font-awesome.css" rel="stylesheet" />
+    <link href="Content/app/css/bootstrap-social.css" rel="stylesheet" />
+
+
+    <link href="Content/app/css/styles.css" rel="stylesheet" />
+    <link href="Content/app/css/login.css" rel="stylesheet" />
+    <link href="Content/app/css/menustyle.css" rel="stylesheet" />
+    <link href="Content/app/css/others.css" rel="stylesheet" />
+    <link href="Content/loading-bar.min.css" rel="stylesheet" />
+    <link href="Content/app/css/Orders.css" rel="stylesheet" />
+
+    <script data-cfasync="false" src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- Vendor Libs: jQuery only used for Bootstrap functionality -->
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/angular-strap.min.js"></script>
+    <script src="Scripts/angular-strap.tpl.min.js"></script>
+    <script src="Scripts/angular-local-storage.min.js"></script>
+    <script src="Scripts/ng-table.js"></script>
+
+    <script src="Scripts/angular-cookies.min.js"></script>
+
+    <script src="Scripts/angular-file-upload.js"></script>
+    <script src="Scripts/loading-bar.js"></script>
+    <script src="Scripts/plugins.js"></script>
+
+    <!-- UI Libs -->
+    <link href="angular-chart/angular-chart.css" rel="stylesheet" />
+    <script src="angular-chart/Chart.js"></script>
+    <script src="angular-chart/angular-chart.js"></script>
+    <!-- App libs -->
+    <script src="app_retailer/retailerapp.js"></script>
+    <script src="app_retailer/controllers/controllers.js"></script>
+    <script src="app_retailer/controllers/loginController.js"></script>
+    <script src="app_retailer/controllers/editProductController.js"></script>
+    <script src="app_retailer/controllers/storesController.js"></script>
+    <script src="app_retailer/controllers/ordersController.js"></script>
+    <script src="app_retailer/controllers/forgotPasswordController.js"></script>
+    <script src="app_retailer/controllers/resetPasswordController.js"></script>
+
+    <script src="app_retailer/services/ordersService.js"></script>
+    <script src="app_retailer/services/retailerServicenew.js"></script>
+    <script src="app_retailer/services/productService.js"></script>
+    <script src="app_retailer/services/storesService.js"></script>
+    <script src="app_retailer/services/passwordService.js"></script>
+    <script src="app_retailer/services/authService.js"></script>
+    <script src="app_retailer/services/authInterceptorService.js"></script>
+
+    <script src="app_retailer/directives/directives.js"></script>
+
+
+    <!-- PRODUCTION ENVIRONMENT-->
+    <!--<link href="Content/app/css/bootstrap.css" rel="stylesheet" />
+    <link href="Content/app/css/font-awesome.css" rel="stylesheet" />
+    <link href="Content/app/css/bootstrap-social.css" rel="stylesheet" />
+    <link href="Content/app/css/app.min.css" rel="stylesheet" />
+    <script data-cfasync="false" src="https://maps.googleapis.com/maps/api/js"></script>
+    <!--<script src="Scripts/MergedRetailerscripts.js"></script>-->
+    <!-- UI Libs PRODUCTION -->
+    <!--<link href="angular-chart/angular-chart.css" rel="stylesheet" />
+    <script src="angular-chart/Chart.js"></script>
+    <script src="angular-chart/angular-chart.js"></script>-->
+    <!--<script src="Scripts/bootstrap.min.js"></script> -->
+    <!--<script src="Scripts/plugins.js"></script>-->
+    <!-- App libs PRODUCTION-->
+    <!--<script src="app_retailer/retailerapp.js"></script>
+    <script src="app_retailer/directives/directives.js"></script>
+    <script src="app_retailer/services/retailerServices.min.js"></script>
+    <script src="app_retailer/controllers/retailercontroller.min.js"></script>-->
+
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57161897-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body class="bodySeller" data-ng-controller="LandingController">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="topnav">
+                <div class="container rightbar">
+                    <a class="retailerNavtext" data-ng-if=!$root.flagLoggedIn href="Retailer.html#/Register">Register</a>
+                    <a class="retailerNavtext" data-ng-if=!$root.flagLoggedIn href="Retailer.html#/Login">Login</a>
+                    <span data-ng-if=$root.flagLoggedIn class="dropdown">
+                        <a href="" class="headerlistdropdown dropdown-toggle" type="button" id="userAccountDropDown" data-toggle="dropdown" aria-expanded="true">
+                            <span class="headerlistdropdown" data-ng-if=$root.flagLoggedIn ng-bind="$root.curUserDisplayName"></span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-left text-align-left margin-left-50" role="menu" aria-labelledby="userAccountDropDown">
+                            <li role="presentation"><a class="headerlistdropdown" role="menuitem" href="Retailer.html#/MyDetails">My Profile</a></li>
+                            <li role="presentation"><a class="headerlistdropdown" role="menuitem" href="Retailer.html#/ChangePassword">Change Password</a></li>
+                            <li role="presentation"><a class="headerlistdropdown" role="menuitem" href="Retailer.html#/mystore">Store Details</a></li>
+                            <li><hr /></li>
+                            <li role="presentation"><a class="headerlistdropdown" role="menuitem" tabindex="-1" data-ng-if=$root.flagLoggedIn href="" data-ng-click="LogOut();">Logout</a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <a class="navBrand" href="">
+                            <img src="Content/images/VBuyLogo.png" alt=" VBuy.in logo">
+                        </a>
+                    </div>
+                    <div class="col-xs-10">
+                        <div class=" col-xs-6 headercontent">
+                            <span ng-bind="$root.StoreName | limitTo:60"></span>
+                        </div>
+                        <div class="col-xs-6 filter-control" ng-if="$root.StoreName.length>0">
+                            <div class="filter-label"> Branch</div>
+                            <select class="selectpicker"
+                                    ng-options="branch.BranchId as branch.BranchName for branch in RetailerInfo.Branches"
+                                    ng-model="filters.selectedBranchId" placeholder="Select Branch" ng-change="onBranchChange()">
+                                <span class="caret"></span>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container containerbgcolor">
+        <div class="navbar" data-ng-if=$root.flagLoggedIn>
+            <div class="navbar-inner-seller">
+                <div class="container">
+                    <ul class="nav navbar-nav" data-ng-if=$root.flagLoggedIn>
+                        <li>
+                            <a href="Retailer.html#/Dashboard"><i class="glyphicon glyphicon-home"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="" data-toggle="dropdown" class="dropdown-toggle"> <i class="glyphicon glyphicon-barcode"></i> Product Catalog<b class="caret"></b></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li>
+                                    <a href="Retailer.html#/productlookup">Product Lookup</a>
+                                </li>
+                                <li>
+                                    <a href="Retailer.html#/newProduct">New Product</a>
+                                </li>
+                                <li>
+                                    <a href="Retailer.html#/UploadBulkProducts">Bulk Upload Product</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="Retailer.html#/pricing"> <i class="glyphicon glyphicon-tags"></i>  Pricing</a>
+                        </li>
+                        <li>
+                            <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="glyphicon glyphicon-shopping-cart"></i> Orders <b class="caret"></b></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li>
+                                    <a href="Retailer.html#/myOrders">Order Details</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="Retailer.html#/inbox"> <i class="glyphicon glyphicon-envelope"></i> Inbox</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div data-ng-view></div>
+    </div>
+    <br style="clear:both" />
+    <div id="footer" class="footerSection">
+        <div class="col-sm-2 fontfooter"><a href="PolicyTerms">Terms and Conditions</a></div>
+        <div class="col-sm-1 fontfooter"><a href="PolicyPrivacy">Privacy Policy</a></div>
+        <div class="col-sm-1 fontfooter"><a href="PolicySeller">Seller Policy</a></div>
+        <div class="col-sm-2 fontfooter"><a href="mda">Marketing and Distribution Agreement</a></div>
+        <br />
+        <div class="aboutVBuyFooter">
+            <hr />
+            VBuy.in is India's only online site for Local Shopping. Our VBuy.in is Software as a Service platform, exclusively for local brick and mortar store and small business owners.
+            Opening an Online store for each brick and mortar store, needs huge initial investment with additional operational cost and maintenance cost.
+            Also, consumers don't get time to visit all sites for each of the products they need to buy.
+
+            Our goal is to increase sales for retailers, locally owned business through VBuy.in platform and amazing shopping experience for buyers.
+            Our experts, can guide local retailers and shoppers a better decision making using our Business Intelligence insights.
+
+            VBuy.in is a local shopping mall for any local business like Stores, Jewellery, Salon, SPA, Healthcare products.VBuy.in is not involved in directly selling products and not affiliated/subsidiary of any retail store. We are not e-retailers or even retailers. We Serve Online, for
+            any neighbourhood store , there by serving the consumers and the retailers/business owners in local area.
+
+            VBuy.in is a product of VS Online Services Private Limited, a technology company passionate about technology and like to engage with businesses which are equally passionate.
+
+            Take great pride in shopping locally and be a part of locally-owned business growth.
+        </div>
+        <h3><a target="_blank" href="http://www.makeinindia.gov.in/">#MakeInIndia</a></h3>
+
+        <div>
+            <div class="navbar-inner">
+                <footer>
+                    <div>
+                        <div class="col-sm-1 fontfooter">
+
+                        </div>
+                        <div class="col-sm-1 fontfooter">
+                            <a href="{{ApplicationHosting}}">VBuy.in</a>
+                        </div>
+                        <div class="col-sm-1 fontfooter">
+                            <a href="http://www.vsonline.in/ourteam.html" target="_blank">About Us</a>
+                        </div>
+                        <div class="col-sm-2 fontfooter">
+                            <a href="PolicyTerms">Terms and Conditions</a>
+                        </div>
+                        <div class="col-sm-4 fontfooter">
+                            help us to serve you better!. mail to <a href="mailto:info@vbuy.in">info@VBuy.in</a>
+                        </div>
+                        <span class="fontfooter">
+                            <a href="http://www.vsonline.in">
+                                Copyright © 2014-2015 VS Online Services Pvt ltd. All Rights Reserved.
+                            </a>
+                        </span>
+                        <div class="col-sm-12 fontverysmall">
+                            Designated trademarks and brands are the properties of their respective owners
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

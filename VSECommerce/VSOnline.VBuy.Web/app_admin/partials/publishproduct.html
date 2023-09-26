@@ -1,0 +1,39 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Publish Product </span>
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+        <div class="row">
+            <table id="unPublishgrid"></table>
+            <div id="unPublishPager"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> <button type="button" class="btn btn-primary" ng-click="publishProduct();" style="border-radius:30px; margin-top:10px;">Publish</button></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+        </div>
+
+
+
+        <div class="row" style="margin-top:2%;margin-left:1%">
+            <table id="PublishCatgrid"></table>
+            <div id="PublishCatPager"></div>
+        </div>
+    </div>
+
+</div>

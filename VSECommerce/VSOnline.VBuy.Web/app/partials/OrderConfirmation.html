@@ -1,0 +1,155 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+
+<div class="container containerbgcolor">
+
+    <div class="col-sm-8" style="">
+        <strong>Thank you for your order!</strong>
+        <span class="orderconfirmation-heading">
+            You will get confirmation email and SMS shortly.
+        </span>
+        <br />
+        <button onclick="window.print();">Print</button>
+    </div>
+    <br class="clear" />
+    <hr />
+    <br class="clear" />
+    <div class="orders">
+        <span class="orderconfirmation-Number">
+            Your Order No. : {{orderConfirmation.OrderDetails.Id}}
+        </span>
+        <br class="clear" />
+        Order Placed On : {{orderConfirmationDate | date:'EEE, d MMMM yyyy h:mm a'}}
+    </div>
+    <header class="compareDropDownHeader">
+        ORDER CONFIRMATION <span class="glyphicon glyphicon-shopping-cart"></span>
+    </header>
+
+    <table class="table-bordered" width="100%">
+        <tr>
+            <td width="10%"></td>
+            <td width="30%" align="center">
+                Product
+            </td>
+            <td width="10%" align="center">
+                <strong> QTY </strong>
+            </td>
+            <td width="15%" align="center">
+                <strong>UNIT PRICE</strong>
+            </td>
+            <td width="15%" align="center">
+                <strong>SUB TOTAL</strong>
+            </td>
+        </tr>
+        <tr data-ng-repeat="orderedItem in orderConfirmation.OrderItemDetails">
+            <td width="10%">
+                <img class="imgsmallthumbnail" id="img_{{orderedItem.ProductId}}" src="{{imageUrlBaseSmall}}{{orderedItem.PictureName}}"
+                     alt="{{orderedItem.PictureName}}" />
+            </td>
+            <td width="30%">
+                <span class="greenText " ng-bind="orderedItem.Name"></span>
+                <br />
+                <span class="minorinfofont">Store: </span><span class="comparedropdowntext padding-5" ng-bind="orderedItem.Branch"></span>
+                <span class="minorinfofont" ng-show="orderedItem.SelectedSize.length>0">
+                    / Size : (<span class="comparedropdowntext padding-5" ng-bind="orderedItem.SelectedSize"></span>)
+                </span>
+            </td>
+            <td>
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <span class="greenText " ng-bind="orderedItem.Quantity"></span>
+                    </div>
+                </div>
+            </td>
+            <td align="right">
+                <strong><span class="padding-5 greenText" ng-bind="orderedItem.UnitPrice | currency:' &#8377;'"></span> </strong>
+            </td>
+            <td align="right">
+                <strong><span class="padding-5 greenText" ng-bind="orderedItem.Price | currency:' &#8377;'"></span></strong>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <table width="100%">
+            <tr>
+                <td width="20%"></td>
+                <td width="20%"></td>
+                <td width="20%" class="text-right">
+                    <h4><strong>Order Total</strong></h4>
+                </td>
+                <td width="20%" class="text-right">
+                    <h4> <strong><span ng-bind="orderConfirmation.OrderDetails.OrderSubtotalInclTax | currency:' &#8377;'"></span></strong></h4>
+                </td>
+            </tr>
+            <tr>
+                <td width="20%"></td>
+                <td width="20%"></td>
+                <td width="20%" class="text-right">
+                    <h6><strong>Shipping</strong></h6>
+                </td>
+                <td width="20%" class="text-right">
+                    <h6> <strong><span ng-bind="orderConfirmation.OrderDetails.OrderShippingCharges | currency:' &#8377;'"></span></strong></h6>
+                </td>
+
+            </tr>
+            <tr>
+                <td width="20%"></td>
+                <td width="20%" class="text-right"></td>
+                <td width="20%" class="text-right">
+
+                    <h6><strong>Coupon Discount</strong></h6>
+                </td>
+                <td width="20%" class="text-right">
+                    <h6> <strong><span ng-bind="orderConfirmation.OrderDetails.OrderDiscount | currency:' &#8377;'"></span></strong></h6>
+                </td>
+
+            </tr>
+            <tr>
+                <td width="20%"></td>
+                <td width="20%"></td>
+                <td width="20%" class="text-right">
+                    <h3><strong>Net Payable</strong></h3>
+                </td>
+                <td width="20%" class="text-right">
+                    <h3> <strong><span ng-bind="(orderConfirmation.OrderDetails.OrderTotal)| currency:' &#8377;'"></span></strong></h3>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <br class="clear" />
+        <span class="compareDropDownHeader"> Customer Information</span>
+        <br class="clear" />
+        <br />
+        <span>Name:- {{orderConfirmation.CustomerName}}</span><br />
+        <span>Email :- {{orderConfirmation.CustomerEmail}}</span>
+        <br />
+    </div>
+    <div class="col-sm-4">
+        <br class="clear" />
+        <span class="compareDropDownHeader"> Shipping Information</span>
+        <br class="clear" />
+        <br />
+        <span>
+            {{orderConfirmation.ShippingAddress.Address1}}
+        </span>
+        <br />
+        <span>{{orderConfirmation.ShippingAddress.Address2}}</span>
+        <br />
+        <span>{{orderConfirmation.ShippingAddress.City}}</span><br />
+        <span>{{orderConfirmation.ShippingAddress.State}}</span><br />
+        <span>Pincode: {{orderConfirmation.ShippingAddress.PostalCode}}</span><br />
+        <span>Phone  :{{orderConfirmation.ShippingAddress.PhoneNumber}}</span> <br />
+
+    </div>
+
+    <span class="minorinfofont">Shipping details and order details will be mailed and also can be tracked in track order section</span>
+
+</div>

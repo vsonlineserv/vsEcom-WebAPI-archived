@@ -1,0 +1,128 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Site Discount </span>
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+        <div class="col-md-3"><div class="col-md-10"><input type="text" class="form-control" id="txtName" placeholder="Name" /></div><span>OR</span></div>
+        <div class="col-md-3"><div class="col-md-10"><input type="text" class="form-control" id="txtCouponCode" placeholder="CouponCode" /></div><span>OR</span></div>
+        <div class="col-md-2"> <div class="col-md-10"> <input type="text" class="form-control" id="txtStatus" placeholder="Status" /></div></div>
+        <div class="col-md-1"> <button type="button" class="btn btn-primary" ng-click="searchDiscount();">Search</button></div>
+        <div class="col-md-1"> <button type="button" class="btn btn-primary" ng-click="DiscountClear();">Clear</button></div>
+
+        <div class=" row">
+            <span id="Required" style="color:red"></span>
+        </div>
+
+        <div class="row" style="margin-bottom:5px;">
+            <div class="col-md-3"><button type="button" class="btn btn-primary" ng-click="NewDiscountDetails()">AddNew</button></div>
+        </div>
+        <div class="row" style="margin-left: 2px;">
+            <table id="DiscountGrid"></table>
+            <div id="DiscountPager"></div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="DiscountDetails" role="dialog" aria-labelledby="exampleModalLabel">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="discount">Discount Details</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class=" row" style="margin-left: 230px">
+                    <div class="col-md-0">     <span id="DiscountRequiredfield" style="color:red"></span></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">Id</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtDisId" disabled="disabled" placeholder=" Id" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">Name</label><label style="color:red">*</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtDiName" placeholder="Name" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">DiscountTypeId</label><label style="color:red">*</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtDisTyId" placeholder="DiscountTypeId" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">UsePercentage</label></div>
+                    <div class="col-md-6">  <input type="checkbox" class="form-control" id="txtUsePer" /> </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">DiscountPercentage</label><label style="color:red">*</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtDisPer" placeholder="DiscountPercentage" /></div>
+                </div>
+
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">DiscountAmount</label><label style="color:red">*</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtDisAmt" placeholder="DiscountAmount" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">StartDate</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtStartDate" placeholder="StartDate" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">EndDate</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtEndDate" placeholder="EndDate" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">RequiresCouponCode</label></div>
+                    <div class="col-md-6">  <input type="checkbox" class="form-control" id="txtResCoupCode" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">CouponCode</label><label style="color:red">*</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtCoupCode" placeholder="CouponCode" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">MinOrderValue</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtMinOderValue" placeholder="MinimumOrderValue" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">MaxDiscountAmount</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtMaxDisAmt" placeholder="MaximumDiscountAmount" /></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="ModifyDiscountDetails();">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

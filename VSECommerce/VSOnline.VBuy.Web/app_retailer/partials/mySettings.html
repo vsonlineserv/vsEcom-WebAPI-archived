@@ -1,0 +1,93 @@
+﻿<h4>My Details</h4>
+
+<form>
+    <table width="70%" align="center">
+
+        <tr>
+            <td colspan=3><font size=3><center><b>Edit Your Settings</b></center>
+        </tr>
+
+        <tr>
+            <td>First Name:<br /></td>
+            <td><input type="text" size=25 maxlength=20 data-ng-model="user.FirstName" required autofocus placeholder="First Name" name="firstName"></td>
+            <td>Last Name:<br /></td>
+            <td><input type="text" size=25 maxlength=20 data-ng-model="user.LastName" placeholder="Last Name" name="lastName"></td>
+        </tr>
+        <tr>
+            <td>Business Name:<br /></td>
+            <td><input type="text" size=25 maxlength=20 data-ng-model="user.BusinessName" required placeholder="Business Name" name="businessName"></td>
+        </tr>
+        <tr>
+            <td width="30%">Email :<br /></td>
+            <td><input type="text" size=25 maxlength=20 data-ng-model="user.Email" required name="email"></td>
+        </tr>
+        <tr>
+            <td width="30%">Password:<br /></td>
+            <td><input type="password" size=25 maxlength=20 data-ng-model="user.Password" required name="password"></td>
+        </tr>
+        <tr>
+            <td width="30%">Confirm Password :<br /></td>
+            <td><input type="password" size=25 maxlength=20 data-ng-model="user.ConfirmPassword" required name="confirmpassword"></td>
+        </tr>
+
+        <tr>
+            <td width="30">Adress 1:<br /></td>
+            <td><input type="text" size=25 maxlength=50 data-ng-model="user.Address1" name="address1"></td>
+        </tr>
+        <tr>
+            <td width="30">Adress 2:<br /></td>
+            <td><input type="text" size=25 maxlength=50 data-ng-model="user.Address2" name="address2"></td>
+        </tr>
+
+        <tr>
+            <td width="30">City:<br /></td>
+            <td><input type="text" size=25 maxlength=50 data-ng-model="user.City" name="city"></td>
+        </tr>
+        <tr>
+            <td width="30">Pincode:<br /></td>
+            <td><input type="text" size=25 maxlength=6 data-ng-model="user.Pincode" name="pincode"></td>
+        </tr>
+        <tr>
+            <td width="30" valign="middle">Select State :</td>
+            <td>
+                <select name="" data-ng-model="user.State" onchange="">
+                    <option selected="selected" value="">---Select---</option>
+                    <option value="TamilNadu">TamilNadu</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="30" valign="middle">Select Country :</td>
+            <td>
+                <select name="" data-ng-model="user.Country" onchange="">
+                    <option selected="selected" value="">---Select---</option>
+                    <option value="INDIA">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="AUSTRALIA">AUSTRALIA</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="30%">Phone no:<br /></td>
+            <td><input type="text" data-ng-model="user.PhoneNumber1" size=25 maxlength=10></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button class="btn btn-sm btn-info" type="submit" data-ng-click="RegisterRetailer()">Register</button>
+                <button class="btn btn-sm btn-info" type="Reset">Reset</button>
+            </td>
+        </tr>
+
+    </table>
+    <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+        {{message}}
+    </div>
+</form>
+    By clicking "Register" I agree that:
+    I have read and accepted the User Agreement and Privacy Policy.
+    I may receive communications from Vbuy.in and can change my notification preferences in Vbuy.in
+    I am at least 18 years old.

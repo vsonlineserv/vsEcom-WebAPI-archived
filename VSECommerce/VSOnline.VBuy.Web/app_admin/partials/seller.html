@@ -1,0 +1,155 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Seller Details </span>
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+        <div class=" row">
+            <div class="col-md-2" style="padding-left: 0px; padding-right: 0px;">
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="txtStoreId" placeholder="Store Id" ng-blur="checkStoreId();" ng-keypress="CheckStoreId($event);" />
+                </div>
+                <span>OR</span>
+            </div>
+            <div class="col-md-2" style="padding-left: 0px; padding-right: 0px;">
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="txtBranchId" placeholder="Branch Id" ng-blur="checkBranchId();" ng-keypress="CheckBranchId($event);" />
+                </div>
+                <span>OR</span>
+            </div>
+            <div class="col-md-3" style="padding-left: 0px; padding-right: 0px;">
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="txtStoreName" placeholder="Store Name" ng-blur="checkStoreName();" />
+                </div>
+                <span>OR</span>
+            </div>
+            <div class="col-md-3" style="padding-left: 0px; padding-right: 0px;">
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="txtBranchName" placeholder="Branch Name" ng-blur="checkBranchName();" />
+                </div>
+            </div>
+            <div class="col-md-1" style="padding-left: 0px; padding-right: 0px;">
+                <button type="button" class="btn btn-primary" ng-click="searchStore();">Search</button>
+            </div>
+            <div class="col-md-1" style="padding-left: 0px; padding-right: 0px;">
+                <button type="button" class="btn btn-primary" ng-click="StoreClear();">Clear</button>
+            </div>
+        </div>
+        <span id="required" style="color: red"></span>
+
+        <br class="clear"/>
+            <table id="storegrid"></table>
+            <div id="storePager"></div>
+        </div>
+
+<div class="modal fade" id="editStore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="StoreModel">Branch Details</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class=" row" style="margin-left: 230px">
+                    <div class="col-md-0">     <span id="SellerBranchRequiredfield" style="color:red"></span></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">Branch Id</label></div>
+                    <div class="col-md-8"> <input type="text" class="form-control" id="txtBranchid" disabled="disabled" placeholder="Branch Id" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">Branch Name</label><label style="color:red">*</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtBrnchName" placeholder="Branch Name" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4">  <label for="message-text" class="control-label">Address1</label></div>
+                    <div class="col-md-8">   <textarea class="form-control" id="txtAddress1"></textarea></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4">  <label for="message-text" class="control-label">Address2</label></div>
+                    <div class="col-md-8"><textarea class="form-control" id="txtAddress2"></textarea></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">Pin Code</label><label style="color:red">*</label></div>
+                    <div class="col-md-8">  <input type="text" maxlength="6" class="form-control" id="txtPincode" placeholder="Pin Code" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">Phone Number</label><label style="color:red">*</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtPhoneNumber" placeholder="Phone Number" /></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"> <label for="message-text" class="control-label">Latitude</label></div>
+                    <div class="col-md-8">    <input type="text" class="form-control" id="txtLatitude" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">  <label for="message-text" class="control-label">Longitude</label></div>
+                    <div class="col-md-8"><input type="text" class="form-control" id="txtLongitude" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">  <label for="message-text" class="control-label">All Locations</label></div>
+                    <div class="col-md-2"> <input type="checkbox" class="form-control" id="chkNoLocation" /></div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-4">  <label for="message-text" class="control-label">Buy Option</label></div>
+                    <div class="col-md-2">
+                        <input type="checkbox" class="form-control" id="txtBuyEnable" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="ModifyStore();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editStoreName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="EditStoreModel">Store Details</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <div class=" row" style="margin-left: 230px">
+                    <div class="col-md-0">     <span id="SellerRequiredfield" style="color:red"></span></div>
+                </div>
+
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label for="recipient-name" class="control-label">Store Id</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtEditstoreid" disabled="disabled" placeholder="Store Id" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"> <label for="recipient-name" class="control-label">Store Name</label><label style="color:red">*</label></div>
+                    <div class="col-md-8"> <input type="text" class="form-control" id="txtEditstorename" placeholder="Store Name" /></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="ModifyStoreName();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+
+</div>

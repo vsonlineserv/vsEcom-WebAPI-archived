@@ -1,0 +1,55 @@
+﻿<div>
+    <p> 
+     <b>
+         <span class="greenText">
+             People are using all electronic devices like mobiles, tablets, computers, laptops for browsing products like never before.
+             VBuy.in puts your store in front of those shoppers, giving you new way to reach people looking to shop in your
+             local area. Registration free for limited period only.
+         </span>
+    </b>
+    </p>
+
+    <br />
+    <div class="col-sm-6">                
+        <img class="col-sm-11" src="Content/images/RetailerApp/retailer_login.jpg" alt="Grow Your Sales" />        
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Seller Login</h4>
+            </div>
+            <form class="form-horizontal">
+                <br />
+                <div class="form-group">
+                    <label for="email" class="col-xs-3 control-label">Email</label>
+                    <div class="col-xs-7">
+                        <input type="email" class="form-control" size=25 maxlength=100 data-ng-model="loginData.userName" placeholder="Email" id="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-xs-3 control-label">Password</label>
+                    <div class="col-sm-7">
+                        <input type="password" class="form-control" size=25 maxlength=100 data-ng-model="loginData.password" placeholder="Password" id="password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-9">
+                        <button class="btn btn-info" type="submit" data-ng-click="Login()">Login</button>
+                        <button class="btn btn-info" type="reset">Reset</button>
+                    </div>
+                </div>
+
+                <br />
+                New User? Click Here to <a class="btn-link" href="#Register">Register</a>
+                <div data-ng-hide="message == ''" class="alert alert-danger">
+                    {{message}}
+                </div>
+            </form>
+            <div class="login-help">
+                <p>Forgot your password? <a href="#ForgotPassword">Click here to reset it</a>.</p>
+            </div>
+            <img src="Content/images/RetailerApp/specialOffer.jpg" alt="Special Offer" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,143 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <div class="container containerbgcolor">
+    <div class="col-xs10">
+        <header class="compareDropDownHeader">
+            Your Cart <span class="glyphicon glyphicon-shopping-cart"></span>
+        </header>
+        <div class="table-responsive">
+            <table class="table-bordered" width="100%">
+                <tr>
+                    <td width="10%"></td>
+                    <td width="30%" align="center">
+                        Product
+                    </td>
+                    <td width="10%" align="center">
+                        <strong> QTY </strong>
+                    </td>
+                    <td width="15%" align="center">
+                        <strong>UNIT PRICE</strong>
+                    </td>
+                    <td width="15%" align="center">
+                        <strong>DELIVERY INFO</strong>
+                    </td>
+                    <td width="15%" align="center">
+                        <strong>SUB TOTAL</strong>
+                    </td>
+                    <td width="5%"></td>
+                </tr>
+                <tr data-ng-repeat="product in $root.cartlist">
+                    <td width="10%">
+                        <img class="imgsmallthumbnail" id="img_{{product.ProductId}}" src="{{imageUrlBaseSmall}}{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';"
+                             alt="{{product.PictureName}}"  />
+                    </td>
+                    <td width="30%">
+                        <span class="greenText " ng-bind="product.Name"></span>
+                        <br />
+                        <span class="minorinfofont">Store: </span><span class="comparedropdowntext padding-5" ng-bind="product.Branch"></span>
+                        <span class="minorinfofont" ng-show="product.SelectedSize.length>0">
+                            / Size:
+                            <span class="comparedropdowntext padding-5" ng-bind="product.SelectedSize">
+
+                            </span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class=" input-group-btn">
+                                    <button type="button" class="qtyButton" data-type="minus" ng-click="decrementProductQuantity(product)">
+                                        <strong>-</strong>
+                                    </button>
+                                </span>
+                                <input type="number" class="input-number qtyTextButton" min="1" max="100" ng-valid-max ng-valid-min ng-model="product.Quantity" ng-change="qtyChanged(product);" value="{{product.Quantity}}">
+                                <span class=" input-group-btn">
+                                    <button type="button" class="qtyButton" data-type="plus" ng-click="incrementProductQuantity(product)">
+                                        <strong>+</strong>
+                                    </button>
+                                </span>
+
+                            </div>
+                        </div>
+                    </td>
+                    <td align="right">
+                        <strong><span class="padding-5 greenText" ng-bind="product.SpecialPrice | currency:' &#8377;'"></span> </strong>
+                    </td>
+                    <td>
+                        <span class="minorinfofont">
+                            <span ng-if="product.DeliveryTime>0"><br /> Delivered within {{product.DeliveryTime}} business day. </span>
+                            <span  ng-if="product.AdditionalShippingCharge>0"> Shipping Charges : {{product.TotalAdditionalShippingCharge | currency:"&#8377;"}}  </span>
+                            <span class="greenText" ng-if="product.AdditionalShippingCharge==0"> Free Shipping</span>
+                        </span>
+                    </td>
+                    <td align="right">
+                        <strong><span class="padding-5 greenText" ng-bind="product.SubTotal | currency:' &#8377;'"></span></strong>
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-remove-circle removeicon padding-5" ng-click="removeProductFromCart(product);"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <span data-ng-if="$root.cartlist.length<1">
+            <strong>Your Cart Is Empty</strong>
+        </span>
+
+
+        <div>
+            <table width="100%">
+                <tr>
+                    <td width="20%"></td>
+                    <td width="20%"></td>
+                    <td width="20%"></td>
+                    <td width="20%">
+                        <h4><strong>Cart Total</strong></h4>
+                    </td>
+                    <td width="20%" align="right">
+                        <h4> <strong><span ng-bind="$root.cartTotal | currency:' &#8377;'"></span></strong></h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%"></td>
+                    <td width="20%"></td>
+                    <td width="20%"></td>
+                    <td width="20%">
+                        <h6><strong>Shipping</strong></h6>
+                    </td>
+                    <td width="20%" align="right">
+                        <h5> <strong><span ng-if="totalShipping>0" ng-bind="totalShipping | currency:' &#8377;'"></span></strong></h5>
+                        <h5> <strong><span ng-if="totalShipping==0">Free</span></strong></h5>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td width="20%"></td>
+                    <td width="20%"></td>
+                    <td width="20%"></td>
+                    <td width="20%">
+                        <h4><strong>Net Payable</strong></h4>
+                    </td>
+                    <td width="20%" align="right">
+                        <h3> <strong><span ng-bind="netPayable = (($root.cartTotal ) + (totalShipping))| currency:' &#8377;'"></span></strong></h3>
+                    </td>
+                </tr>
+            </table>
+            <div class="minorinfofont">
+                Discount will be calculated, when placing order.You may also apply any coupon during checkout
+            </div>
+        </div>
+        <br class="clear" />
+        <a class="abutton" type="button" href="home">Continue Shopping</a>
+        <span class="btnalignRight" data-ng-if="$root.cartlist.length>0">
+            <a class="abutton" type="button" href="checkout">Place Order</a>
+        </span>
+    </div>
+</div>  

@@ -1,0 +1,110 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+<view-title>Register for Online Shopping of at best prices from your nearby store in Chennai, Tamilnadu, India </view-title>
+<og-description>Register yourself in VBuy.in Online Shopping at best prices from your nearby store in Chennai, Tamilnadu, India </og-description>
+<og-image>{{imageUrlBase}}VBuy_Image.png</og-image>
+
+
+<div class="container view containerbgcolor">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="text-success">Register</h4>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-10">
+                <div class="col-md-5">
+                    <div class="col-md-10">
+                        <button type="button" id="registerusingFacebook" class="btn btn-block btn-social btn-sm btn-facebook"
+                                data-ng-disabled="!facebookIsReady"
+                                data-ng-click="connectUsingFacebook()">
+                            <i class="fa fa-facebook"></i>
+                            Sign in with Facebook
+                        </button>
+                        <br />
+                        <br />
+
+                        <button type="button" id="registerusingGoogle" class="btn btn-block btn-social btn-sm btn-google-plus"
+                                data-ng-disabled="!facebookIsReady"
+                                data-ng-click="connectUsingGoogle()">
+                            <i class="fa fa-google-plus"></i>
+                            Sign in with Google
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="caption"> OR </span>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <form class="form-horizontal" ng-submit="RegisterUser()">
+
+                        <div class="form-group">
+                            <label for="firstName" class="col-sm-3 control-label">Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" size=25 maxlength=40 data-ng-model="user.FirstName" required autofocus placeholder="Name" id="firstName">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label">Email :</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" size=25 maxlength=100 data-ng-model="user.Email" placeholder="Email" id="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-sm-3 control-label">Password:</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" size=25 maxlength=25 data-ng-model="user.Password" placeholder="Password" required id="password">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="confirmpassword" class="col-sm-3 control-label">Confirm Password:</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" size=25 maxlength=25 data-ng-model="user.ConfirmPassword" placeholder="Confirm Password" required id="confirmpassword">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="phoneNumber" class="col-sm-3 control-label">Phone no:</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" data-ng-model="user.PhoneNumber1" placeholder="Phone Number" pattern="[0-9]{10}" title="Enter Valid Phone Number" id="phoneNumber">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="button" class="col-sm-3 control-label"></label>
+                            <div class="col-sm-9">
+                                <input class="btn btn-sm btn-info" type="submit" value="Register">
+                                <button class="btn btn-sm btn-info" type="Reset">Reset</button>
+                            </div>
+                        </div>
+                        <br style="clear:both">
+                        Mail to
+                        <a href="mailto:support@vbuy.in?Subject=VBuy.in Registration Support">support@VBuy.in</a> for any queries
+                        <br style="clear:both">
+                        <div>
+                            By clicking "Register" I agree that:
+                            I have read and accepted the User Agreement and Privacy Policy.
+                        </div>
+
+                        <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                            {{message}}
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <span class="hide">I may receive communications from Vbuy.in and can change my notification preferences in Vbuy.in</span>
+</div>

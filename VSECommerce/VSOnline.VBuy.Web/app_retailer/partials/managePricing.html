@@ -1,0 +1,138 @@
+﻿<div class="panel-heading formHeader">
+    <div>
+        <span class=""> Pricing ({{myProductGridParams.total()}})</span>
+        <a href="" type="button" class="glyphicon glyphicon-question-sign btnalignRight" data-placement="left"
+           data-title="Update price for the products already added to your stores. For including products in your stores, click on " product lookup" tab" data-bs-tooltip></a>
+    </div>
+</div>
+
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div class="formHeader">
+    <div class="filter-control">
+        <div class="filter-label"> Category</div>
+        <select class="dropdown selectpicker" ng-model="filters.selectedCategoryObj" id="categoryFilter"
+                data-html="1" ng-options="category as category.Name for category in filterList.CategoryFilter"
+                placeholder="Select Category" ng-change="changeCategory()"></select>
+    </div>
+    <div class="filter-control">
+        <div class="filter-label"> Sub Category </div>
+        <select class="selectpicker" ng-model="filters.selectedSubCategoryObj" id="subcategoryFilter"
+                data-html="1" ng-options="category as category.Name for category in filterList.SubCategoryFilter  | filter: {ParentCategoryId:filters.selectedCategory}"
+                placeholder="Select Sub.Cat" ng-change="changeSubCategory()"></select>        
+    </div>
+    <div class="filter-control">
+        <span ng-if="myProductGridParams.totalPage>0">Page {{myProductGridParams.page()}} / {{myProductGridParams.totalPage}}</span>
+    </div>
+        <input type="submit" class="btn-info" value="Search" data-ng-click="GetProducts()" />
+    </div>
+
+<table data-ng-table="myProductGridParams" show-filter="true" class="table table-condensed table-bordered table-striped">
+    <tr data-ng-repeat="myProduct in $data">
+        <td data-title="'Name'" filter="{ 'ProductName' : 'text' }" width="270" sortable="'ProductName'">
+            <span data-ng-if="!myProduct.$edit"><a target="_blank" href="{{$root.ApplicationHosting}}product/{{myProduct.Name | formaturl}}/{{myProduct.ProductId}}">{{myProduct.ProductName | limitTo:70}}</a></span>
+            <span data-ng-if="myProduct.$edit"><a target="_blank" href="{{$root.ApplicationHosting}}product/{{myProduct.Name | formaturl}}/{{myProduct.ProductId}}">{{myProduct.ProductName}}</a></span>
+          
+        </td>
+        <td data-title="'Old Price'" width="70" sortable="'OldPrice'">
+            {{myProduct.OldPrice}}
+        </td>
+        <td data-title="'Store Price'" width="70" sortable="'Price'">
+            {{myProduct.Price}}
+            <div data-ng-if="myProduct.$edit">
+                <input type="number" class="input-small70" step="any" data-ng-model="myProduct.NewPrice" />
+            </div>
+        </td>
+        <td data-title="'Deal Price'" width="70" sortable="'SpecialPrice'">
+            {{myProduct.SpecialPrice || 0}}
+            <div data-ng-if="myProduct.$edit">
+                <input type="number" class="input-smaller" step="any" data-ng-model="myProduct.NewSpecialPrice" />
+            </div>
+            <div data-ng-if="myProduct.$edit">
+                <span>Deal Description: </span>
+                <textarea rows="3" class="input-small70" maxlength="20" data-ng-model="myProduct.NewSpecialPriceDescription"></textarea>
+            </div>
+        </td>
+        <td data-title="'Deal Price Start time'" width="125" sortable="'PriceStartTime'">
+            <span>{{myProduct.PriceStartTime | date}}</span>
+            <div data-ng-if="myProduct.$edit">
+                <input type="datetime" step="any" class="input-small70" data-ng-model="myProduct.NewPriceStartTime"
+                       data-min-date="today"
+                       data-date-format="yyyy-MM-dd" bs-datepicker />
+            </div>
+        </td>
+        <td data-title="'Deal Price End time'" width="125" sortable="'PriceEndTime'">
+            <span>{{myProduct.PriceEndTime | date}}</span>
+            <div data-ng-if="myProduct.$edit">
+                <input type="datetime" step="any"
+                       class="input-small70" data-date-format="yyyy-MM-dd" data-min-date="today" ng-model="myProduct.NewPriceEndTime" bs-datepicker />
+            </div>
+        </td>
+        <td data-title="'Shipping Charge'" width="100" sortable="'AdditionalShippingCharge'">
+            <span>{{myProduct.AdditionalShippingCharge  || 0}}</span>
+            <div data-ng-if="myProduct.$edit">
+                <input type="number" step="any" class="input-smallest" ng-model="myProduct.NewShippingCharge" />
+            </div>
+        </td>
+        <td data-title="'Delivery timeline'" width="60" sortable="'DeliveryTime'">
+            <span>{{myProduct.DeliveryTime}}</span>
+            <div data-ng-if="myProduct.$edit">
+                <select class="selectpicker-smallest" ng-model="myProduct.NewDeliveryTime">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </td>
+        <td data-title="'Actions'" width="150" sortable="'IsDeleted'">
+            <button data-ng-if="!myProduct.$edit" class="btn-info small" data-ng-click="myProduct.$edit = true">Edit</button>
+            <button data-ng-if="!myProduct.$edit && !myProduct.IsDeleted" class="btn-info small" data-ng-click="Suspend(myProduct)">Suspend</button>
+            <button data-ng-if="!myProduct.$edit && myProduct.IsDeleted" class="btn-danger small" data-ng-click="Resume(myProduct)">Resume</button>
+            <div data-ng-if="myProduct.$edit">
+                <button class="btn-info" data-ng-click="UpdatePrice(myProduct)">Save</button>
+                <br />
+                <button class="btn-info" data-ng-click="myProduct.$edit = false">Cancel</button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<!--<div class="row"  >
+    <div class="col-md-2"></div>
+    <div class="col-md-8 pagination-div" ng-show="showPricing">
+        <ul class="pagination" ng-if="pricingPagenumber==0">
+            <li>
+
+            </li>
+        </ul>
+        <ul class="pagination" ng-if="pricingPagenumber>=1 && pricingPagenumber<=4">
+            <li ng-repeat="n in pricingPageButtonList" ng-class="{active: n == currentPricingPage}" ng-click="setPricingPage(n)">
+                <a >{{n+1}}</a>
+            </li>
+        </ul>
+
+        <ul class="pagination" ng-if="pricingPagenumber>=5">
+            <li ng-class="DisablePrevPricingPage()">
+                <a ng-click="prevPricingPage()">« Prev</a>
+            </li>
+            <li ng-repeat="n in pricingPageButtonList" ng-class="{active: n == currentPricingPage}" ng-click="setPricingPage(n)">
+                <a>{{n+1}}</a>
+            </li>
+            <li ng-class="DisableNextPricingPage()">
+                <a  ng-click="nextPricingPage()">Next »</a>
+
+            </li>
+        </ul>
+
+
+    </div>
+    <div class="col-md-2"></div>
+</div>-->

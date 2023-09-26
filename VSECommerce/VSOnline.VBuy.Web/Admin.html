@@ -1,0 +1,180 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+-->
+<!DOCTYPE html>
+
+<html data-ng-app="VBuyAdminApp">
+<head>
+    <title>
+        VBuy.in Admin - Powered by VSECommerce Engine| VBuy.in
+    </title>
+
+    <meta charset="utf-8">
+
+    <link rel="icon"
+          type="image/icon"
+          href="Content/images/VBuyIco_32.png">
+
+    <script src="AdminAppResource/scripts/jquery-2.1.4.min.js"></script>
+    <link href="AdminAppResource/css/jquery-ui-1.9.2.custom.css" rel="stylesheet" />
+    <link href="AdminAppResource/css/select2.css" rel="stylesheet" />
+
+    <script data-cfasync="false" src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <script src="AdminAppResource/scripts/JSon.js"></script>
+    <link href="AdminAppResource/css/password.css" rel="stylesheet" />
+    <script src="AdminAppResource/scripts/select2.js"></script>
+
+
+    <link href="Content/app/css/login.css" rel="stylesheet" />
+
+    <link href="Content/app/css/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/app/css/styles.css" rel="stylesheet" />
+    <link href="AdminAppResource/css/Product.css" rel="stylesheet" />
+    <link rel="stylesheet" href="AdminAppResource/css/style.css" />
+
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/angular-local-storage.min.js"></script>
+    <script src="Scripts/angular-cookies.min.js"></script>
+    <script src="Scripts/angular-file-upload.js"></script>
+    <script src="Scripts/loading-bar.js"></script>
+    <script src="Scripts/ng-table.js"></script>
+
+    <link href="AdminAppResource/scripts/ui.jqgrid.css" rel="stylesheet" />
+    <script src="AdminAppResource/scripts/jquery-ui.min.js"></script>
+    <script src="AdminAppResource/scripts/grid.locale-en.js"></script>
+    <script src="AdminAppResource/scripts/jquery.jqGrid.js"></script>
+
+    <!-- App libs -->
+    <script src="app_admin/adminapp.js"></script>
+    <script src="app_admin/controllers/controllers.js"></script>
+    <script src="app_admin/controllers/productcontroller.js"></script>
+    <script src="app_admin/controllers/migratedcategorycontrollers.js"></script>
+    <script src="app_admin/controllers/migratedproductcontrollers.js"></script>
+    <script src="app_admin/controllers/migrateduserlistcontrollers.js"></script>
+    <script src="app_admin/controllers/migrateddiscountcontrollers.js"></script>
+    <script src="app_admin/controllers/migratedstorecontrollers.js"></script>
+
+
+    <script src="app_admin/services/adminService.js"></script>
+    <script src="app_admin/services/authService.js"></script>
+    <script src="app_admin/services/authInterceptorService.js"></script>
+    <script src="app_admin/services/adminProductService.js"></script>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 10px;">
+
+
+        <nav role="navigation" class="navbar navbar-default" ng-if="$root.flagLoggedIn" style="margin-bottom: 0px;">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" style="border-right-style: solid; border-right-width: 90px; color:#000">
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="http://wwww.vbuy.in" target="_blank" class="navbar-brand" style="background-image :url('./AdminAppResource/images/VBuyLogo.png'); background-repeat:no-repeat;background-color:#000000; width: 345%;"></a>
+            </div>
+            <!-- Collection of nav links, forms, and other content for toggling -->
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown" style="border-right-style: solid; border-right-width: 1px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle"> Dashboard<b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="Admin.html#/dashboard">User Summary</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown" style="border-right-style: solid; border-right-width: 1px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle">Product <b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="Admin.html#/products">Search Product</a></li>
+                            <li><a href="Admin.html#/manufacturer">Manufacturer</a></li>
+                            <li><a href="Admin.html#/publishProduct">Publish Product</a></li>
+                            <li><a href="Admin.html#/productSEO">SEO</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="border-right-style: solid; border-right-width: 1px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle">Categories <b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="Admin.html#/category">Categories List</a></li>
+                            <li><a href="Admin.html#/topCategory">Top Categories</a></li>
+                            <li><a href="Admin.html#/exportProduct">Export</a></li>
+                            <li><a href="Admin.html#/newCategory">New Category</a></li>
+                            <li><a href="Admin.html#/publishCategory">Publish Category</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="border-right-style: solid; border-right-width: 1px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle">Sales <b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+
+                            <li><a href="Admin.html#/orders">Order Details</a></li>
+                            <li><a href="Admin.html#/enquiry">Sales Enquiry</a></li>
+                            <li><a href="Admin.html#/pricing">Pricing</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="border-right-style: solid; border-right-width: 1px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle">Users <b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="Admin.html#/userMaster">User List</a></li>
+                            <li><a href="Admin.html#/seller">Seller List</a></li>
+                            <li><a href="Admin.html#/sellerCategory">Seller Category Mapping</a></li>
+                            <li><a href="Admin.html#/newstore">Add New Seller</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown" style="border-right-style: solid; border-right-width: 1px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle">Super Admin<b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="Admin.html#/siteDiscount">Add Site Discount</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="border-right-style: solid; border-right-width: 1px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle">Site Admin<b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="Admin.html#/uploadSiteImages">Upload Site Images</a></li>
+                            <li><a href="Admin.html#/siteSettings">Site Settings</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="border-right-style: solid; border-right-width: 1px;">
+                        <a data-toggle="dropdown" class="dropdown-toggle">Logout<b class="caret"></b></a>
+                        <ul role="menu" class="dropdown-menu">
+
+                            <li><a href="Admin.html#/login">Log Out</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <span class="saffronText" data-ng-if=$root.flagLoggedIn ng-bind="$root.curUserDisplayName"></span>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div data-ng-view></div>
+    </div>
+
+    <footer>
+        <div>
+            <label>
+                No one other than the designated employee or authorized agent of VS Online Services Private limited should use this site. This is not a public site and Violation to use the site
+                by unauthenticated users.  <a href="" target="_blank"> Copyright © 2014-2018 VS Online Services Pvt ltd (VBuy.in). All Rights Reserved.</a>
+            </label>
+        </div>
+    </footer>
+</body>
+</html>

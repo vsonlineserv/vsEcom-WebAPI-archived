@@ -1,0 +1,144 @@
+﻿<div>
+    <div class="panel-heading formHeader">
+        <h4 class="text-success">Seller Registration Form</h4>
+    </div>
+     <br />
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                First Name
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="text" size=25 maxlength=40 data-ng-model="user.FirstName" required autofocus placeholder="First Name" name="firstName">
+            </div>
+            <label class="col-md-2 control-label">
+                Last Name
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="text" size=25 maxlength=40 data-ng-model="user.LastName" placeholder="Last Name" name="lastName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Business Name
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="text" size=25 maxlength=50 data-ng-model="user.BusinessName" required placeholder="Business Name" name="businessName">
+            </div>
+            <label class="col-md-2 control-label">
+                Email
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="email" size=25 maxlength=100 data-ng-model="user.Email" placeholder="Email" name="email" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Password
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="password" size=25 maxlength=25 data-ng-model="user.Password" placeholder="Password" required name="password">
+            </div>
+            <label class="col-md-2 control-label">
+                Confirm Password
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="password" size=25 maxlength=25 data-ng-model="user.ConfirmPassword" placeholder="Confirm Password" required name="confirmpassword">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Adress 1
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="text" size=25 maxlength=50 data-ng-model="user.Address1" placeholder="Address1" name="address1" required>
+            </div>
+            <label class="col-md-2 control-label">
+                Adress 2
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="text" size=25 maxlength=50 data-ng-model="user.Address2" placeholder="Address2" name="address2" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                City
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="text" size=25 maxlength=50 data-ng-model="user.City" placeholder="City" name="city" required>
+            </div>
+            <label class="col-md-2 control-label">
+                Pincode
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="number" size=25 maxlength=6 data-ng-model="user.Pincode" name="pincode" placeholder="Pincode" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Select Country
+            </label>
+            <div class="col-md-3">
+                <select class="form-control" name="" data-ng-model="user.Country" onchange="">
+                    <option value="42" selected="selected">India</option>
+                </select>
+            </div>
+            <label class="col-md-2 control-label">
+                Select State
+            </label>
+            <div class="col-md-3">
+                <select class="form-control"  name="" data-ng-model="user.State" onchange="" required>
+                    <option selected="selected" value="TamilNadu">TamilNadu</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Andhra">Andhra Pradesh</option>
+                    <option value="Telengana">Telengana</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="WestBengal">West Bengal</option>
+                </select>
+                <span>
+                    Lat: {{user.Latitude}}
+                </span>
+                <br />
+                <span>
+                    Long: {{user.Longitude}}
+                </span>
+            </div>          
+           
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Phone no
+            </label>
+            <div class="col-md-3">
+                <input class="form-control" type="number" data-ng-model="user.PhoneNumber1" size=25 maxlength=10>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2">
+
+            </label>
+            <div class="col-md-3 right">
+                <button class="btn btn-sm btn-info" type="submit" data-ng-click="RegisterRetailer()">Register</button>
+                <button class="btn btn-sm btn-info" type="Reset">Reset</button>
+            </div>
+           
+        </div>
+    </form>
+        Mailto
+        <a href="mailto:info@vbuy.in?Subject=VBuy.in Retailer Registration">info@VBuy.in</a> for adding your State or any other questions/clarification 
+
+        <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+            {{message}}
+        </div>
+  
+    By clicking "Register" I agree that:
+    I have read and accepted the User Agreement and Privacy Policy.
+    I may receive communications from Vbuy.in and can change my notification preferences in Vbuy.in
+    I am at least 18 years old.
+</div>

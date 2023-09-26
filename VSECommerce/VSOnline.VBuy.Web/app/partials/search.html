@@ -1,0 +1,132 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+<view-title>Search Mobiles, Laptops, Telvision, Air Conditioner, Cameras, Watches from your nearby local stores.</view-title>
+<og-description>
+    Search Mobiles, Laptops, Telvision, Air Conditioner, Cameras, Watches from your nearby local stores through
+    your online shopping mall of trusted local retailers.
+</og-description>
+<og-image>{{imageUrlBase}}VBuy_Image.png</og-image>
+
+<div class="view container containerbgcolor">
+    <div>
+        <span ng-bind="app.error"></span>
+        <div class="productfilterbar col-xs-12">
+            <div class="container">
+                <h4>
+                    <span>SEARCH :</span>
+                    <span class="upperCase greenText" ng-bind="searchedProduct"></span>
+                    <span class="label label-default fontSize10"> Showing  <strong ng-bind="products.data.length"></strong> of <strong ng-bind="products.totalCount"></strong> products</span>
+                    <span class="input-smallest" style="margin-right:10px;">Price range between Rs.<span ng-bind="priceRange"></span></span>
+                    <input type="text" id="priceSlider" price-range-slider data-model="priceRange"
+                           data-slider-handle="" data-slider-orientation="Horizontal"
+                           data-slider-selection="after" data-slider-tooltip="hide">
+
+                </h4>
+
+
+                <div class="col-xs-12 productfilter">
+                    <div class="col-xs-1 padding-0 fontSize10">
+                        REFINE:
+                    </div>
+                    <div class="multiselectfilterdiv padding-0">
+                        <div class="col-xs-12 padding-0" ng-dropdown-multiselect="" translation-texts="filterSortCustomTexts"
+                             extra-settings="dropdownSortSettings" options="dropdownSortData"
+                             events="dropdownBrandEvents"
+                             selected-model="selectedFilter.SortBy">
+
+                        </div>
+                    </div>
+                    <div class="multiselectfilterdiv padding-0">
+                        <div class="col-xs-12 padding-0" ng-dropdown-multiselect="" translation-texts="filterBrandCustomTexts"
+                             extra-settings="dropdownBrandSettings" options="searchFilter.data.Brand"
+                             events="dropdownBrandEvents"
+                             selected-model="selectedFilter.SelectedBrandList" checkboxes="true"></div>
+                    </div>
+                    <div>
+                        Search within <strong><span ng-bind="searchRadius"> </span></strong><span> kms : </span>
+                        <input type="text" id="mapSlider" radius-slider class="span2" data-slider-min="1" data-model="searchRadius" data-slider-max="25"
+                               data-slider-step="1" data-slider-handle="triangle" data-slider-orientation="Horizontal"
+                               data-slider-selection="after" data-slider-tooltip="hide">
+                        <button class="btn btn-xs btn-success padding-5" ng-click="showMap()">
+                            Map
+                        </button>
+                        <div id="modal-container-map"
+                             class="modal fade" tabindex="-1" role="main" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog mappopuparea">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <div id="map_canvassmall">
+
+                                </div>
+                                <div>
+                                    Drag Vbuy center marker to change center and change your area.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <strong ng-hide="true">Area : {{searchedArea}}  </strong>
+        <br class="clear" />
+
+        <div class="container ">
+            <div class="col-xs-12">
+                <div class="alert-info" ng-if="products.data.length<=0">There are no products matching your search criteria for the selected area. Please modify your filter condition or check in other areas.</div>
+                <div data-ng-repeat="category in products.data | unique: 'SubCategoryId' ">
+                    <header class="searchHeaders">
+                        <strong>  {{category.SubCategoryName}}</strong>
+                    </header>
+                    <div>
+                        <div class="col-xs-2 card" data-ng-repeat="product in products.data | orderBy:'-StoresCount' | filter:{SubCategoryId: category.SubCategoryId}">
+                            <a href="product/{{product.Name | formaturl}}/{{product.ProductId}}" title="{{product.Name}}" class="productlink cardBody btn-link">
+                                <div class="cardHeader">
+                                    {{ product.Name | limitTo:45}}
+                                </div>
+                                <div class="cardBody">
+                                    <img id="img_{{product.ProductId}}" class="imgproductsmall" src="{{imageUrlBaseSmall}}{{product.PictureName}}" alt="{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                                </div>
+                                <div class="cardFooter">
+                                    from <b>  <span class="greenText">{{product.SpecialPrice | currency:"&#8377;"}}</span></b>
+                                    <span class='strikePrice'>
+                                        <span>{{product.Price | currency:"&#8377;"}}</span>
+                                    </span>
+                                    <div> <b>{{product.StoresCount}} </b> stores</div>
+                                </div>
+                            </a>
+                            <div data-ng-if=!product.FlagWishlist class="shortlistProduct col-xs-6" ng-click="addProductWishlist(product);">
+                                <i class="icon-wishlist-empty-heart"><span>Wishlist</span></i>
+
+                            </div>
+                            <div class="shortlistProduct col-xs-6" data-ng-if=product.FlagWishlist>
+                                <i class="icon-wishlist-filled-heart"><span>Wishlist</span></i>
+                            </div>
+                            <div class="shortlistProduct col-xs-6" data-ng-if="$root.comparisonlistProductId.indexOf(product.ProductId) == -1" ng-click="addToProductComparison(product);">
+                                <span class="glyphicon glyphicon-th-list compareicon"></span>
+                                <i class="compareiconspan">Compare</i>
+                            </div>
+                            <div class="shortlistProduct col-xs-6" data-ng-if="$root.comparisonlistProductId.indexOf(product.ProductId) > -1" ng-click="removeFromProductComparison(product);">
+                                <span class="glyphicon glyphicon-remove-circle removeicon"></span>
+                                <i class="compareiconspan">Compare</i>
+                            </div>
+                        </div>
+                    </div>
+                    <br clear="all" />
+                </div>
+                <button class="btn-loadMore" href="#"
+                        ng-show="showLoadMore"
+                        ng-click="loadMore()">
+                    ........Show <span ng-bind="products.totalCount - products.data.length"></span> More.......
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>

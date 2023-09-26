@@ -1,0 +1,186 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Search Product </span>
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+
+        <div class="row">
+            <div class="col-md-2"> <label for="message-text" class="control-label" style="margin-right: 10px;">Published</label><input type="checkbox" id="publishproduct" /> </div>
+            <div class="col-md-3"><div class="col-md-10"><input type="text" class="form-control" id="txtSrchProductId" placeholder="Product Id" ng-blur="checkID();" ng-keypress="CheckIsNumeric(event);" /></div><span>OR</span></div>
+            <div class="col-md-3"><div class="col-md-10"><input type="text" class="form-control" id="txtSrchProductName" placeholder="Product Name" ng-blur="checkName();" /></div></div>
+            <div class="col-md-1"> <button type="button" class="btn btn-primary" ng-click="searchProduct();">Search</button></div>
+            <div class="col-md-1"><button type="button" class="btn btn-primary" ng-click="ProductClear();">Clear</button></div>
+            <div class="col-md-4"></div>
+        </div>
+        <span id="required" style="color:red"></span>
+    
+ 
+<div id="ProductGrid">
+    <div>
+        <div class="row" style="margin-left: 77%;margin-bottom:1%">
+            <div class="col-md-3" style="margin-left: 90px;">
+                <button type="button" class="btn btn-primary" ng-click="ProductExcelData();" id="ProductExcel">
+                    Export To Excel
+                </button>
+            </div>
+        </div>
+        <div class="row" style=" margin-left:10px;">
+            <table id="productgrid"></table>
+            <div id="productPager"></div>
+        </div>
+        <div class="row" style="margin-left: 77%;margin-bottom:1%;margin-top:1%">
+            <div class="col-md-3" style="margin-left:90px;">
+                <button type="button" class="btn btn-primary" onclick="ProductKeyExcelData();" id="ProductFeExcel">
+                    Export To Excel
+                </button>
+            </div>
+        </div>
+        <div class="row" id="productKey" style=" margin-left:10px;">
+            <table id="productKeyGrid"></table>
+            <div id="productKeyPager"></div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+<div class="modal fade" id="editProduct" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Product Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class=" row" style="margin-left: 230px">
+                    <div class="col-md-0">     <span id="requiredfield" style="color:red"></span></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4">  <label class="control-label">Product Id</label> </div>
+                    <div class="col-md-8"> <input type="text" class="form-control" id="txtProductId" disabled="disabled" /> </div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4">  <label class="control-label">Brand Name</label> </div>
+                    <div class="col-md-8">
+                        <select data-placeholder="Choose a ..." class="select2-container" id="drpBrandId" style="width:100% !important;padding: 0;">
+                            <option value="">--Select--</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">Product Name</label><label style="color:red">*</label></div>
+                    <div class="col-md-8"><input type="text" class="form-control" id="txtProductName" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">Model No</label></div>
+                    <div class="col-md-8"><input type="text" class="form-control" id="txtManuPartNumber" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"> <label for="message-text" class="control-label">Short Desc</label></div>
+                    <div class="col-md-8">
+                        <textarea class="form-control" id="txtShortDesc"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><label for="message-text" class="control-label">Full Desc</label><label style="color:red">*</label></div>
+                    <div class="col-md-8">    <textarea class="form-control" id="txtFullDesc"></textarea></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <span class="label-info">You can edit image name wrongly entered during excel upload. To upload new image go to Upload image section.</span>
+                    <div class="col-md-4"> <label class="control-label">PictureName</label></div>
+                     <div class="col-md-8" ng-hide="true"> <input id="pictureUpload" type="text" class="form-control" /></div> 
+                    <div class="col-md-8"><input type="text" class="form-control" id="txtAlterPictureName" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"></div>
+                   
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"> <label class="control-label">PictureName1</label></div>
+                    <div class="col-md-8" ng-hide="true"> <input id="picture1Upload" type="text" class="form-control" /> </div>
+                    <div class="col-md-8"> <input type="text" class="form-control" id="txtAlterPictureName1" /> </div>
+                </div>
+
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"></div>
+                   
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"> <label class="control-label">PictureName2</label></div>
+                    <div class="col-md-8" ng-hide="true"> <input id="picture2Upload" type="text" class="form-control" /> </div> 
+                    <div class="col-md-8"> <input type="text" class="form-control" id="txtAlterPictureName2" /> </div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"></div>
+                    
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"> <label for="recipient-name" class="control-label">Featured Product</label></div>
+                    <div class="col-md-8"> <input type="checkbox" class="form-control" id="chkFeaturedProduct" /> </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="ModifyProduct();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editProductKey" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="EditKeyModel">Product Key Features</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class=" row" style="margin-left: 230px">
+                    <div class="col-md-0">     <span id="KeyFeatuesRequiredfield" style="color:red"></span></div>
+                </div>
+
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label class="control-label"> key Id</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtEditKeyid" disabled="disabled" placeholder="Product key Id" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"> <label class="control-label">Parameter </label><label style="color:red">*</label></div>
+                    <div class="col-md-8"> <input type="text" class="form-control" id="txtEditParameter" placeholder="Parameter" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"> <label class="control-label">Key Feature </label><label style="color:red">*</label></div>
+                    <div class="col-md-8"> <textarea class="form-control" id="txtEditKeyFeature" placeholder="Key Feature"></textarea></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"> <label class="control-label">Display Order </label></div>
+                    <div class="col-md-8"> <input type="text" class="form-control" id="txtEditDisplay" placeholder="Display Order" ng-keypress="CheckInDisplay(event);" /></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="ModifyProductKey();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>

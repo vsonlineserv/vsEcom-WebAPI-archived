@@ -1,0 +1,88 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Product Enquiry</span>
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+            <div class="col-md-3"> <label for="message-text" class="control-label">From Date</label>
+            <input type="text" id="txtFrSalesDetails" class="form-control" onchange="ClearSalesDropValue()"/>
+         </div>
+
+            <div class="col-md-3"> <label for="message-text" class="control-label">To Date</label>
+            <input type="text" id="txtToSalesDetails" class="form-control" /> 
+        </div>
+           
+            <div class="col-md-3">
+                <label for="message-text" class="control-label"> (OR) Choose Days</label>
+                <select id="ddlday" class="form-control" onchange="ClearFromToDate()" ;>
+                    <option value="0">Select</option>
+                    <option value="1">Today</option>
+                    <option value="2">Yesterday</option>
+                    <option value="3" selected>Last 3 days</option>
+                    <option value="4">Last 5 days</option>
+                    <option value="5">Last 10 days</option>
+                </select>              
+            </div>
+            <div class="col-md-3">
+                    <label for="message-text" class="control-label">Show Not Responded</label>
+                    <input class="col-md-6 form-control" type="checkbox" checked="checked" id="chkDateWiseReply" />                  
+                </div>
+        <div>
+        <div class="col-md-8">
+           
+          </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary" ng-click="SearchFromToDateSalesDetails()" ;>Search</button>
+            <button type="button" class="btn btn-primary" ng-click="SalesDetailsClear();">Clear</button>
+            </div>
+            </div>
+            <br class="clear" />
+            <div class="row">
+                <table id="salesGrid"></table>
+                <div id="salesPager"></div>
+            </div>
+
+        </div>
+</div>
+
+<div class="modal fade" id="editReply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Sales Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-2">  <label for="recipient-name" class="control-label"> Id</label> </div>
+                    <div class="col-md-6"> <input type="text" class="form-control" id="txtId" disabled="disabled" /> </div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-2"><label for="recipient-name" class="control-label">Reply</label></div>
+                    <div class="col-md-6"><textarea class="form-control" id="txtReply"></textarea></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="ModifyReply();">Reply</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

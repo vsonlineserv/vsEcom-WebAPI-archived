@@ -1,0 +1,759 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+-->
+
+<!DOCTYPE html>
+
+<html data-ng-app="VBuyApp">
+<head>
+    <meta name="fragment" content="!">
+
+
+    <title ng-bind="viewTitle ? viewTitle + ' at VBuy.in' : 'Online Shopping Mall of your Trusted Local Retailers. Find nearby stores pricing
+           of products in Chennai, Tamilnadu or anywhere in India at VBuy.in | VSECommerce Engine'"></title>
+    <meta charset="utf-8">
+
+    <meta name="Keywords" content="Local Shopping, VBuy, VBuy.in, VBuy India, Online Shopping, Online Shopping India, Chennai Shopping,
+          Contact local business, Contact Seller, Contact Retailer, Trusted Retailer, local businesses, local stores, Mobile Stores, Laptop, computer, tablets
+          ,water purifier, smart phones, new mobiles, watches, applicances, discounts, offers, India, lowest prices, prices in Chennai, prices in Nagercoil, Home Appliances
+          Online Shopping Mall Chennai, Local Market Place, VS Online Services Pvt Ltd, We Serve Online, VSECommerce Engine" />
+    <meta name="Description" content="{{ogDescription}}. Research Online Buy Offline using VBuy.in. Compare product price near your area using VBuy.in map search anywhere within India. VBuy.in is an Online Shopping Mall of your Trusted Local Retailers. | VSECommerce Engine" />
+
+    <meta name="msvalidate.01" content="5CDEC8A3FAF34B5591805AB05451AD81" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{viewTitle}} at VBuy.in | VSECommerce Engine" />
+    <meta property="og:description" content="{{ogDescription}}. Research Online Buy Offline using VBuy.in. Compare product price near your area using VBuy.in map search anywhere within India. VBuy.in is an Online Shopping Mall of your Trusted Local Retailers." />
+    <meta property="og:image" content="{{ogImage}}" />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Image2.png" />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Image3.png" />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Retailer1.png" />
+    <meta property="og:image" content="{{imageUrlBase}}VBuy_Retailer2.png" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <base href="/VBuy/">
+
+    <link rel="icon" type="image/icon" href="Content/images/VBuyIco_32.png">
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+
+    <link href="Content/app/css/bootstrap.css" rel="stylesheet" />
+    <link href="Content/app/css/cardstyle.css" rel="stylesheet" />
+    <link href="Content/app/css/styles.css" rel="stylesheet" />
+    <link href="Content/app/css/menustyle.css" rel="stylesheet" />
+    <link href="Content/app/css/rating.css" rel="stylesheet" />
+    <link href="Content/app/css/login.css" rel="stylesheet" />
+    <link href="Content/app/css/Orders.css" rel="stylesheet" />
+    <link href="Content/app/css/jquery.bxslider.css" rel="stylesheet" />
+    <link href="Content/app/css/others.css" rel="stylesheet" />
+    <link href="Content/loading-bar.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link href="Content/app/css/font-awesome.css" rel="stylesheet" />
+    <link href="Content/app/css/jasny-bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Vendor Libs: jQuery only used for Bootstrap functionality -->
+
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/jquery.bxslider.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/angular-strap.min.js"></script>
+    <script src="Scripts/angular-strap.tpl.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angularjs-viewhead.js"></script>
+    <script src="Scripts/angular-facebook.js"></script>
+    <script src="Scripts/google-plus-signin.js"></script>
+    <script src="Scripts/jquery.elevatezoom.js"></script>
+    <script src="Scripts/loading-bar.js"></script>
+    <script src="Scripts/bootstrap-slider.js"></script>
+    <script src="Scripts/angular-local-storage.min.js"></script>
+    <script src="Scripts/angular-cookies.min.js"></script>
+    <script src="Scripts/VBuyElementFlyer.js"></script>
+    <script src="Scripts/ng-breadcrumbs.vbuy.js"></script>
+    <script src="Scripts/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript" src="Scripts/lodash.min.js"></script>
+    <script src="Scripts/angularjs-dropdown-multiselect.js"></script>
+
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+
+
+    <!-- App libs -->
+    <script src="app/app.js"></script>
+    <script src="app/services/categoryService.js"></script>
+    <script src="app/services/landingService.js"></script>
+    <script src="app/services/productService.js"></script>
+    <script src="app/services/storesService.js"></script>
+    <script src="app/services/userActionService.js"></script>
+    <script src="app/services/orderTrackingService.js"></script>
+
+    <script src="app/services/authService.js"></script>
+    <script src="app/services/authInterceptorService.js"></script>
+
+    <script src="app/services/mapService.js"></script>
+    <script src="app/services/passwordService.js"></script>
+    <script src="app/services/cartService.js"></script>
+
+    <script src="app/controllers/controllers.js"></script>
+    <script src="app/controllers/productlistController.js"></script>
+    <script src="app/controllers/productController.js"></script>
+    <script src="app/controllers/storesController.js"></script>
+    <script src="app/controllers/cartController.js"></script>
+    <script src="app/controllers/checkoutController.js"></script>
+    <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/resetPasswordController.js"></script>
+    <script src="app/controllers/userWishlistController.js"></script>
+    <script src="app/controllers/searchProductsController.js"></script>
+    <script src="app/controllers/orderTrackingController.js"></script>
+    <!--Directives-->
+    <script src="app/directives/ngElevateZoom.js"></script>
+    <script src="app/directives/ngVBuyRating.js"></script>
+    <script src="Scripts/StyledMarker.js"></script>
+
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://platform.linkedin.com/in.js" type="text/javascript">
+    </script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57161897-1', 'auto');
+        ga('send', 'pageview');
+
+        window.twttr = (function (d, s, id) {
+            var t, js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+        }(document, "script", "twitter-wjs"));
+
+    </script>
+
+</head>
+
+<body class="bodybgcolor" data-ng-controller="LandingController">
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=576492315819399&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="topnav">
+                <div class="container">
+                    <input type="hidden" id="curLocation" class="hide-text" />
+                    <div class="col-xs-12">
+                        <div id="topnav" class="col-lg-9 col-md-11 col-sm-12 btnalignRight">
+                            <a href="http://{{ApplicationHosting}}/Retailer.html#/RetailerHome" class="nomobdisplay" target="_blank">
+                                <span class="glyphicon glyphicon-new-window"></span> Sell on VBuy.in
+                            </a>  <span class="nomobdisplay">|</span>
+                            <span class="glyphicon glyphicon-home nomobdisplay"></span> <a class="nomobdisplay" href="Home">Home</a><span class="nomobdisplay">|</span>
+                            <span class="glyphicon glyphicon glyphicon-tags"></span> <a href="offers">Offers</a> |
+                            <span class="glyphicon glyphicon-heart"></span> <a id="wishlistTopLink" href="wishlist">My Wishlist</a>
+                            <span class="wishlistCount" ng-bind="$root.wishlistCount"></span> |
+                            <span class="glyphicon glyphicon-th-list nomobdisplay">
+                            </span>
+                            <span id="compareDropDown" class="dropdown nomobdisplay">
+                                <a id="compareTopLink" href="#" type="button" data-toggle="dropdown"
+                                   aria-expanded="true">Compare<span class="caret"></span></a>
+                                <ul id="compareDropDownMenu" class="dropdown-menu  dropdown-menu-left text-align-left compareDropdownMenu" role="menu" aria-labelledby="compareTopLink">
+                                    <li role="presentation">
+                                        <header class="compareDropDownHeader">
+                                            Compare
+                                            <a href="#" class="glyphicon glyphicon-remove right" ng-click="closeCompareDropDown();">Close</a>
+                                        </header>
+                                    </li>
+                                    <li role="presentation">
+                                        <div role="menuitem" tabindex="-1" data-ng-repeat="product in $root.comparisonlist">
+                                            <table width="100%">
+                                                <tr>
+                                                    <td width="20%">
+                                                        <img class="imgsmallthumbnail" id="img_{{product.ProductId}}" src="{{imageUrlBaseSmall}}{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';"
+                                                             alt="{{product.PictureName}}" />
+                                                    </td>
+                                                    <td width="70%">
+                                                        <span class="comparedropdowntext" ng-bind="product.Name"></span>
+                                                    </td>
+                                                    <td width="10%">
+                                                        <span class="glyphicon glyphicon-remove-circle removeicon padding-5" ng-click="removeProductFromComparison(product);"></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <br class="clear" />
+                                        <span class="btnalignRight" data-ng-if="$root.comparisonlist.length>0">
+                                            <a class="abutton" type="button" href="compare">Compare</a>
+                                        </span>
+                                        <span class="" data-ng-if="$root.comparisonlist.length<1">
+                                            <strong>  No Products to Compare....</strong>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </span>
+                            <span class="wishlistCount nomobdisplay" ng-bind="$root.comparisonlist.length || 0"></span> <span class="nomobdisplay">|</span>
+                            <a data-ng-if=!$root.flagLoggedIn href="Register" class="nomobdisplay">
+                                <span class="glyphicon glyphicon-user "></span> Register
+                            </a>
+                            <span data-ng-if="!$root.flagLoggedIn"> <span class="nomobdisplay">|</span></span>
+                            <a data-ng-if=!$root.flagLoggedIn href="Login"> <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                            <a data-ng-if=$root.flagLoggedIn href="" data-ng-click="LogOut();">Logout</a>
+                            <span data-ng-if=$root.flagLoggedIn> | </span>
+                            <span data-ng-if=$root.flagLoggedIn class="dropdown">
+                                <a href="" class="headerlistdropdown dropdown-toggle" type="button" id="userAccountDropDown" data-toggle="dropdown" aria-expanded="true">
+                                    <span class="headerlistdropdown" data-ng-if=$root.flagLoggedIn ng-bind="$root.curUserDisplayName"></span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-left text-align-left margin-left-50" role="menu" aria-labelledby="userAccountDropDown">
+                                    <li role="presentation"><a class="headerlistdropdown" role="menuitem" tabindex="-1" href="OrderTracking">Track Order</a></li>
+                                    <li role="presentation"><a class="headerlistdropdown" role="menuitem" tabindex="-1" href="ViewProfile">My Profile</a></li>
+                                    <li role="presentation"><a class="headerlistdropdown" role="menuitem" tabindex="-1" href="ChangePassword">Change Password</a></li>
+                                    <li><hr /></li>
+                                    <li role="presentation"><a class="headerlistdropdown" role="menuitem" tabindex="-1" data-ng-if=$root.flagLoggedIn href="" data-ng-click="LogOut();">Logout</a></li>
+                                </ul>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle floatleft" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body" data-autohide="true">
+                            <!--<button class="btn btn-navbar navbar-toggle collapsed alignLeft" type="button" data-target="#mainmenu" data-toggle="collapse">-->
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="floatleft navbar-toggle img-responsive" href="/Home">
+                            <img src="Content/images/VBuyLogo.png" class="img-responsive" alt=" VBuy.in logo">
+                        </a>
+
+                        <a class="navbar-toggle floatleft img-responsive" href="https://play.google.com/store/apps/details?id=in.vbuy.client" target="_blank">
+                            <img src="Content/images/googlestore.png" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="col-md-2 nomobdisplay">
+                        <div class="col-md-9">
+                            <a href="/Home">
+                                <img src="Content/images/VBuyLogo.png" alt=" VBuy.in logo">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <form data-value="search" data-ng-submit="searchCatalogue()">
+                            <div class="col-sm-5 padding-0">
+                                <div class="search-bar">
+                                    <span class="glyphicon glyphicon-search saffronText font18"></span>
+                                    <span>
+                                        <input id="productSearchInput" class="productSearch" type="text" data-ng-model="selectedProduct"
+                                               bs-options="product as product.Name for product in getSearchProductList($viewValue)"
+                                               filter="autosuggest"
+                                               data-limit=15
+                                               placeholder="Search for a product, category or brand"
+                                               title="Search by typing the product name"
+                                               data-html=true
+                                               autocomplete="off"
+                                               required
+                                               data-bs-typeahead>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 padding-0">
+                                <div class="areaSearch-bar">
+                                    <span ng-click="showAreaListClicked()" ng-hide="showAreaList">
+                                        <i class="fa fa-map-marker saffronText font20"></i>
+                                        <input id="areaSearchInput" ng-hide="showAreaList" class="areaSearchDisabled"
+                                               data-ng-model="selectedArea.AreaName" />
+                                        <a href="#" ng-click="showAreaListClicked()" class="right area_select"><span class="fa fa-chevron-down font18"></span></a>
+                                    </span>
+                                    <span ng-show="showAreaList">
+                                        <i class="fa fa-map-marker saffronText font20"></i>
+                                        <input id="areaSearchInputSelect" class="areaSearch" ng-show="showAreaList" type="text" data-ng-model="selectedAreaInput"
+                                               bs-options="location.AreaName for location in getLocationList($viewValue) | unique: 'AreaName'"
+                                               data-limit=15
+                                               ng-value="{{selectedAreaInput.AreaName}}"
+                                               placeholder="Type to select area.." autocomplete="off" data-bs-typeahead />
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 padding-0">
+                                <div class="col-xs-4 padding-0">
+                                    <input type="submit" class="globalSearch-submit" value="Search">
+                                </div>
+                                <div class="col-xs-6 global-cart">
+                                    <div class="row">
+                                        <span class="glyphicon glyphicon-shopping-cart saffronText margin-2">
+                                        </span>
+                                        <span id="cartDropDown" class="dropdown">
+                                            <a id="cartTopLink" href="#" type="button" data-toggle="dropdown"
+                                               aria-expanded="true">Cart<span class="caret"></span></a>
+                                            <ul id="cartDropDownMenu" class="dropdown-menu  dropdown-menu-left text-align-left cartDropdownMenu"
+                                                role="menu" aria-labelledby="cartTopLink">
+                                                <li role="presentation">
+                                                    <header class="compareDropDownHeader">
+                                                        Your Cart <span class="glyphicon glyphicon-shopping-cart"></span>
+                                                        <a href="#" class="glyphicon glyphicon-remove right" ng-click="closeCartDropDown();">Close</a>
+                                                    </header>
+                                                </li>
+                                                <li class="cart-top-scroll" role="presentation">
+                                                    <div role="menuitem" tabindex="-1" data-ng-repeat="product in $root.cartlist">
+                                                        <table width="100%">
+                                                            <tr>
+                                                                <td width="20%">
+                                                                    <img class="imgsmallthumbnail" id="img_{{product.ProductId}}" src="{{imageUrlBaseSmall}}{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';"
+                                                                         alt="{{product.PictureName}}" />
+                                                                </td>
+                                                                <td width="50%">
+                                                                    <span class="comparedropdowntext" ng-bind="product.Name"></span>
+                                                                    <span class="minorinfofont" ng-show="product.SelectedSize.length>0">
+                                                                        (Size: <span class="padding-5" ng-bind="product.SelectedSize"></span>)
+                                                                    </span>
+                                                                    <br class="clear" />
+                                                                    <span class="comparedropdowntext">
+                                                                        <strong> Qty: <span ng-bind="product.Quantity"></span></strong> X
+                                                                        <strong> Price: <span ng-bind="product.SpecialPrice | currency:' &#8377;'"></span></strong>
+                                                                    </span>
+                                                                    <span class="minorinfofont" ng-if="product.AdditionalShippingCharge>0"> Shipping : {{product.TotalAdditionalShippingCharge | currency:"&#8377;"}}  </span>
+                                                                </td>
+                                                                <td width="20%">
+                                                                    <strong><span ng-bind="product.SubTotal | currency:' &#8377;'"></span></strong>
+                                                                </td>
+                                                                <td width="10%">
+                                                                    <span class="glyphicon glyphicon-remove-circle removeicon padding-5" ng-click="removeProductFromCart(product);"></span>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <span data-ng-if="$root.cartlist.length<1">
+                                                        <strong>Your Cart Is Empty</strong>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <table width="100%">
+                                                            <tr>
+                                                                <td width="20%"></td>
+                                                                <td width="50%">
+                                                                    <h4><strong>Total</strong></h4>
+                                                                </td>
+                                                                <td width="30%">
+                                                                    <strong><span ng-bind="$root.cartTotal | currency:' &#8377;'"></span></strong>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <div class="minorinfofont">
+                                                            Discount Coupon can be applied, when placing order.
+                                                        </div>
+                                                    </div>
+                                                    <br class="clear" />
+                                                    <span class="btnalignRight" data-ng-if="$root.cartlist.length>0">
+                                                        <a class="abutton" type="button" href="cart">View Cart</a>
+                                                        <a class="abutton" type="button" href="checkout">Place Order</a>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                        <span class="wishlistCount" ng-bind="$root.cartlist.length || 0"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="container">
+                        <div class="menubar navbar-collapse nomobdisplay" id="menubar">
+
+                            <div class="mainmenu" id="mainmenu">
+                                <div class="menu" data-ng-repeat="menu in mainMenu.data" ng-mouseover="showMainMenu();">
+                                    <a class="menu-anchor" ng-mouseover="showMainMenu();"
+                                       ng-click="clickMainMenu(this, menu.ParentCategoryName, menu.ParentCategoryId);">
+                                        <span ng-bind="menu.ParentCategoryName" ng-mouseleave="menuMouseLeave();"></span>
+                                    </a>
+                                    <div class="subMenu" data-ng-if="menu.SubMenu">
+                                        <div class="popup">
+                                            <div class="popup-leftdiv">
+                                                <span data-ng-repeat="submenu in menu.SubMenu | limitTo:12 | unique: 'CategoryGroupTag'">
+                                                    <strong class="saffronText">  {{submenu.CategoryGroupTag}}</strong>
+                                                    <span data-ng-repeat="submenu in menu.SubMenu | limitTo:12 |  filter:{CategoryGroupTag: submenu.CategoryGroupTag}">
+                                                        <a ng-click="closeMainMenu();" href="category/{{submenu.SubCategoryName | formaturl}}/{{submenu.SubCategoryId}}">
+                                                            <span ng-bind="submenu.SubCategoryName"></span>
+                                                        </a>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <div class="popup-leftdiv" data-ng-if="menu.SubMenu.length>12 && menu.SubMenu.length<=24">
+                                                <span data-ng-repeat="submenu in menu.SubMenu | limitTo:24 | limitTo:12-menu.SubMenu.length | unique: 'CategoryGroupTag'">
+                                                    <strong class="saffronText">  {{submenu.CategoryGroupTag}}</strong>
+                                                    <span data-ng-repeat="submenu in menu.SubMenu | limitTo:24 |  limitTo:12-menu.SubMenu.length | filter:{CategoryGroupTag: submenu.CategoryGroupTag}">
+                                                        <a ng-click="closeMainMenu();" href="category/{{submenu.SubCategoryName | formaturl}}/{{submenu.SubCategoryId}}">
+                                                            <span ng-bind="submenu.SubCategoryName"></span>
+                                                        </a>
+                                                    </span>
+                                                </span>
+                                                <!-- grouping should be done later.-->
+                                            </div>
+
+                                            <div class="popup-leftdiv" data-ng-if="menu.SubMenu.length>24">
+                                                <span data-ng-repeat="submenu in menu.SubMenu | limitTo:24 | limitTo:12-24 | unique: 'CategoryGroupTag'">
+                                                    <strong class="saffronText">  {{submenu.CategoryGroupTag}}</strong>
+                                                    <span data-ng-repeat="submenu in menu.SubMenu  | limitTo:24 | limitTo:12-24 | filter:{CategoryGroupTag: submenu.CategoryGroupTag}">
+                                                        <a ng-click="closeMainMenu();" href="category/{{submenu.SubCategoryName | formaturl}}/{{submenu.SubCategoryId}}">
+                                                            <span ng-bind="submenu.SubCategoryName"></span>
+                                                        </a>
+                                                    </span>
+                                                </span>
+                                                <!-- grouping should be done later.-->
+                                            </div>
+                                            <div class="popup-leftdiv" data-ng-if="menu.SubMenu.length>24">
+                                                <span data-ng-repeat="submenu in menu.SubMenu | limitTo:menu.SubMenu.length | limitTo:24-menu.SubMenu.length | unique: 'CategoryGroupTag'">
+                                                    <strong class="saffronText">  {{submenu.CategoryGroupTag}}</strong>
+                                                    <span data-ng-repeat="submenu in menu.SubMenu  | limitTo:menu.SubMenu.length | limitTo:24-menu.SubMenu.length | filter:{CategoryGroupTag: submenu.CategoryGroupTag}">
+                                                        <a ng-click="closeMainMenu();" href="category/{{submenu.SubCategoryName | formaturl}}/{{submenu.SubCategoryId}}">
+                                                            <span ng-bind="submenu.SubCategoryName"></span>
+                                                        </a>
+                                                    </span>
+                                                </span>
+                                                <!-- grouping should be done later.-->
+                                            </div>
+                                            <div>
+                                                <img class="popup-rightdiv" src="{{imageUrlBase}}Category/{{menu.ParentCategoryName}}.jpg" alt="{{menu.ParentCategoryName}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="https://play.google.com/store/apps/details?id=in.vbuy.client" class="noPadding nomobdisplay" target="_blank">
+                                        <img src="Content/images/googlestore.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas navbar-inner" role="navigation">
+                            <div>
+                                <a href="/Home">
+                                    <img src="Content/images/VBuyLogo.png" alt=" VBuy.in logo">
+                                </a>
+                                <a href="" class="fa fa-2x fa-close navbar-toggle btnalignRight" data-toggle="offcanvas" data-target="#myNavmenu">
+
+                                </a>
+                            </div>
+                            <div class="mainmenu" id="mainmenu">
+                                <div class="menu menubar" data-ng-repeat="menu in mainMenu.data">
+
+                                    <a class="menu-anchor"
+                                       ng-click="clickMainMenu(this, menu.ParentCategoryName, menu.ParentCategoryId);" ng-mouseleave="menuMouseLeave();">
+                                        <span ng-bind="menu.ParentCategoryName" ng-mouseleave="menuMouseLeave();"></span>
+                                    </a>
+                                    <div class="subMenu" data-ng-if="menu.SubMenu">
+                                        <div class="popup">
+                                            <div class="popup-leftdiv">
+                                                <span data-ng-repeat="submenu in menu.SubMenu | limitTo:12 | unique: 'CategoryGroupTag'">
+                                                    <strong class="saffronText">  {{submenu.CategoryGroupTag}}</strong>
+                                                    <span data-ng-repeat="submenu in menu.SubMenu | limitTo:12 |  filter:{CategoryGroupTag: submenu.CategoryGroupTag}">
+                                                        <a ng-click="closeMainMenu();" data-toggle="offcanvas" data-target="#myNavmenu" href="category/{{submenu.SubCategoryName | formaturl}}/{{submenu.SubCategoryId}}">
+                                                            <span ng-bind="submenu.SubCategoryName"></span>
+                                                        </a>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <div class="popup-leftdiv" data-ng-if="menu.SubMenu.length>12 && menu.SubMenu.length<=24">
+                                                <span data-ng-repeat="submenu in menu.SubMenu | limitTo:24 | limitTo:12-menu.SubMenu.length | unique: 'CategoryGroupTag'">
+                                                    <strong class="saffronText">  {{submenu.CategoryGroupTag}}</strong>
+                                                    <span data-ng-repeat="submenu in menu.SubMenu | limitTo:24 |  limitTo:12-menu.SubMenu.length | filter:{CategoryGroupTag: submenu.CategoryGroupTag}">
+                                                        <a ng-click="closeMainMenu();" data-toggle="offcanvas" data-target="#myNavmenu" href="category/{{submenu.SubCategoryName | formaturl}}/{{submenu.SubCategoryId}}">
+                                                            <span ng-bind="submenu.SubCategoryName"></span>
+                                                        </a>
+                                                    </span>
+                                                </span>
+                                                <!-- grouping should be done later.-->
+                                            </div>
+
+                                            <div class="popup-leftdiv" data-ng-if="menu.SubMenu.length>24">
+                                                <span data-ng-repeat="submenu in menu.SubMenu | limitTo:24 | limitTo:12-24 | unique: 'CategoryGroupTag'">
+                                                    <strong class="saffronText">  {{submenu.CategoryGroupTag}}</strong>
+                                                    <span data-ng-repeat="submenu in menu.SubMenu  | limitTo:24 | limitTo:12-24 | filter:{CategoryGroupTag: submenu.CategoryGroupTag}">
+                                                        <a ng-click="closeMainMenu();" data-toggle="offcanvas" data-target="#myNavmenu" href="category/{{submenu.SubCategoryName | formaturl}}/{{submenu.SubCategoryId}}">
+                                                            <span ng-bind="submenu.SubCategoryName"></span>
+                                                        </a>
+                                                    </span>
+                                                </span>
+                                                <!-- grouping should be done later.-->
+                                            </div>
+                                            <div class="popup-leftdiv" data-ng-if="menu.SubMenu.length>24">
+                                                <span data-ng-repeat="submenu in menu.SubMenu | limitTo:menu.SubMenu.length | limitTo:24-menu.SubMenu.length | unique: 'CategoryGroupTag'">
+                                                    <strong class="saffronText">  {{submenu.CategoryGroupTag}}</strong>
+                                                    <span data-ng-repeat="submenu in menu.SubMenu  | limitTo:menu.SubMenu.length | limitTo:24-menu.SubMenu.length | filter:{CategoryGroupTag: submenu.CategoryGroupTag}">
+                                                        <a ng-click="closeMainMenu();" data-toggle="offcanvas" data-target="#myNavmenu" href="category/{{submenu.SubCategoryName | formaturl}}/{{submenu.SubCategoryId}}">
+                                                            <span ng-bind="submenu.SubCategoryName"></span>
+                                                        </a>
+                                                    </span>
+                                                </span>
+                                                <!-- grouping should be done later.-->
+                                            </div>
+                                            <div>
+                                                <img class="popup-rightdiv" src="{{imageUrlBase}}Category/{{menu.ParentCategoryName}}.jpg" alt="{{menu.ParentCategoryName}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <a href="https://play.google.com/store/apps/details?id=in.vbuy.client" class="noPadding nomobdisplay" target="_blank">
+                                        <img src="Content/images/googlestore.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br style="clear:both" />
+    <div class="container viewpadding">
+
+    </div>
+    <br style="clear:both" />
+    <div>
+        <div data-ng-view autoscroll="true"></div>
+    </div>
+
+    <div>
+        <a href="" class="back-to-top" ng-click="gotoAnchor()"><span class="glyphicon glyphicon-chevron-up"></span></a>
+    </div>
+
+    <div id="modal-container-Register" ng-controller="LoginController" class="modal fade" tabindex="-1" role="main" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <div>
+                        <div>You must <a href="Register">Register</a> or <a href="Login">Login</a> to perform this action</div>
+                        <h4 class="modal-title">Login to VBuy.in</h4>
+                    </div>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-xs-6">
+                        <div class="col-xs-10">
+                            <button type="button" id="registerusingFacebook" class="btn btn-block btn-social btn-sm btn-facebook"
+                                    data-ng-show="!$root.flagLoggedIn"
+                                    data-ng-disabled="!facebookIsReady"
+                                    data-ng-click="connectUsingFacebook()">
+                                <i class="fa fa-facebook"></i>
+                                Sign in with Facebook
+                            </button>
+                            <br />
+                            <br />
+                            <button type="button" id="registerusingGoogle" class="btn btn-block btn-social btn-sm btn-google-plus"
+                                    data-ng-click="connectUsingGoogle()">
+                                <i class="fa fa-google-plus"></i>
+                                Sign in with Google
+                            </button>
+                        </div>
+                        <div class="col-xs-2">
+                            <span class="caption"> OR </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <form>
+                            <p><input type="text" class="form-control" name="username" data-ng-model="loginData.userName" required autofocus placeholder="Email"></p>
+                            <p><input type="password" class="form-control" name="password" data-ng-model="loginData.password" required placeholder="Password"></p>
+                            <button class="btn btn-info" type="submit" data-ng-click="Login()">Login</button>
+                            <button class="btn btn-info" type="reset">Reset</button>
+                            <a class="btn btn-info" href="Register">Register</a>
+                            <div data-ng-hide="message == ''" class="alert alert-danger">
+                                {{message}}
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p>Forgot your password? <a href="ForgotPassword">Click here to reset it</a>.</p>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br style="clear:both" />
+    <div class="footerSection">
+        <div class="container">
+            <div class="col-md-3">
+                <br class="clear" />
+                <div class="font15">Contact Information</div>
+                <br class="clear" />
+                <div class="font11">
+                    Mail to <a href="mailto:info@vbuy.in?Subject=VBuy.in : Help VBuy.in team to serve you better!">info@VBuy.in</a>
+                    <br class="clear" />
+                    <span class="glyphicon glyphicon-earphone font15"></span>
+                    <span>  <a href="tel:8754508440">8754508440</a> </span>
+                    <br />
+                    <span class="glyphicon glyphicon-phone font15"></span>
+                    <span><a href="tel:8754508440">8754508440</a></span>
+                    <div>
+                        <span>List your store: <a href="mailto:seller@vbuy.in"> seller@VBuy.in</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <br class="clear" />
+                <div class="font15">Policy / FAQ</div>
+                <br class="clear" />
+                <div class="font11">
+                    <div><a href="PolicyTerms">Terms and Conditions</a></div>
+                    <div><a href="PolicyPrivacy">Privacy Policy</a></div>
+                    <div><a href="PolicySeller">Seller Policy</a></div>
+                    <div><a href="ReturnPolicy">Return Policy</a></div>
+                    <div><a href="OfferPolicy">Offer Policy</a></div>
+                    <div><a href="faq">FAQ</a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <br class="clear" />
+                <div class="font15">Application</div>
+                <br class="clear" />
+                <div>
+                    <a href="https://play.google.com/store/apps/details?id=in.vbuy.client" target="_blank">
+                        <img src="Content/images/googlestore.png">
+                    </a>
+                </div>
+                <br />
+                <div class="font15">
+                    <a href="http://www.vbuy.in/Retailer.html#/RetailerHome" target="_blank">Retailer Application</a>
+                </div>
+                <br />
+                <div class="font15">
+                    <a href="http://www.vsonline.in" target="_blank">About Us</a>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <br class="clear" />
+                <div class="font15">Payments</div>
+                <br class="clear" />
+                <img src="{{imageUrlBase}}cod.jpg" alt="COD">
+                <br />
+                <img src="{{imageUrlBase}}delivery.jpg" alt="Delivery">
+                <br />
+                <img src="{{imageUrlBase}}swipe.png" alt="Swipe">
+            </div>
+            <br class="clear" />
+            <br class="clear" />
+            <div class="container">
+                <div class="col-md-6">
+                    <img class="img-responsive auto-align" src="{{imageUrlBase}}Payment_gateway1_Len.jpg" alt="Secured Gateway"><br />
+                </div>
+                <div class="col-md-6">
+                    <br class="clear" />
+                    <div class="font15">Stay Connected</div>
+                    <br class="clear" />
+                    <a href="https://www.facebook.com/vbuy.in" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i><span></span></a>
+                    <a href="https://twitter.com/VBuy_in" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i><span></span> </a>
+                    <a href="https://plus.google.com/+VbuyIndia" class="btn btn-social-icon btn-google-plus"> <i class="fa fa-google-plus"></i><span></span>  </a>
+                    <a href="https://www.linkedin.com/company/4791220" class="btn btn-social-icon btn-linkedin"> <i class="fa fa-linkedin"></i><span></span> </a>
+                    <a href="https://www.youtube.com/channel/UCJGKAWCoSQFaVarQHvoOvFg" class="btn btn-social-icon"> <i class="fa fa-youtube"></i><span></span> </a>
+                </div>
+            </div>
+            <br class="clear" />
+            <div>
+
+                <div class="col-md-6">
+                    <div class="fb-like" data-href="https://www.facebook.com/vbuy.in" data-width="400px" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+                </div>
+                <div class="col-md-4">
+                    <a class="twitter-follow-button"
+                       href="https://twitter.com/VBuy_in"
+                       data-show-count="false"
+                       data-lang="en">
+                        Follow @vbuy.in
+                    </a>
+                    <div class="g-plusone" data-size="medium" data-annotation="none" data-width="300"></div>
+                    <script type="IN/FollowCompany" data-id="4791220" data-counter="right">
+                    </script>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                Designated trademarks and brands are the properties of their respective owners
+            </div>
+            <br class="clear" />
+            <div class="aboutVBuyFooter">
+                <hr />
+                VBuy.in is India's only online site for Local Shopping. Our VBuy.in is Software as a Service platform, exclusively for local brick and mortar store and small business owners.
+                Opening an Online store for each brick and mortar store, needs huge initial investment with additional operational cost and maintenance cost.
+                Also, consumers don't get time to visit all sites for each of the products they need to buy.
+
+                Our goal is to increase sales for retailers, locally owned business through VBuy.in platform and amazing shopping experience for buyers.
+                Our experts, can guide local retailers and shoppers a better decision making using our Business Intelligence insights.
+
+                VBuy.in is a local shopping mall for any local business like Stores, Jewellery, Salon, SPA, Healthcare products.VBuy.in is not involved in directly selling products and not affiliated/subsidiary of any retail store. We are not e-retailers or even retailers. We Serve Online, for
+                any neighbourhood store , there by serving the consumers and the retailers/business owners in local area.
+
+                VBuy.in is a product of VS Online Services Private Limited, a technology company passionate about technology and like to engage with businesses which are equally passionate.
+
+                Take great pride in shopping locally and be a part of locally-owned business growth.
+            </div>
+
+        </div>
+
+    </div>
+    <br class="clear" />
+    <div id="footer">
+        <footer>
+            <div class="col-md-3 fontfooter">
+                help us to serve you better!. mail to <a href="mailto:info@vbuy.in"> info@VBuy.in</a>
+            </div>
+            <span class="fontfooter col-md-6">
+                <a href="http://www.vsonline.in" target="_blank"> Copyright © 2014-2015 VS Online Services Pvt ltd. All Rights Reserved.</a>
+            </span>
+
+            <div class="col-md-3 font11">
+                <a target="_blank" href="http://www.makeinindia.gov.in/">#MakeInIndia</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- ClickDesk Live Chat Service for websites -->
+    <script type='text/javascript'>
+        var _glc = _glc || []; _glc.push('all_ag9zfmNsaWNrZGVza2NoYXRyDwsSBXVzZXJzGPq34aEIDA');
+        var glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/clickdesk-ui/browser/' :
+            'http://my.clickdesk.com/clickdesk-ui/browser/');
+        var glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');
+        var glcspt = document.createElement('script'); glcspt.type = 'text/javascript';
+        glcspt.async = true; glcspt.src = glcpath + 'livechat-new.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(glcspt, s);
+    </script>
+    <!-- End of ClickDesk -->
+</body>
+</html>

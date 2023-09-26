@@ -1,0 +1,107 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+<div class="container containerbgcolor">
+
+    <div class="row searchRow">
+
+        <div class="col-md-2">Order Number</div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" ng-model="search.OrderId" placeholder="Order Number" />
+        </div>
+        <div class="col-md-2"><button type="submit" class="btn  btn-primary btnSearch" data-ng-click="SearchOrders(search,$event);">Search</button></div>
+
+    </div>
+
+    <div ng-repeat="list in TotalOrdersList">
+        <h4>Total number of orders placed in last 6 months:{{list.Orders}}</h4>
+    </div>
+    <div data-ng-hide="message === ''" class="float-message"
+         data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+        <a href="#" class="close" ng-click="message = ''">&times;</a>
+        {{message}}
+    </div>
+
+    <section class="newSection">
+
+        <div class="row" ng-repeat="orders in TrackOrdersList">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-4">
+                        <div class="col-xs-12">Order Date:<b>{{getISTDate(orders.OrderDateUtc) | date:"MM/dd/yyyy 'at' h:mma" }}</b></div><br />
+                        <div class="col-xs-12">Order Number:<b>{{orders.Id }}</b></div><br><br />
+                        <div class="col-xs-12">Order Total: <b>{{orders.OrderTotal |currency:"&#8377"}}</b></div><br />
+
+                    </div>
+
+                    <div class="col-xs-4">
+
+                        <div class="col-xs-12">Number Of Products:<b>{{orders.NumberOfProducts }}</b></div><br />
+                        <div class="col-xs-12">Order Status:<b>{{orders.OrderStatus}}</b></div><br />
+                        <div class="col-xs-12"><b></b></div>
+                    </div>
+
+                    <div class="col-xs-4">
+
+                        <div class="col-xs-12"> Payment Status:<b>{{orders.PaymentStatus }} / {{orders.PaymentMethodString }}  </b></div><br /><br />
+                        <div class="col-xs-12">
+                            <input type="submit" ng-if="orders.OrderStatus == 'Order Created' || orders.OrderStatus =='Awaiting Payment' || orders.OrderStatus =='Paid'
+                                                      || orders.OrderStatus == 'Under Verification' || orders.OrderStatus == 'Verified' "
+                                   class="btn btn-info" value="Cancel" data-ng-click="CancelOrders(orders)" />
+                        </div>
+
+                    </div>
+                    <input type="button" data-id="{{orders.Id}}" class="btn btn-info" data-toggle="collapse" data-target="#{{orders.Id}}" data-ng-click="orderedProducts(orders,$element.target);" value="{{model}}" />
+                </div>
+            </div>
+            <div class="container" style="margin-bottom:10px;">
+                <div id="{{orders.Id}}" class="collapse">
+                    <table id="ordersTrackingTable">
+                        <tr class="tblheader">
+                            <td class="tdOrderNumber"><b>SubOrder Number</b></td>
+                            <td class="tdProduct"><b>Product Name</b></td>
+                            <td class="tdBranch"><b>Seller</b></td>
+                            <td class="tdQuantity"><b>Quantity</b></td>
+                            <td class="tdPrice"><b>Price</b></td>
+                            <td class="tdStatus"><b>Status</b></td>
+                        </tr>
+                        <tr ng-repeat="product in ProductList">
+                            <td class="tdOrderNumber">{{product.Id}}</td>
+                            <td class="tdProduct">{{product.Name}} <span ng-show="product.SelectedSize.length>0"> / Size : ( {{product.SelectedSize}} )</span></td>
+                            <td class="tdBranch">{{product.BranchName}}</td>
+                            <td class="tdQuantity">{{product.Quantity}}</td>
+                            <td class="tdPrice">
+                                {{product.PriceInclTax |currency:"&#8377"}} <br />
+                                <span class="minorinfofont" ng-if="product.ShippingCharges>0"> Shipping : +{{product.ShippingCharges |currency:"&#8377"}}</span>
+                            </td>
+                            <td class="tdStatus">{{product.OrderItemStatus}}</td>
+
+
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <!--<div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" data-ng-click="count=count+1;" ng-init="count=2">
+                <input type="button" class="btn btn-info" data-ng-click="OrderPagination(count)" value="Show More" />
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>-->
+
+    </section>
+
+
+</div>

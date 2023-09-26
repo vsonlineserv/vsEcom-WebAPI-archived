@@ -1,0 +1,761 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73088AC8-E788-428A-9561-D3B1F8578617}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VSOnline.VBuy.Web</RootNamespace>
+    <AssemblyName>VSOnline.VBuy.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <NuGetPackageImportStamp>c13e836b</NuGetPackageImportStamp>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Mvc5.3.3.3\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet">
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.4.13329\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Excel">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\packages\Google.Apis.1.9.1\lib\net40\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.0\lib\net40\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.0\lib\net40\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core">
+      <HintPath>..\packages\Google.Apis.Core.1.9.1\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Oauth2.v2">
+      <HintPath>..\packages\Google.Apis.Oauth2.v2.1.9.0.860\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Oauth2.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices">
+      <HintPath>..\packages\Google.Apis.1.9.1\lib\net40\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Plus.v1">
+      <HintPath>..\packages\Google.Apis.Plus.v1.1.9.0.2060\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Plus.v1.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors">
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.0.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.6\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.3.2.6\lib\net45\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Prerender.io">
+      <HintPath>..\..\..\..\Code\Prerender_asp_mvc-master\Prerender_asp_mvc-master\Prerender.io\bin\Release\Prerender.io.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.2\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.2\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.2\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="VSOnline.VSECommerce.Utilities, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reference_dll\VSOnline.VSECommerce.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.6\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.6\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.10.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\PreApplicationStartCode.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApplicationTypeEnum.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\WebUserContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PayUResponseHandling.aspx.cs">
+      <DependentUpon>PayUResponseHandling.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Admin.html" />
+    <Content Include="AdminAppResource\css\bootstrap.min.css" />
+    <Content Include="AdminAppResource\css\jquery-ui-1.9.2.custom.css" />
+    <Content Include="AdminAppResource\css\jquery-ui.css" />
+    <Content Include="AdminAppResource\css\password.css" />
+    <Content Include="AdminAppResource\css\Product.css" />
+    <Content Include="AdminAppResource\css\select2.css" />
+    <Content Include="AdminAppResource\css\select2.min.css" />
+    <Content Include="AdminAppResource\css\style.css" />
+    <Content Include="AdminAppResource\images\06.jpg" />
+    <Content Include="AdminAppResource\images\bg.jpg" />
+    <Content Include="AdminAppResource\images\delete.png" />
+    <Content Include="AdminAppResource\images\edit.png" />
+    <Content Include="AdminAppResource\images\grey saree.jpg" />
+    <Content Include="AdminAppResource\images\LeftArrow.png" />
+    <Content Include="AdminAppResource\images\RightArrows.png" />
+    <Content Include="AdminAppResource\images\switch.png" />
+    <Content Include="AdminAppResource\images\VBuyLogo.png" />
+    <Content Include="AdminAppResource\scripts\addUser.js" />
+    <Content Include="AdminAppResource\scripts\angular-animate.js" />
+    <Content Include="AdminAppResource\scripts\angular-animate.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-aria.js" />
+    <Content Include="AdminAppResource\scripts\angular-aria.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-cookies.js" />
+    <Content Include="AdminAppResource\scripts\angular-cookies.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-csp.css" />
+    <Content Include="AdminAppResource\scripts\angular-loader.js" />
+    <Content Include="AdminAppResource\scripts\angular-loader.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-message-format.js" />
+    <Content Include="AdminAppResource\scripts\angular-message-format.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-messages.js" />
+    <Content Include="AdminAppResource\scripts\angular-messages.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-mocks.js" />
+    <Content Include="AdminAppResource\scripts\angular-resource.js" />
+    <Content Include="AdminAppResource\scripts\angular-resource.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-route.js" />
+    <Content Include="AdminAppResource\scripts\angular-route.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-sanitize.js" />
+    <Content Include="AdminAppResource\scripts\angular-sanitize.min.js" />
+    <Content Include="AdminAppResource\scripts\angular-scenario.js" />
+    <Content Include="AdminAppResource\scripts\angular-touch.js" />
+    <Content Include="AdminAppResource\scripts\angular-touch.min.js" />
+    <Content Include="AdminAppResource\scripts\angular.bundled.min.js" />
+    <Content Include="AdminAppResource\scripts\angular.js" />
+    <Content Include="AdminAppResource\scripts\angular.min.js" />
+    <Content Include="AdminAppResource\scripts\autocomplete.js" />
+    <Content Include="AdminAppResource\scripts\bootstrap-select.js" />
+    <Content Include="AdminAppResource\scripts\bootstrap.min.js" />
+    <Content Include="AdminAppResource\scripts\category.js" />
+    <Content Include="AdminAppResource\scripts\CatSubCategories.js" />
+    <Content Include="AdminAppResource\scripts\Discount.js" />
+    <Content Include="AdminAppResource\scripts\grid.locale-en.js" />
+    <Content Include="AdminAppResource\scripts\jquery-1.5.1.min.js" />
+    <Content Include="AdminAppResource\scripts\jquery-2.1.4.min.js" />
+    <Content Include="AdminAppResource\scripts\jquery-ui-1.8.10.custom.min.js" />
+    <Content Include="AdminAppResource\scripts\jquery-ui.min.js" />
+    <Content Include="AdminAppResource\scripts\jquery.easytabs.min.js" />
+    <Content Include="AdminAppResource\scripts\jquery.form-validator.js" />
+    <Content Include="AdminAppResource\scripts\jquery.hashchange.min.js" />
+    <Content Include="AdminAppResource\scripts\jquery.jqGrid.js" />
+    <Content Include="AdminAppResource\scripts\jquery.multi-select.js" />
+    <Content Include="AdminAppResource\scripts\JSon.js" />
+    <Content Include="AdminAppResource\scripts\Login.js" />
+    <Content Include="AdminAppResource\scripts\Manufacturer.js" />
+    <Content Include="AdminAppResource\scripts\multi-select.css" />
+    <Content Include="AdminAppResource\scripts\OrderDetails.js" />
+    <Content Include="AdminAppResource\scripts\Product.js" />
+    <Content Include="AdminAppResource\scripts\ProductPrice.js" />
+    <Content Include="AdminAppResource\scripts\RegisterRetailer.js" />
+    <Content Include="AdminAppResource\scripts\sales.js" />
+    <Content Include="AdminAppResource\scripts\select2.js" />
+    <Content Include="AdminAppResource\scripts\select2.min.js" />
+    <Content Include="AdminAppResource\scripts\sellerCategory.js" />
+    <Content Include="AdminAppResource\scripts\seoCategories.js" />
+    <Content Include="AdminAppResource\scripts\seoProduct.js" />
+    <Content Include="AdminAppResource\scripts\statistics.js" />
+    <Content Include="AdminAppResource\scripts\Store.js" />
+    <Content Include="AdminAppResource\scripts\ui.jqgrid.css" />
+    <Content Include="AdminAppResource\scripts\unPubCategory.js" />
+    <Content Include="AdminAppResource\scripts\unPublishedProduct.js" />
+    <Content Include="AdminAppResource\scripts\user.js" />
+    <Content Include="angular-chart\angular-chart.css" />
+    <Content Include="angular-chart\angular-chart.js" />
+    <Content Include="angular-chart\angular-chart.min.css" />
+    <Content Include="angular-chart\angular-chart.min.js" />
+    <Content Include="angular-chart\Chart.js" />
+    <Content Include="angular-chart\Chart.min.js" />
+    <Content Include="angular-chart\src\Chart.Bar.js" />
+    <Content Include="angular-chart\src\Chart.Core.js" />
+    <Content Include="angular-chart\src\Chart.Doughnut.js" />
+    <Content Include="angular-chart\src\Chart.Line.js" />
+    <Content Include="angular-chart\src\Chart.PolarArea.js" />
+    <Content Include="angular-chart\src\Chart.Radar.js" />
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\checkoutController.js" />
+    <Content Include="app\controllers\controllers.js" />
+    <Content Include="app\controllers\loginController.js" />
+    <Content Include="app\controllers\cartController.js" />
+    <Content Include="app\controllers\orderTrackingController.js" />
+    <Content Include="app\controllers\resetPasswordController.js" />
+    <Content Include="app\controllers\userWishlistController.js" />
+    <Content Include="app\partials\cart.html" />
+    <Content Include="app\partials\ChangePassword.html" />
+    <Content Include="app\partials\checkout.html" />
+    <Content Include="app\partials\MyAccount.html" />
+    <Content Include="app\partials\Compare.html" />
+    <Content Include="app_admin\adminapp.js" />
+    <Content Include="app_admin\controllers\migratedcategorycontrollers.js" />
+    <Content Include="app_admin\controllers\migratedstorecontrollers.js" />
+    <Content Include="app_admin\controllers\migratedproductcontrollers.js" />
+    <Content Include="app_admin\controllers\migrateduserlistcontrollers.js" />
+    <Content Include="app_admin\controllers\migrateddiscountcontrollers.js" />
+    <Content Include="app_admin\controllers\productcontroller.js" />
+    <Content Include="app_admin\controllers\controllers.js" />
+    <Content Include="app_admin\partials\categorylist.html" />
+    <Content Include="app_admin\partials\sellercategory.html" />
+    <Content Include="app_admin\partials\newstore.html" />
+    <Content Include="app_admin\partials\sitediscount.html" />
+    <Content Include="app_admin\partials\seller.html" />
+    <Content Include="app_admin\partials\usermaster.html" />
+    <Content Include="app_admin\partials\productseo.html" />
+    <Content Include="app_admin\partials\pricing.html" />
+    <Content Include="app_admin\partials\enquiry.html" />
+    <Content Include="app_admin\partials\publishproduct.html" />
+    <Content Include="app_admin\partials\orders.html" />
+    <Content Include="app_admin\partials\manufacturer.html" />
+    <Content Include="app_admin\partials\productlist.html" />
+    <Content Include="app_admin\partials\exportproduct.html" />
+    <Content Include="app_admin\partials\publishcategory.html" />
+    <Content Include="app_admin\partials\siteSettings.html" />
+    <Content Include="app_admin\partials\topCategories.html" />
+    <Content Include="app_admin\partials\dashboard.html" />
+    <Content Include="app_admin\partials\login.html" />
+    <Content Include="app_admin\partials\uploadSiteImages.html" />
+    <Content Include="app_admin\services\adminProductService.js" />
+    <Content Include="app_admin\services\authInterceptorService.js" />
+    <Content Include="app_admin\services\authService.js" />
+    <Content Include="app_admin\services\adminService.js" />
+    <Content Include="app_retailer\controllers\editProductController.js" />
+    <Content Include="app_retailer\partials\myStore.html" />
+    <Content Include="app_retailer\partials\productBulkUpload.html" />
+    <Content Include="app_retailer\partials\productSEO.html" />
+    <Content Include="app_admin\partials\categoryParameter.html" />
+    <Content Include="app_retailer\partials\newBranch.html" />
+    <Content Include="app_retailer\partials\updateKeyFeatures.html" />
+    <Content Include="app_retailer\partials\updateProduct.html" />
+    <Content Include="app_retailer\partials\productImage.html" />
+    <Content Include="app_retailer\partials\printOrder.html" />
+    <Content Include="app\partials\orderTransactionFailed.html" />
+    <Content Include="app\partials\orderConfirmation.html" />
+    <Content Include="app\partials\orderTracking.html" />
+    <Content Include="app\partials\recentOrders.html" />
+    <Content Include="app\services\cartService.js" />
+    <Content Include="app\services\orderTrackingService.js" />
+    <Content Include="app_retailer\controllers\ordersController.js" />
+    <Content Include="app_retailer\partials\dashboard.html" />
+    <Content Include="app_retailer\partials\myOrders.html" />
+    <Content Include="app_retailer\partials\OrderSummary.html" />
+    <Content Include="app_retailer\partials\pendingOrders.html" />
+    <Content Include="app_retailer\services\productService.js" />
+    <Content Include="Content\app\css\images\bg.jpg" />
+    <Content Include="Content\app\css\jasny-bootstrap.min.css" />
+    <Content Include="Content\images\noimage.jpg" />
+    <Content Include="EmailTemplates\ForgotPassword.html" />
+    <Content Include="EmailTemplates\GeneratePasswordRetailer.html" />
+    <Content Include="EmailTemplates\OrderCancellation.html" />
+    <Content Include="EmailTemplates\OrderCancellationSMS.txt" />
+    <Content Include="EmailTemplates\OrderConfirmation.html" />
+    <Content Include="EmailTemplates\OrderConfirmationSMS.txt" />
+    <Content Include="EmailTemplates\ProductReplyMail.html" />
+    <Content Include="EmailTemplates\ProductRequestMail.html" />
+    <Content Include="EmailTemplates\RetailerRegistration - Copy.html" />
+    <Content Include="EmailTemplates\RetailerRegistration.html" />
+    <Content Include="EmailTemplates\RetailerWelcome.html" />
+    <Content Include="EmailTemplates\SiteAdminInformation.html" />
+    <Content Include="EmailTemplates\WelcomeMail.html" />
+    <Content Include="Global.asax" />
+    <Content Include="Home.html" />
+    <Content Include="images\bx_loader.gif" />
+    <Content Include="images\controls.png" />
+    <Content Include="images\delete.png" />
+    <Content Include="images\edit.png" />
+    <Content Include="images\LeftArrow.png" />
+    <Content Include="images\RightArrows.png" />
+    <Content Include="images\switch.png" />
+    <Content Include="Scripts\jasny-bootstrap.min.js" />
+    <Content Include="Scripts\plugins.js" />
+    <Content Include="shared\faq.html" />
+    <Content Include="shared\OfferPolicy.html" />
+    <Content Include="shared\ReturnPolicy.html" />
+    <Content Include="shared\sellerMDA.html" />
+    <Content Include="app_retailer\services\ordersService.js" />
+    <Content Include="Content\app\css\app.min.css" />
+    <Content Include="Content\app\css\bootstrap-social.css" />
+    <Content Include="Content\app\css\font-awesome.css" />
+    <Content Include="Content\app\css\Orders.css" />
+    <Content Include="Content\app\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\googlestore.png" />
+    <Content Include="Content\images\icon_wishlist_cancel.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="EmailTemplates\ProductReplyMail.txt" />
+    <Content Include="EmailTemplates\ProductReplySMS.txt" />
+    <Content Include="EmailTemplates\ProductRequestMail.txt" />
+    <Content Include="EmailTemplates\ProductRequestSMS.txt" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Payment.html" />
+    <Content Include="PayUResponseHandling.aspx" />
+    <Content Include="Scripts\angularjs-dropdown-multiselect.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\google-plus-signin.js" />
+    <Content Include="app\directives\ngElevateZoom.js" />
+    <Content Include="app\directives\ngVBuyRating.js" />
+    <Content Include="app\partials\ForgotPassword.html" />
+    <Content Include="app\partials\login.html" />
+    <Content Include="app\partials\offers.html" />
+    <Content Include="app\partials\Register.html" />
+    <Content Include="app\partials\ResetPassword.html" />
+    <Content Include="app\partials\userWishlist.html" />
+    <Content Include="app\services\authInterceptorService.js" />
+    <Content Include="app\services\authService.js" />
+    <Content Include="app\services\passwordService.js" />
+    <Content Include="app\services\userActionService.js" />
+    <Content Include="app_retailer\controllers\forgotPasswordController.js" />
+    <Content Include="app_retailer\controllers\resetPasswordController.js" />
+    <Content Include="app_retailer\directives\directives.js" />
+    <Content Include="app_retailer\partials\MyDetails.html" />
+    <Content Include="app_retailer\partials\ForgotPassword.html" />
+    <Content Include="app_retailer\partials\myInbox.html" />
+    <Content Include="app_retailer\partials\ChangePassword.html" />
+    <Content Include="app_retailer\partials\ResetPassword.html" />
+    <Content Include="app_retailer\retailerapp.js" />
+    <Content Include="app\controllers\productController.js" />
+    <Content Include="app\controllers\productlistController.js" />
+    <Content Include="app\controllers\searchProductsController.js" />
+    <Content Include="app\controllers\storesController.js" />
+    <Content Include="app\directives\animatedView.js" />
+    <Content Include="app\partials\featuredProducts.html" />
+    <Content Include="app\partials\product.html" />
+    <Content Include="app\partials\search.html" />
+    <Content Include="app\partials\products.html" />
+    <Content Include="app_admin\partials\category.html" />
+    <Content Include="app\services\categoryService.js" />
+    <Content Include="app\services\landingService.js" />
+    <Content Include="app\services\productService.js" />
+    <Content Include="app\services\storesService.js" />
+    <Content Include="app\partials\stores.html" />
+    <Content Include="app\services\mapService.js" />
+    <Content Include="app_retailer\controllers\storesController.js" />
+    <Content Include="app_retailer\partials\defaultSettings.html" />
+    <Content Include="app_retailer\partials\managePricing.html" />
+    <Content Include="app_retailer\partials\manageProducts.html" />
+    <Content Include="app_retailer\partials\manageBranches.html" />
+    <Content Include="app_retailer\partials\mySettings.html" />
+    <Content Include="app_retailer\partials\newProduct.html" />
+    <Content Include="app_retailer\partials\userSettings.html" />
+    <Content Include="app_retailer\services\authInterceptorService.js" />
+    <Content Include="app_retailer\controllers\controllers.js" />
+    <Content Include="app_retailer\controllers\loginController.js" />
+    <Content Include="app_retailer\partials\retailerRegister.html" />
+    <Content Include="app_retailer\partials\login.html" />
+    <Content Include="app_retailer\partials\retailerHome.html" />
+    <Content Include="app_retailer\services\authService.js" />
+    <Content Include="app_retailer\services\passwordService.js" />
+    <Content Include="app_retailer\services\storesService.js" />
+    <Content Include="app_retailer\services\retailerServicenew.js" />
+    <Content Include="Content\app\css\bootstrap.css" />
+    <Content Include="Content\app\css\cardstyle.css" />
+    <Content Include="Content\app\css\gridstyle.css" />
+    <Content Include="Content\app\css\jquery.bxslider.css" />
+    <Content Include="Content\app\css\login.css" />
+    <Content Include="Content\app\css\menustyle.css" />
+    <Content Include="Content\app\css\others.css" />
+    <Content Include="Content\app\css\rating.css" />
+    <Content Include="Content\app\css\styles.css" />
+    <Content Include="Content\app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\Directions.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\glyphicons-white.png" />
+    <Content Include="Content\images\glyphicons.png" />
+    <Content Include="Content\images\icon_wishlist_Small.png" />
+    <Content Include="Content\images\icon_wishlist_Small_Filled.png" />
+    <Content Include="Content\images\locateme.jpg" />
+    <Content Include="Content\images\RetailerApp\retailerLogIn.jpg" />
+    <Content Include="Content\images\RetailerApp\retailer_login.jpg" />
+    <Content Include="Content\images\RetailerApp\specialOffer.jpg" />
+    <Content Include="Content\images\VBuyIco_32.png" />
+    <Content Include="Content\images\VBuyLogo.png" />
+    <Content Include="Content\images\vbuy_loading.gif" />
+    <Content Include="Content\images\VBuy_map32.png" />
+    <Content Include="Content\loading-bar.css" />
+    <Content Include="Content\loading-bar.min.css" />
+    <Content Include="EmailTemplates\VBuyLogo_150.png" />
+    <Content Include="EmailTemplates\ForgotPassword.txt" />
+    <Content Include="EmailTemplates\RetailerRegistration.txt" />
+    <Content Include="EmailTemplates\WelcomeMail.txt" />
+    <Content Include="Content\app\css\images\bx_loader.gif" />
+    <Content Include="Content\app\css\images\controls.png" />
+    <Content Include="Retailer.html" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-cookies.js" />
+    <Content Include="Scripts\angular-cookies.min.js" />
+    <Content Include="Scripts\angular-facebook.js" />
+    <Content Include="Scripts\angular-file-upload.js" />
+    <Content Include="Scripts\angular-local-storage.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Content\app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\angular-strap.min.js" />
+    <Content Include="Scripts\angular-strap.tpl.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Content\app\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\app\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\app\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\app\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\app\fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="AdminAppResource\scripts\angular-animate.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-aria.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-cookies.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-loader.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-message-format.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-messages.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-resource.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-route.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-sanitize.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular-touch.min.js.map" />
+    <Content Include="AdminAppResource\scripts\angular.min.js.map" />
+    <Content Include="AdminAppResource\scripts\bower.json" />
+    <Content Include="AdminAppResource\scripts\errors.json" />
+    <Content Include="AdminAppResource\scripts\multi-select.jquery.json" />
+    <Content Include="AdminAppResource\scripts\version.json" />
+    <Content Include="AdminAppResource\scripts\Web.config" />
+    <None Include="AdminAppResource\scripts\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="angular-chart\angular-chart.min.css.map" />
+    <Content Include="angular-chart\angular-chart.min.js.map" />
+    <Content Include="angular-chart\Chart.js-master.zip" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\app\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\Demo1.pubxml" />
+    <None Include="Properties\PublishProfiles\Fashionedin.pubxml" />
+    <None Include="Properties\PublishProfiles\moviesite.pubxml" />
+    <None Include="Properties\PublishProfiles\PreProductionProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\StagingProfile.pubxml" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angularjs-viewhead.js" />
+    <Content Include="Scripts\bootstrap-slider.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\VSECommercePublish.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.bxslider.js" />
+    <Content Include="Scripts\jquery.bxslider.min.js" />
+    <Content Include="Scripts\jquery.elevatezoom.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\loading-bar.js" />
+    <Content Include="Scripts\lodash.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ng-breadcrumbs.vbuy.js" />
+    <Content Include="Scripts\ng-table.js" />
+    <Content Include="Scripts\StyledMarker.js" />
+    <Content Include="Scripts\VBuyElementFlyer.js" />
+    <Content Include="shared\PolicyPrivacy.html" />
+    <Content Include="shared\PolicySeller.html" />
+    <Content Include="shared\PolicyTerms.html" />
+    <Content Include="slick\ajax-loader.gif" />
+    <Content Include="slick\fonts\slick.svg" />
+    <Content Include="slick\slick.css" />
+    <Content Include="slick\slick.js" />
+    <Content Include="slick\slick.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="slick\config.rb" />
+    <Content Include="slick\fonts\slick.eot" />
+    <Content Include="slick\fonts\slick.ttf" />
+    <Content Include="slick\fonts\slick.woff" />
+    <Content Include="slick\slick.css.map" />
+    <Content Include="slick\slick.scss" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\PaymentGatewayReturn\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\PaymentGatewayReturn\Result.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AdminAppResource\images\Product\" />
+    <Folder Include="angular-chart\Chart.js-master\" />
+    <Folder Include="AppCode\" />
+    <Folder Include="Content\app\js\" />
+    <Folder Include="Content\Others\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VSOnline.VSECommerce.Domain\VSOnline.VSECommerce.Domain.csproj">
+      <Project>{62264d8d-ea91-4b34-bd5b-679244fadd53}</Project>
+      <Name>VSOnline.VSECommerce.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VSOnline.VSECommerce.Persistence\VSOnline.VSECommerce.Persistence.csproj">
+      <Project>{e5b6de94-411e-4c5e-98cd-09f595e74362}</Project>
+      <Name>VSOnline.VSECommerce.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VSOnline.VSECommerce\VSOnline.VSECommerce.csproj">
+      <Project>{29826038-a276-49ac-afd5-1d84c41f89d1}</Project>
+      <Name>VSOnline.VSECommerce</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50274</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/VBuy</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

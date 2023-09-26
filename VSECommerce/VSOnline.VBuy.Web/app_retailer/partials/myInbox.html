@@ -1,0 +1,64 @@
+﻿<div class="panel-heading formHeader">
+    <div>
+        <span class=""> My Inbox ({{myInbox.total()}})</span>
+        <a href="" type="button" class="glyphicon glyphicon-question-sign btnalignRight" data-placement="left"
+           data-title="User contacted for product" product lookup" tab" data-bs-tooltip></a>
+    </div>
+
+</div>
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div class="formHeader">    
+    <div class="filter-control">
+        <div>
+            <span ng-if="myInbox.totalPage>0">Page {{myInbox.page()}}  / {{myInbox.totalPage}}</span>
+        </div>
+    </div>        
+ 
+ </div>
+        <table ng-table="myInbox" show-filter="false" class="table">
+
+            <tr ng-repeat="mail in $data">
+                <td data-title="'Name'" width="100">
+                    <span>{{mail.ContactName}}</span>
+                </td>
+                <td data-title="'Mobile Number '">
+                    {{mail.Mobile}}
+                </td>
+                <td data-title="'Email '">
+                    {{mail.Email}}
+                </td>
+                <td data-title="'Product'">
+                    {{mail.ProductName}}
+                </td>
+                <td data-title="'Branch'">
+                    {{mail.BranchName}}
+                </td>
+                <!--<td data-title="'Deal Price'" width="70">
+                    {{mail.OfferPrice}}
+                </td>-->
+                <td data-title="'Message'" width="150">
+                    {{mail.Subject}}
+
+                </td>
+                </td>
+
+
+                <td data-title="'Message Date (IST)'">
+                    <span class="fontverysmall"> {{mail.UpdatedOnIST | date:'medium'}} </span>
+                </td>
+                <td data-title="'Reply'" width="150">
+                    <textarea cols="20" rows="4" maxlength="150" data-ng-model="mail.Reply"></textarea>
+                    <button class="btn-info" data-ng-click="InboxReply(mail.Id, mail.Reply, mail)">Reply</button>
+                    <span class="fontverysmall">{{mail.ReplyDateIST | date:'medium'}}</span>
+                    <span class="alert-success">{{mail.replyStatus}}</span>
+                    <span class="alert-error">{{mail.replyStatusError}}</span>
+                </td>
+            </tr>
+        </table>

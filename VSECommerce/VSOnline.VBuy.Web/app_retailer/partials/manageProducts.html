@@ -1,0 +1,116 @@
+﻿<div class="panel-heading formHeader">
+    <div>
+        <span> Product Lookup ({{includeProductsGridParams.total()}})</span>
+        <a class="glyphicon glyphicon-question-sign btnalignRight" data-placement="left"
+           data-title="Add product to your store searching here. Not able to find required product here?. click on create new products menu." data-bs-tooltip></a>
+    </div>
+</div>
+
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div class="formHeader">
+    <div class="filter-control">
+        <div class="filter-label"> Category</div>
+        <select class="dropdown selectpicker" ng-model="filters.selectedCategoryObj" id="categoryFilter"
+                data-html="1" ng-options="category as category.Name for category in filterList.CategoryFilter"
+                placeholder="Select Category" ng-change="changeCategory()"></select>
+    </div>
+    <div class="filter-control">
+        <div class="filter-label"> Sub Category </div>
+        <select class="selectpicker" ng-model="filters.selectedSubCategoryObj" id="subcategoryFilter"
+                data-html="1" ng-options="category as category.Name for category in filterList.SubCategoryFilter  | filter: {ParentCategoryId:filters.selectedCategory}"
+                placeholder="Select Sub.Cat" ng-change="changeSubCategory()"></select>
+    </div>
+    <div class="filter-control">
+        <span ng-if="includeProductsGridParams.totalPage>0">Page {{includeProductsGridParams.page()}} / {{includeProductsGridParams.totalPage}}</span>
+    </div>
+    <input type="submit" class="btn-info" value="Search" data-ng-click="GetProducts()" />
+</div>
+<table ng-table="includeProductsGridParams" show-filter="true" class="table width60p">
+
+    <tr ng-repeat="product in $data">
+        <td data-title="'Name'" filter="{ 'Name' : 'text' }" width="200" sortable="'Name'">
+            <a target="_blank" href="{{$root.ApplicationHosting}}product/{{product.Name | formaturl}}/{{product.ProductId}}">{{product.Name}}</a>
+        </td>
+        <td data-title="'Lowest Price'" width="70" sortable="'Price'">
+            {{product.Price}}
+        </td>
+        <td data-title="'Store Price'" width="70" sortable="'NewPrice'">
+            <div>
+                <input type="number" class="input-small70" step="any" ng-model="product.NewPrice" />
+            </div>
+        </td>
+        <td data-title="'Deal Price'" width="70">
+            <div>
+                <input type="number" class="input-smaller" step="any" ng-model="product.NewSpecialPrice" />
+            </div>
+            <div>
+                <span>Deal Description: </span>
+                <textarea rows="3" class="input-small70" maxlength="100" ng-model="product.NewSpecialPriceDescription"></textarea>
+            </div>
+        </td>
+        <td data-title="'Deal Price Start time'" width="125" >
+            <div>
+                <input id="starttime" type="datetime" step="any" class="input-small70" ng-model="product.NewPriceStartTime"
+                       data-min-date="today"
+                       data-date-format="yyyy-MM-dd" bs-datepicker />
+            </div>
+        </td>
+        <td data-title="'Deal Price End time'" width="125">
+            <div>
+                <input id="endtime" type="datetime" step="any" data-min-date="today"
+                       class="input-small70"
+                       data-date-format="yyyy-MM-dd" ng-model="product.NewPriceEndTime" bs-datepicker />
+            </div>
+        </td>
+        <td data-title="'Actions'" width="150" sortable="'FlagExist'">
+            <button class="btn btn-info" ng-hide="product.FlagExist" data-ng-click="IncludeProduct(product)" title="Add to Stores"><i class="glyphicon glyphicon-plus font15" title="Add to Stores"></i></button>
+            <button class="btn btn-info" ng-show="product.FlagExist" ng-disabled><i ng-show="product.FlagExist" class="glyphicon glyphicon-saved font15" title="Product already added to your store"></i></button>
+            <a href="Retailer.html#/UpdateProduct/{{product.ProductId}}" target="_blank" class="btn btn-info" title="Edit Product Details"><i class="glyphicon glyphicon-pencil font15" title="Edit Product Details"></i></a>
+            <a href="Retailer.html#/UpdateProductImage/{{product.ProductId}}" target="_blank" class="btn btn-info" title="Edit Product Details"><i class="glyphicon glyphicon-picture font15" title="Edit Product Image"></i></a>
+            
+        </td>
+    </tr>
+</table>
+<!--<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 pagination-div" ng-show="showProduct">
+        <ul class="pagination" ng-if="pagenumbers==0">
+            <li>
+              
+            </li>
+        </ul>
+        <ul class="pagination" ng-if="pagenumbers>=1 && pagenumbers<=4">
+            <li ng-repeat="n in pageButtonList" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a >{{n+1}}</a>
+            </li>
+        </ul>
+        <ul class="pagination" ng-if="pagenumbers>=5">
+            <li ng-class="DisablePrevPage()">
+                <a  ng-click="prevPage()">« Prev</a>
+            </li>
+            <li ng-repeat="n in pageButtonList" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a  >{{n+1}}</a>
+            </li>
+            <li ng-class="DisableNextPage()">
+                <a  ng-click="nextPage()">Next »</a>
+
+            </li>
+        </ul>
+       
+
+    </div>
+    <div class="col-md-2"></div>
+</div>-->
+
+
+
+
+
+ 

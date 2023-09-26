@@ -1,0 +1,64 @@
+﻿body {
+    background: transparent url("../images/bg.jpg") repeat scroll 0% 0%;
+}
+.close
+{
+
+}
+#gbox_unPublishgrid
+{
+    margin-left: 20px;
+}
+.navbar{
+    border:none;
+}
+.navbar-default
+{
+    background-color: rgb(9, 9, 9);
+}
+.navbar-brand {
+    font-size: 15px;
+}
+.navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #F00F0F;
+   
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #F30E0E;
+    background-color: transparent;
+}
+.btnright {
+    background: transparent url("../images/RightArrows.png") no-repeat scroll 0% 0%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: medium none;
+    margin-left: 5px;
+}
+.btnleft
+{
+    background: transparent url("../images/LeftArrow.png") no-repeat scroll 0% 0%;
+cursor: pointer;
+width: 40px;
+height: 40px;
+border: medium none;
+margin-left: 5px;
+}
+li {
+    list-style-type:none;
+}
+
+.footerCustom
+{
+ position:absolute;
+bottom:0px;
+height: 40px;
+margin:20px;
+background-color: #808080;
+}

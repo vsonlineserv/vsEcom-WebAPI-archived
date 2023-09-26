@@ -1,0 +1,71 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+
+<view-title>Login to shop from your nearby local businesses</view-title>
+<og-description>Login to shop from your nearby local businesses</og-description>
+<og-image>{{imageUrlBase}}VBuy_Image.png</og-image>
+
+<div class="container view containerbgcolor">
+    <br />
+    <br />
+    <div class="col-sm-12">
+        <div class="col-sm-8"></div>
+        <div class="panel-heading col-sm-4">
+            <h4 class="greenText">Login to VBuy.in</h4>
+        </div>
+    </div>
+    <div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-8">
+            <div class="col-sm-6">
+                <div class="col-sm-10">
+                    <button type="button" id="registerusingFacebook" class="btn btn-block btn-social btn-sm btn-facebook"
+                            data-ng-show="!$root.flagLoggedIn "
+                            data-ng-disabled="!facebookIsReady"
+                            data-ng-click="connectUsingFacebook()">
+                        <i class="fa fa-facebook"></i>
+                        Sign in with Facebook
+                    </button>
+                    <br />
+                    <button type="button" id="registerusingGoogle" class="btn btn-block btn-social btn-sm btn-google-plus"
+                            data-ng-click="connectUsingGoogle()">
+                        <i class="fa fa-google-plus"></i>
+                        Sign in with Google
+                    </button>
+                    <span class="minorinfofont">we do not store your password</span>
+                </div>
+                <div class="col-sm-2">
+                    <span class="caption"> OR </span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <form>
+                    <p><input type="text" name="username" class="form-control" data-ng-model="loginData.userName" required autofocus placeholder="Email"></p>
+                    <p><input type="password" name="password" class="form-control" data-ng-model="loginData.password" required placeholder="Password"></p>
+                    <button class="btn btn-info" type="submit" data-ng-click="Login()">Login</button>
+                    <button class="btn btn-info" type="reset">Reset</button>
+                    <br />
+                    New User? Click Here to <a class="btn-link" href="Register">Register</a>
+                    <div data-ng-hide="message == ''" class="alert alert-danger">
+                        {{message}}
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+                <br />
+                <br />
+                <p>Forgot your password? <a href="ForgotPassword">Click here to reset it</a>.</p>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,150 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Seller Category Mapping </span>
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+
+        <div>
+
+            <div class="col-md-3"><div class="col-md-10"><input type="text" class="form-control" id="txtBranchId" placeholder="Branch Id" /></div>
+            <div class="col-md-2"><span>OR</span></div></div>
+            <div class="col-md-3"><input type="text" class="form-control" id="txtBranchName" placeholder="Branch Name" /></div>
+            <div class="col-md-1"> <button type="button" class="btn btn-primary" ng-click="getCategory();">Search</button></div>
+
+            <div class="col-md-1"> <button type="button" class="btn btn-primary" ng-click="ClearCategory();">Clear</button></div>
+        </div>
+        <br class="clear"/>
+        <br />
+        <div>
+            <table id="sellerCategorygrid"></table>
+            <div id="sellerCategoryPager"></div>
+        </div>
+
+    </div>
+
+</div>
+<div class="modal fade" id="SellerCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="seller">Seller Category List</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"><label for="recipient-name" class="control-label" id="SellerCategoryid">  Id</label></div>
+                    <div class="col-md-9">  <input type="text" class="form-control" id="txtEditid" disabled="disabled" placeholder=" Id" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">SellerBranch </label></div>
+                    <div class="col-md-9"> <input type="text" class="form-control" id="txtEditSeller" placeholder="Seller Branch" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">Branch Name </label></div>
+                    <div class="col-md-9"> <input type="text" class="form-control" id="txtBranch" placeholder="Branch Name" disabled="disabled" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">Parent Category </label></div>
+                    <div class="col-md-9">
+                        <select id="ParentCat" ng-change="subcat()" ng-model="ParentCatSelected" multiple="multiple" class="mulit-view">
+                            <option value="">--Select--</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">Sub Category </label></div>
+                    <div class="col-md-4">
+                        <select id="myselect" ng-change="AppendSelect()" ng-model="myselectSelected" multiple="multiple" style="width:118%"></select>
+                    </div>    <div class="col-md-4" style="margin-left:10px">
+                                  <select id="selected" ng-change="ReAppendSelect()" ng-model="AppendSelected" multiple="multiple" style="width:118%"></select>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="ModifySellerCategories();">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="SellerAssignCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="Asseller">Seller Category List</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"><label for="recipient-name" class="control-label" id="ListId">  Id</label></div>
+                    <div class="col-md-9">  <input type="text" class="form-control" id="txtAsEditid" disabled="disabled" placeholder=" Id" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">SellerBranch </label></div>
+                    <div class="col-md-9"> <input type="text" class="form-control" id="txtAsEditSeller" placeholder="Seller Branch" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">Branch Name </label></div>
+                    <div class="col-md-9"> <input type="text" class="form-control" id="txtAsBranch" placeholder="Branch Name" disabled="disabled" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">Parent Category </label></div>
+                    <div class="col-md-9">
+                        <select id="ReParentCat" ng-change="subAssigncat()" ng-model="ReParentCatSelected" class="mulit-view" multiple="multiple">
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-3"> <label for="recipient-name" class="control-label">Sub Category </label></div>
+                    <div class="col-md-4">
+                        <select id="Asmy-select" ng-change="deleteAssCategory()" ng-model="AsmySelected" multiple="multiple" style="width:118%"></select>
+                    </div>
+                    <div class="col-md-4" style="margin-left:10px">
+                        <select id="AsmyselectCate" ng-change="restorCate()" ng-model="AsmyselectCateSelected" multiple="multiple" style="width:118%"></select>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="ModifySellerAssignCategories();">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    <table id="subCategorygrid"></table>
+                    <div id="subCategoryPager"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

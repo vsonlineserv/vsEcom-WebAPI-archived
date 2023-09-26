@@ -1,0 +1,40 @@
+﻿<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel-heading formHeader">
+    <div>
+        <span class="">Orders ({{pendingOrdersGridParams.total()}})</span>
+        <a href="" type="button" class="glyphicon glyphicon-question-sign btnalignRight" data-placement="left"
+           data-title="Orders for particular Store, branch" data-bs-tooltip></a>
+    </div>
+</div>
+
+<div class="formHeader">
+        <div class="filter-control">
+            <div class="filter-label">Order Status</div>
+            <select class="selectpicker" ng-options="orderStatus.id as orderStatus.name for orderStatus in OrderStatusList" ng-model="order.status" placeholder="Select Status"
+                     data-html="1">
+                <option value="">All</option>
+            </select>
+        </div>
+    <div class="filter-control">
+        <input type="text" class="font15" placeholder="Search By Order Number" ng-model="order.id" />
+    </div>
+    <div class="filter-control">
+        <span ng-if="pendingOrdersGridParams.totalPage>0">Page {{pendingOrdersGridParams.page()}}  / {{pendingOrdersGridParams.totalPage}}</span>
+    </div>
+           <input type="submit" class="btn-info" value="Search" data-ng-click="SearchOrders(order)" />
+</div>
+<br class="clear"/>
+        <ul class="ultab" ng-init="tab = 'pendingOrdersTab'">
+            <li class="tab" id="pendingOrdersTab" ng-class="{active:tab==='pendingOrdersTab'}" data-ng-click="pendingOrdersTabClick();tab = 'pendingOrdersTab'">
+            <a data-ng-click="GetPendingOrders();tab = 'pendingOrdersTab'">Orders</a>
+        </li>
+        </ul>
+            <p data-ng-show="tab === 'pendingOrdersTab'" data-ng-include="'app_retailer/partials/pendingOrders.html'"></p>     

@@ -1,0 +1,206 @@
+﻿<div class="panel">
+    <div class="panel-min-height panel-body">
+        <div class="col-md-3">
+            <div class="grid-header">Order Summary</div>
+            <div class="dashbord-widget-md">
+                <table class="table table-bordered table-responsive dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Days
+                            </th>
+                            <th>
+                                Quantity
+
+                            </th>
+                            <th>
+                                Revenue
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr data-ng-repeat="orderSummary in orderSummaryList ">
+                        <td>
+                            {{orderSummary.days}}
+                        </td>
+                        <td>
+                            {{orderSummary.quantity}}
+
+                        </td>
+                        <td>
+                            {{orderSummary.SalesValue | currency:"&#8377;"}}
+
+                        </td>
+
+
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="grid-header">Top 4 Selling Category</div>
+            <div class="dashbord-widget-md">
+                <table class="table table-bordered table-responsive dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Category Name
+                            </th>
+                            <th>
+                                Quantity
+
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr data-ng-repeat="orderCategorySummary in orderCategorySummaryList ">
+                        <td>
+                            {{orderCategorySummary.CategoryName}}
+                        </td>
+                        <td>
+                            {{orderCategorySummary.quantity}}
+
+                        </td>
+                        <td>
+                            {{orderCategorySummary.Total | currency:"&#8377;"}}
+
+                        </td>
+
+
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="grid-header">Top 5 Selling Products</div>
+            <div id="scrollable-area" class="dashbord-widget-md">
+                <table id="orderProductSummaryTable" class="table table-bordered table-responsive dashboard-table" fixed-table-headers="scrollable-area">
+                    <thead>
+                        <tr>
+                            <th>
+                                Product Name
+                            </th>
+                            <th>
+                                Quantity
+
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="orderProductSummary in orderProductSummaryList">
+                            <td>
+                                {{orderProductSummary.ProductName}}
+                            </td>
+                            <td>
+                                {{orderProductSummary.quantity}}
+
+                            </td>
+                            <td>
+                                {{orderProductSummary.Total | currency:"&#8377;"}}
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br class="clear" />
+        <br class="clear" />
+        <div class="col-md-5">
+            <div class="grid-header">Order Status Details</div>
+            <div>
+                <table class="table table-bordered table-responsive dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Order Status
+                            </th>
+                            <th>
+                                Payment Status
+
+                            </th>
+                            <th>
+                                Payment Method
+                            </th>
+                            <th>
+                                Orders
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr data-ng-repeat="orderStatusSummary in orderCountByStatusSummaryList ">
+                        <td>
+                            {{orderStatusSummary.OrderStatus}}
+                        </td>
+                        <td>
+                            {{orderStatusSummary.PaymentStatus}}
+
+                        </td>
+                        <td>
+                            {{orderStatusSummary.PaymentMethodString}}
+
+                        </td>
+
+                        <td>
+                            {{orderStatusSummary.OrderCount}}
+
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dashbord-widget-div">
+                <a href="Retailer.html#/pricing">
+                    <h4 class="dashbord-widget-div-header">
+                        Products <i class="glyphicon glyphicon-tags font11"></i>
+                    </h4>
+                    <br class="clear" />
+                    <div class="col-xs-4 noPadding" data-ng-repeat="branchProductSummary in branchProductSummaryList">
+                        <span class="padding-5">{{branchProductSummary.ProductStatus}}</span>
+                        <br class="clear" />
+                        <div class="dashboard-div-value">{{branchProductSummary.TotalProducts}}</div>
+                    </div>
+                </a>
+            </div>
+            <br class="clear" />
+            <div class="dashbord-widget-div">
+                <a href="Retailer.html#/inbox">
+                    <h4 class="dashbord-widget-div-header">
+                        Enquiries <i class="glyphicon glyphicon-envelope font11"></i>
+                    </h4>
+                    <br class="clear" />
+                    <div class="col-xs-6 noPadding" data-ng-repeat="branchEnquirySummary in branchEnquirySummaryList">
+                        <span class="padding-5">{{branchEnquirySummary.Status}}</span>
+                        <br class="clear" />
+                        <div class="dashboard-div-value">{{branchEnquirySummary.EnquiryCount}}</div>
+                    </div>
+                </a>
+            </div>
+            <br class="clear" />
+            <div class="grid-header">Payment Transaction</div>
+            <canvas id="paymentSpiltChart" class="chart chart-doughnut"
+                    chart-data="datapaymentMethod" chart-labels="labelpaymentMethod"></canvas> 
+        </div>
+        <div class="col-md-4">
+            <div class="grid-header">Last 7 Days Revenue</div>
+            <canvas id="WeekdaySalesbar" class="chart chart-bar"
+                    chart-data="dataweekday" chart-labels="labelweekday"
+                    chart-series="seriesweekday"></canvas>
+
+            <br class="clear"/>
+            <div class="grid-header">Last 6 Months Revenue</div>
+            <canvas id="MonthlySalesbar" class="chart chart-bar"
+                    chart-data="dataMonth" chart-labels="labelMonth"
+                    chart-series="seriesMonth"></canvas>
+
+        </div>
+    </div>
+</div>

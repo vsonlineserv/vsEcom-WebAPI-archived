@@ -1,0 +1,123 @@
+﻿<div class="panel-heading formHeader">
+    <div>
+        <span>Image Upload</span>
+        <a>
+            <span class="glyphicon glyphicon-question-sign btnalignRight"
+                  data-title="When uploading images, do not send large files with more than 1 MB per picture/image" data-bs-tooltip></span>
+        </a>
+    </div>
+</div>   
+   
+<br class="clear" />
+    <form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">
+            Product Name
+        </label>
+        <div class="col-xs-7">
+            <input type="text" disabled class="form-control" size=25 maxlength=50 data-ng-model="product.Name" placeholder="Product Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">
+            Color
+        </label>
+        <div class="col-md-7">
+            <input type="text" disabled class="input-sm form-control" maxlength=5 data-ng-model="product.Color">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">
+            Product Images
+        </label>
+        <div class="col-md-7">
+
+            <input type="file" accept="image/*" class="upload-file form-control" data-max-size="256" nv-file-select="" uploader="uploader" multiple />
+            <div>
+                <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" disabled="disabled">
+                    <span class="glyphicon glyphicon-upload"></span> Upload all
+                </button>
+                <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading" disabled="disabled">
+                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                </button>
+                <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length" disabled="disabled">
+                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                </button>
+            </div>
+            <div>Upload Progress</div>
+            <div class="progress" style="">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }" style="width: 0%;"></div>
+            </div>
+            <div class="col-md-5" style="margin-bottom: 40px">
+                <table class="table">
+                    <tr>
+                        <td width="25%">Name</td>
+                        <td ng-show="uploader.isHTML5">Size</td>
+                        <td ng-show="uploader.isHTML5">Progress</td>
+                        <td>Status</td>
+                        <td>Actions</td>
+                    </tr>
+                    <tr ng-repeat="item in uploader.queue">
+                        <td><strong>{{ item.file.name }}</strong></td>
+                        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB
+                        <td ng-show="uploader.isHTML5">
+                            <div class="progress" style="margin-bottom: 0;">
+                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                            </div>
+
+                        <td class="text-center">
+                            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i>Success</span>
+                            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i>Cancel</span>
+                            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i>Error</span>
+
+                        <td nowrap>
+                            <button type="button" class="btn btn-success btn-xs" data-ng-click="item.upload('_')"
+                                    ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                <span class="glyphicon glyphicon-upload"></span> Upload
+                            </button>
+                            <button type="button" class="btn btn-warning btn-xs" data-ng-click="item.cancel()"
+                                    ng-disabled="!item.isUploading">
+                                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" data-ng-click="item.remove()">
+                                <span class="glyphicon glyphicon-trash"></span> Remove
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br class="clear" />
+            <div class="col-sm-2" data-ng-show="product.PictureName">
+                <img class="imgthumbnail" src="{{imageUrlBaseUploaded}}{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+            </div>
+            <div class="col-sm-2" data-ng-show="product.PictureName1">
+                <img class="imgthumbnail" src="{{imageUrlBaseUploaded}}{{product.PictureName1}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+            </div>
+            <div class="col-sm-2" data-ng-show="product.PictureName2">
+                <img class="imgthumbnail" src="{{imageUrlBaseUploaded}}{{product.PictureName2}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+            </div>
+            <div class="col-sm-2" data-ng-show="product.PictureName3">
+                <img class="imgthumbnail" src="{{imageUrlBaseUploaded}}{{product.PictureName3}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+            </div>
+            <div class="col-sm-2" data-ng-show="product.PictureName4">
+                <img class="imgthumbnail" src="{{imageUrlBaseUploaded}}{{product.PictureName4}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+            </div>
+            <div class="col-sm-2" data-ng-show="product.PictureName5">
+                <img class="imgthumbnail" src="{{imageUrlBaseUploaded}}{{product.PictureName5}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+            </div>
+            <div class="col-sm-2" data-ng-show="product.PictureName6">
+                <img class="imgthumbnail" src="{{imageUrlBaseUploaded}}{{product.PictureName6}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+            </div>
+            <br class="clear" />
+            <div class="btnalignRight">
+                <a class="btn btn-sm btn-info" href="Retailer.html#/UpdateProduct/{{product.ProductId}}"><< Edit Product</a>
+                <a class="btn btn-sm btn-info" href="Retailer.html#/UpdateProductSeo/{{product.ProductId}}"> Update SEO >> </a>
+                <a class="btn btn-sm btn-info" href="Retailer.html#/UpdateFeatures/{{product.ProductId}}">Proceed to Update Features >> </a>
+            </div>
+            <br class="clear" />         
+            </div>
+
+    </div>
+
+</form>   

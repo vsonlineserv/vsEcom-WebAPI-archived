@@ -1,0 +1,20 @@
+
+Thanks for Contacting us for enquiry/ quote. For your enquiry on :- 
+{productName}
+
+<br/>
+Reply from - {store} :-  {message}
+
+  <br /> <br /> <br /> 
+            WE'RE HERE TO HELP!.
+                       
+			<div style="color:#138808">
+            <p>Thank you,<br/>            
+            VBuy.in Team  </p>
+			www.vbuy.in
+			</div>
+			Thanks for making us feel awesome. You can write to me 24 x 7 at siva@vbuy.in.
+			<br/>
+           <span style="font-size:8.5px"> VBuy.in (VS Online Services Pvt. Ltd.) is located at 
+            #25, Team Business Center, Flowers Rd, Kilpauk, Chennai, Tamil Nadu - 600084
+			, 044-43507036 </span>

@@ -1,0 +1,93 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Manufacturer</span>
+        </div>
+    </div>
+
+    <br />
+    <div class="panel-body panel-min-height">
+
+        <div class="row" style="margin-bottom:5px;">
+            <div class="col-md-3"><button type="button" class="btn btn-primary" ng-click="NewManufacturerDetails()" style="margin-top:5px;">AddNew</button></div>
+        </div>
+        <div class="row" style="margin-left: 2px;">
+            <table id="ManufacturerGrid"></table>
+            <div id="ManufacturerPager"></div>
+        </div>
+    </div>
+
+
+<div class="modal fade" id="ManufacturerDetails" role="dialog" aria-labelledby="exampleModalLabel">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="discount">Manufacturer Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class=" row" style="margin-left: 230px">
+                    <div class="col-md-0">     <span id="ManuRequiredfield" style="color:red"></span></div>
+                </div>
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">Id</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtManId" disabled="disabled" placeholder=" Id" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">Brand Name</label><label style="color:red">*</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtMaName" placeholder="Name" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">Description</label></div>
+                    <div class="col-md-6">  <textarea class="form-control" id="txtDes" placeholder="Description"></textarea></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">MetaKeywords</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtMetKey" placeholder="MetaKeywords" /></div>
+                </div>
+
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">MetaDescription</label></div>
+                    <div class="col-md-6">  <textarea class="form-control" id="txtMaDes" placeholder="MetaDescription"></textarea></div>
+                </div>
+
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">MetaTitle</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtMeTi" placeholder="MetaTitle" /></div>
+                </div>
+
+                <div class="row" style="margin-bottom:5px;">
+                    <div class="col-md-4"><label class="control-label">DisplayOrder</label></div>
+                    <div class="col-md-6">  <input type="text" class="form-control" id="txtDisplay" placeholder="DisplayOrder" /></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="SaveManuDetails();">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

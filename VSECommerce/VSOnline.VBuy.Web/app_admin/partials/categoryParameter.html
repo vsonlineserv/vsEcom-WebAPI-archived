@@ -1,0 +1,85 @@
+﻿<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading formHeader">
+        <div>
+            <span> Category Parameters</span>
+            <a>
+                <span class="glyphicon glyphicon-question-sign btnalignRight"
+                      data-title="Category Filters parameter" data-bs-tooltip></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="panel-body panel-min-height">
+        <br class="clear" />
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    Category Name
+                </label>
+                <div class="col-md-7">
+                    <input type="text" disabled class="form-control" size=25 maxlength=50 data-ng-model="category.Name" placeholder="Product Name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">
+                    Filter Parameter
+                </label>
+                <div class="col-md-5">
+                    <table>
+                        <thead>
+
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr></tr>
+                            <tr ng-repeat="r in filterRows">
+                                <td>
+                                    <input type="text" ng-model="r.FilterParameter" />
+                                    <input type="hidden" value="{{r.CategoryId = category.CategoryId}}" />
+                                </td>
+
+                                <td></td>
+                                <td>
+                                    <div class="btnalignRight">
+                                        <button class="btn-primary" ng-click="addfilterRow()">Add Filter</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br style="clear:both" />
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-7">
+
+                <div class="btnalignRight">
+                    <button class="btn btn-sm btn-info" type="submit" data-ng-click="updateFilterParameters()">Save Filter Parameters</button>
+                    <a class="btn btn-sm btn-info" href="Admin.html#/editcategory/{{category.CategoryId}}"><< Edit Category</a>
+                </div>
+            </div>
+            <br class="clearfix" />
+        </form>
+
+    </div>
+</div>

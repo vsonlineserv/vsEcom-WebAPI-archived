@@ -1,0 +1,107 @@
+﻿<div class="panel-heading formHeader">
+    <div>
+        <span class=""> Branch Details </span>
+    </div>
+</div>
+
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<br/>
+<div class="form-horizontal">
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">
+            Branch Name
+        </label>
+        <div class="col-md-3">
+            <input class="form-control" ng-disabled="!flagBranchEdit" type="text" size=25 maxlength=50 ng-model="branch.BranchName" required placeholder="Business Name" name="businessName" />
+        </div>
+        <label class="col-md-2 control-label">
+            Email
+        </label>
+        <div class="col-md-3">
+            <input class="form-control" type="email" ng-disabled="!flagBranchEdit" size=25 maxlength=100 ng-model="branch.Email" placeholder="Email" name="email" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">
+            Adress 1
+        </label>
+        <div class="col-md-3">
+            <input class="form-control" type="text" size=25 ng-disabled="!flagBranchEdit" maxlength=50 ng-model="branch.Address1" placeholder="Address1" name="address1" />
+        </div>
+        <label class="col-md-2 control-label">
+            Adress 2
+        </label>
+        <div class="col-md-3">
+            <input class="form-control" type="text" size=25 ng-disabled="!flagBranchEdit" maxlength=50 ng-model="branch.Address2" placeholder="Address2" name="address2" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">
+            City
+        </label>
+        <div class="col-md-3">
+            <input class="form-control" type="text" size=25 ng-disabled="!flagBranchEdit" maxlength=50 ng-model="branch.City" placeholder="City" name="city" />
+        </div>
+        <label class="col-md-2 control-label">
+            Pincode
+        </label>
+        <div class="col-md-3">
+            <input class="form-control" size=25 maxlength=6 ng-disabled="!flagBranchEdit" ng-model="branch.PostalCode" name="pincode" placeholder="Pincode" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">
+            Country
+        </label>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="" value="India" ng-disabled="true"/>
+          
+        </div>
+        <label class="col-md-2 control-label">
+            State
+        </label>
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="" ng-model="branch.State" ng-disabled="true"/>             
+            <span>
+                Lat: {{branch.Latitude}}
+            </span>
+            <br />
+            <span>
+                Long: {{branch.Longitude}}
+            </span>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">
+            Phone no
+        </label>
+        <div class="col-md-3">
+            <input class="form-control" ng-disabled="!flagBranchEdit"  ng-model="branch.PhoneNumber" size=25 maxlength=10/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-7">
+
+            <div class="btnalignRight">
+                <button class="btn btn-sm btn-info" data-ng-click="flagBranchEdit=true" ng-show="flagBranchEdit==false">Edit Branch</button>
+                <button class="btn btn-sm btn-info" type="submit" ng-show="flagBranchEdit==true" data-ng-click="UpdateBranchDetails(branch)">Save Branch Details</button>
+                <a class="btn btn-sm btn-info" href="#/newbranch">Create New Branch</a>
+                <button class="btn btn-sm btn-info" ng-show="flagBranchEdit==true" data-ng-click="CancelEdit()">Cancel</button>
+            </div>
+            <br class="clearfix" />
+        </div>
+    </div>
+</div>

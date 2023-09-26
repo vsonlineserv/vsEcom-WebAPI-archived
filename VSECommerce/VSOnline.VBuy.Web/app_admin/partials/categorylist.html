@@ -1,0 +1,85 @@
+﻿
+<br />
+<div data-ng-show="savedSuccessfully && message" class="alert alert-success float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+<div data-ng-show="!savedSuccessfully && message" class="alert alert-danger float-message">
+    <a href="" class="close" ng-click="message = ''">&times;</a>
+    {{message}}
+</div>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading formHeader">
+        <div>
+            <span class="">Category </span>
+        </div>
+    </div>
+    <div class="panel-body panel-min-height">
+
+        <div class="row">
+            <div class="col-md-3" style="padding-left: 0px; padding-right: 0px;"><div class="col-md-10"><input type="text" class="form-control" id="txtCategoryId" placeholder="Categoy Id" ng-blur="CheckCategoryId;" ng-keypress="CheckCategoryId($event);" /></div><span>OR</span></div>
+            <div class="col-md-3" style="padding-left: 0px; padding-right: 0px;"><div class="col-md-10"><input type="text" class="form-control" id="txtCategoryName" placeholder="Category Name" ng-blur="checkCategoryName(); " /></div><span>OR</span></div>
+            <div class="col-md-1" style="padding-left: 0px; padding-right: 0px;"> <button type="button" class="btn btn-primary" ng-click="searchCategory();">Search</button></div>
+            <div class="col-md-1" style="padding-left: 0px; padding-right: 0px;"> <button type="button" class="btn btn-primary" ng-click="categoryrClear();">Clear</button></div>
+        </div>
+
+
+        <span id="required" style="color:red"></span>
+
+        <table id="categoryGrids"></table>
+        <div id="Categorypager"></div>
+    </div>
+</div>
+<div class="modal fade" id="editCategoryName" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modifyCategory">Category Details</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class=" row" style="margin-left: 230px">
+                    <div class="col-md-0">     <span id="CategoryRequiredfield" style="color:red"></span></div>
+                </div>
+
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label class="control-label">Category Id</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtEditCategoryid" disabled="disabled" placeholder="Category Id" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label class="control-label">Category</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtEditCategoryname" placeholder="Category" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label class="control-label">Group Tag</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtGrptag" placeholder="Group Tag" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label class="control-label">Group Display Order</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtGrpDisplay" placeholder="Group Display Order" ng-keypress="CheckGrpDisplay(event);" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label class="control-label">Display Order</label></div>
+                    <div class="col-md-8">  <input type="text" class="form-control" id="txtDisplayOrder" placeholder=" Display Order" ng-keypress="CheckCatDisplay(event);" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label class="control-label">Published</label></div>
+                    <div class="col-md-2"> <input id="chkPublished" type="checkbox" /></div>
+                </div>
+                <div class="row" style=" margin-bottom:10px;">
+                    <div class="col-md-4"><label class="control-label">Show as Top Category</label></div>
+                    <div class="col-md-2"> <input id="chkTopCategory" type="checkbox" /></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="ModifyCategory();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+    

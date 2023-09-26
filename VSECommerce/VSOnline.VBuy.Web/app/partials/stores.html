@@ -1,0 +1,194 @@
+﻿<!--////////////////////////////////////////////////////////////////////////////////////////////
+// <copyright>
+// Copyright (c) 2014-2020 VS Online Services Pvt ltd, All Rights Reserved
+//</copyright>
+// <description>VSECommerce: A VBuy.in platform<description>
+// <author>Sivakumar Anirudhan</author>
+//VSOnline.VSECommerce
+///////////////////////////////////////////////////////////////////////////////////////////
+    -->
+<view-title>Contact and Buy from Online Shopping Mall of your Trusted Local Retailer - {{StoreInfo.StoreName}} </view-title>
+<og-description>
+    Contact and Buy from {{StoreInfo.StoreName}}. {{StoreInfo.Description}}.
+</og-description>
+<og-image>{{imageUrlBase}}Stores/store_dummy_logo.png</og-image>
+
+<div class="container view containerbgcolor">
+    <div>
+        <div class="col-sm-3">
+            <!-- <img src=" {{imageUrlBase}}Stores/store_dummy_logo.png">-->
+        </div>
+        <div class="col-sm-5">
+            <h1 class="storeHeader">{{StoreInfo.StoreName}}</h1>
+            <div ng-vbuy-rating data-rating-value="branchRating" readonly="true" data-max="5"></div>
+            <span ng-bind="StoreInfo.Description"></span>
+            <div ng-vbuy-fb-recommend style="height:25px" page-href="http://www.vbuy.in/stores/{{StoreInfo.StoreName | formaturl}}/{{StoreInfo.StoreId}}"></div>
+        </div>
+        <div class="col-sm-4">
+            <div><strong>Branch</strong></div>
+            <div class="filter-control">
+                <select class="selectpicker"
+                        ng-options="branch.BranchId as branch.BranchName for branch in StoreInfo.Branches"
+                        ng-change="RefreshBranchAddress()"
+                        ng-model="selectedBranchId" data-html="1">
+                    <span class="caret"></span>
+                </select>
+
+            </div>
+            <br class="clear" />
+            <div data-ng-repeat="branch in StoreInfo.Branches | filter:{BranchId: selectedBranchId}">
+                <span ng-bind="branch.BranchName"></span>
+                <br />
+                {{branch.Address1}}, {{branch.Address2}}
+                <div>
+                    {{branch.City}},
+                </div>
+                <div>
+                    {{branch.State}}
+                </div>
+            </div>
+            <span ng-vbuy-rating data-rating-value="branchRating" data-max="5" on-rating-selected="onSellerRatingChanged(rating)"></span>
+            <span class="label label-info" ng-if="branchRating>0">{{branchRating}} / 5</span>
+        </div>
+        <br />
+        <br style="clear:both" />
+        <div class="formHeader">
+            <div class="filter-control">
+                <div class="filter-label"> Category</div>
+                <select class="selectpicker" data-ng-model="filters.selectedCategory" name="categoryFilter"
+                        data-html="1" data-ng-options="category.CategoryId as category.Name for category in filterList.CategoryFilter"
+                        placeholder="Select Category">
+                    Select Category
+                    <span class="caret"></span>
+                </select>
+            </div>
+            <div class="filter-control">
+                <div class="filter-label"> Sub Category </div>
+                <select class="selectpicker" data-ng-model="filters.selectedSubCategory" name="subcategoryFilter"
+                        data-html="1" data-ng-options="category.CategoryId as category.Name for category in filterList.SubCategoryFilter  | filter: {ParentCategoryId:filters.selectedCategory}"
+                        ng-change="GetProducts()"
+                        placeholder="Select Sub.Cat">
+                    Sub Category
+                    <span class="caret"></span>
+                </select>
+            </div>
+        </div>
+        <br />{{$scope.message}}<br />
+        <div>
+            <div class="col-xs-2 cardMedium" data-ng-repeat="product in products | orderBy:'Name'">
+                <a href="product/{{product.Name | formaturl }}/{{product.ProductId}}" title="{{product.Name}}" class="cardBody btn-link">
+                    <div class="cardHeader">
+                        {{ product.Name | limitTo:45}}
+                    </div>
+                    <div class="cardBody">
+                        <img class="imgproductsmall" id="img_{{product.ProductId}}" src="{{imageUrlBaseSmall}}{{product.PictureName}}" alt="{{product.PictureName}}" onerror="this.src = 'Content/images/noimage.jpg'; this.onerror = '';" />
+                    </div>
+                    <div>
+                        <b><span class="greenText">{{product.Price | currency:"&#8377;"}}</span></b>
+                    </div>
+                </a>
+                <div class="cardFooterMedium">
+
+                    <div data-ng-if=!product.FlagWishlist class="col-xs-6 shortlistProduct" ng-click="addProductWishlist(product);">
+                        <i class="icon-wishlist-empty-heart"><span>Wishlist</span></i>
+
+                    </div>
+                    <div class="shortlistProduct col-xs-6" data-ng-if=product.FlagWishlist>
+                        <i class="icon-wishlist-filled-heart"><span>Wishlisted</span></i>
+                    </div>
+                    <div class="shortlistProduct col-xs-6" data-ng-if="$root.comparisonlistProductId.indexOf(product.ProductId) == -1" ng-click="addToProductComparison(product);">
+                        <span class="glyphicon glyphicon-th-list compareicon"></span>
+                        <i class="compareiconspan">Compare</i>
+                    </div>
+                    <div class="shortlistProduct col-xs-6" data-ng-if="$root.comparisonlistProductId.indexOf(product.ProductId) > -1" ng-click="removeFromProductComparison(product);">
+                        <span class="glyphicon glyphicon-remove-circle removeicon"></span>
+                        <i class="compareiconspan">Compare</i>
+                    </div>
+
+                    <span data-ng-repeat="branch in StoreInfo.Branches | filter:{BranchId: selectedBranchId}">
+                        <button class="btn btn-success margin-2" ng-show="branch.EnableBuy"
+                                ng-click="addProductToCart(product, branch.BranchId, branch.BranchName
+                                                    ,product.Price, product.Price)">
+                            <span class="glyphicon glyphicon-shopping-cart">  </span>Buy
+                        </button>
+                    </span>
+                    <button class="btn  btn-success margin-2" href="#modal-container-contact-{{selectedBranchId}}-{{product.ProductId}}"
+                            data-toggle="modal">
+                        Contact
+                    </button>
+
+
+
+                </div>
+                <div id="modal-container-contact-{{selectedBranchId}}-{{product.ProductId}}"
+                     class="modal fade" tabindex="-1" role="main" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <div id="myModalLabel">
+                                    <div data-ng-repeat="branch in StoreInfo.Branches | filter:{BranchId: selectedBranchId}">
+                                        <h4>Contact {{branch.BranchName}} - Get Quotes</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="username" class="col-sm-2 control-label">Name</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="username" data-ng-model="contactData.Name" required autofocus placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobilenumber" class="col-sm-2 control-label">Mobile</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" maxlength="10" pattern="(.){10,10}" id="mobilenumber" data-ng-model="contactData.Mobile" required autofocus placeholder="Mobile Number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="email" data-ng-model="contactData.Email" required autofocus placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subject" class="col-sm-2 control-label">Subject</label>
+                                        <div class="col-sm-10">
+                                            <textarea rows="5" class="form-control" maxlength="140" id="subject" data-ng-model="contactData.Subject" autofocus placeholder="Contact Store and Get assured response on lower price and also stock availability."></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div data-ng-hide="contactData.message  == ''" data-ng-class="(contactData.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                                        {{contactData.message}}
+                                    </div>
+                                    <div data-ng-repeat="branch in StoreInfo.Branches | filter:{BranchId: selectedBranchId}">
+                                        <span>Contact :{{branch.BranchName}} </span>
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                        <button type="submit" class="btn btn-primary" ng-click="ContactSeller(contactData, selectedBranchId, product.ProductId)">Submit</button>
+                                    </div>
+                                    <br />
+                                    <span class="keyFeatureList">
+                                        Share your mobile, email info to get lowest quote and stock availability.
+                                    </span>
+                                    <ul class="keyFeatureList">
+                                        <li>
+                                            You will shortly receive an SMS/Email from VBuy.in. about the in-store availability and lowest price of the product
+                                        </li>
+                                        <li>
+                                            Your contact information will not be shared to any other store.
+                                        </li>
+                                        <li>
+                                            We do not sell or share your contact information to any third party.
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
